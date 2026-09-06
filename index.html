@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DEV | DJ in Vidarbha, Maharashtra | Amravati, Akola</title>
-  <meta name="description" content="DEV is a house and techno DJ from Vidarbha, Maharashtra, available for club nights, festivals, private events and bookings in Amravati, Akola, Nagpur, Pune and across Maharashtra." />
+  <title>DEV | House / Techno / Afterhours</title>
+  <meta name="description" content="DEV is a DJ and electronic music artist from Vidarbha, Maharashtra, focused on house, techno and extended-format club sets." />
   <meta name="author" content="DEV" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="theme-color" content="#070708" />
   <link rel="canonical" href="https://djdev.in/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="DEV | DJ in Vidarbha, Maharashtra" />
-  <meta property="og:description" content="House and techno DJ from Vidarbha, Maharashtra. Book DEV for clubs, festivals and private events." />
+  <meta property="og:title" content="DEV | House / Techno / Afterhours" />
+  <meta property="og:description" content="DJ and electronic music artist from Vidarbha, Maharashtra. House, techno and extended-format club sets." />
   <meta property="og:url" content="https://djdev.in/" />
   <meta property="og:image" content="https://djdev.in/assets/dev-02.jpg" />
   <meta property="og:image:alt" content="DEV performing as a DJ in Maharashtra" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="DEV | DJ in Vidarbha, Maharashtra" />
-  <meta name="twitter:description" content="House and techno DJ from Vidarbha, Maharashtra. Amravati, Akola, Nagpur and Pune bookings." />
+  <meta name="twitter:title" content="DEV | House / Techno / Afterhours" />
+  <meta name="twitter:description" content="DJ and electronic music artist from Vidarbha, Maharashtra. House, techno and extended-format club sets." />
   <meta name="twitter:image" content="https://djdev.in/assets/dev-02.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,7 +31,7 @@
         "@id": "https://djdev.in/#website",
         "url": "https://djdev.in/",
         "name": "DEV — DJ",
-        "description": "Official website of DEV, a house and techno DJ from Vidarbha, Maharashtra.",
+        "description": "Official website of DEV, a DJ and electronic music artist focused on house, techno and extended-format club sets.",
         "inLanguage": "en-IN",
         "publisher": { "@id": "https://djdev.in/#person" }
       },
@@ -41,7 +41,7 @@
         "name": "DEV",
         "jobTitle": "DJ",
         "url": "https://djdev.in/",
-        "description": "House and techno DJ from Vidarbha, Maharashtra, available for club, festival, private and event bookings.",
+        "description": "DJ and electronic music artist from Vidarbha, Maharashtra, available for club nights, festivals, private events and selected destination bookings.",
         "image": "https://djdev.in/assets/dev-01.jpg",
         "homeLocation": {
           "@type": "Place",
@@ -102,7 +102,7 @@
     body.locked { overflow: hidden; }
     img, video { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    button, input, textarea { font: inherit; color: inherit; }
+    button { font: inherit; color: inherit; }
     .ambient, .grain, .vignette { pointer-events: none; position: fixed; inset: 0; }
     .ambient {
       z-index: 0;
@@ -192,9 +192,10 @@
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     .nav-links a:hover, .nav-links a.active { color: var(--ink); }
     .nav-cta {
+      display: inline-flex; align-items: center; gap: 7px;
       background: var(--ink); color: #111; border: 0; border-radius: 999px;
       padding: 9px 14px; font-size: 11px; letter-spacing: .12em;
-      text-transform: uppercase; font-weight: 600; position: relative; overflow: hidden;
+      text-transform: uppercase; font-weight: 600; position: relative; overflow: hidden; white-space: nowrap;
       transition: color .3s;
     }
     .nav-cta::before {
@@ -204,6 +205,7 @@
     .nav-cta span { position: relative; z-index: 1; }
     .nav-cta:hover::before { transform: none; }
     .nav-cta:hover { background: var(--accent); }
+    .cta-arrow { font-size: 16px; line-height: 1; letter-spacing: 0; }
     .burger {
       display: none; width: 38px; height: 38px;
       border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer;
@@ -353,8 +355,6 @@
     .stat { border-top: 1px solid var(--line); padding-top: 12px; }
     .stat b { display: block; font-family: "Syne", sans-serif; font-size: 24px; }
     .stat span { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-    .epk { margin-top: 22px; display: flex; gap: 8px; flex-wrap: wrap; }
-
     .media {
       position: relative; overflow: hidden; border-radius: 16px;
       background: #101014; border: 1px dashed rgba(214,255,58,.28);
@@ -421,41 +421,34 @@
     .mix small { color: var(--accent); letter-spacing: .14em; text-transform: uppercase; font-size: 11px; }
     .mix h3 { margin: 8px 0 6px; font-family: "Syne", sans-serif; font-size: 20px; }
     .mix p { color: var(--muted); font-size: 14px; }
-    .mix-foot { margin-top: auto; padding-top: 18px; }
+    .mix-foot { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
     .listen {
       font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
       border-bottom: 1px solid var(--accent); padding-bottom: 2px;
     }
 
     .contact { background: radial-gradient(700px 520px at 78% 20%, rgba(214,255,58,.045), transparent 68%); }
-    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 36px; }
-    .emails { display: grid; gap: 16px; margin-top: 22px; }
-    .email-card { border-top: 1px solid var(--line); padding-top: 12px; }
+    .booking-copy { color: #c9c6bb; max-width: 520px; }
+    .form-note { color: var(--muted); font-size: 12px; }
+    .emails { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 32px; }
+    .email-card { border-top: 1px solid var(--line); padding: 18px 0 6px; }
     .email-card span {
       display: block; font-size: 11px; letter-spacing: .16em;
       text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
     }
     .email-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .email-card a { font-family: "Syne", sans-serif; font-size: 20px; }
+    .email-card a { font-family: "Syne", sans-serif; font-size: clamp(18px, 2.5vw, 30px); overflow-wrap: anywhere; }
     .copy {
       border: 1px solid var(--line); background: transparent; border-radius: 999px;
       padding: 6px 10px; font-size: 10px; letter-spacing: .12em;
       text-transform: uppercase; cursor: pointer; color: var(--muted);
     }
-    form {
-      display: grid; gap: 10px; padding: 20px;
-      border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.02);
-    }
-    label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-    input, textarea {
-      width: 100%; background: #0c0c0f; border: 1px solid var(--line);
-      border-radius: 10px; padding: 12px 13px; outline: none;
-      transition: border-color .25s, transform .25s, background .25s;
-    }
-    input:focus, textarea:focus { border-color: rgba(214,255,58,.5); transform: translateY(-1px); background: #101014; }
-    textarea { min-height: 96px; resize: vertical; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .form-note { color: var(--muted); font-size: 12px; }
+    .epk { display: grid; gap: 10px; margin-top: 24px; }
+    .epk-item { border-top: 1px solid var(--line); padding-top: 10px; }
+    .epk-item b { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); margin-bottom: 3px; }
+    .epk-item span { color: var(--muted); font-size: 13px; }
+    .mix-primary { grid-column: 1 / -1; min-height: 150px; }
+    .mix-meta { color: var(--muted); font-size: 12px; }
 
     footer { position: relative; z-index: 2; padding: 36px 5vw 28px; border-top: 1px solid var(--line); }
     .foot {
@@ -496,9 +489,10 @@
       }
       section { padding: 56px 20px; }
       .hero { padding: 96px 20px 48px; min-height: 92svh; }
-      .about-grid, .clips, .contact-grid, .sound-grid, .gallery, .form-row, .date-row {
+      .about-grid, .clips, .sound-grid, .gallery, .date-row {
         grid-template-columns: 1fr;
       }
+      .emails { grid-template-columns: 1fr; gap: 20px; }
       .gallery, .clips { grid-template-rows: none; }
       .g1 { grid-row: auto; }
       .media.portrait { aspect-ratio: 3/4; }
@@ -527,23 +521,23 @@
   <div class="vignette" aria-hidden="true"></div>
   <div class="loader" id="loader">
     <div class="loader-mark"><span>D</span><span>E</span><span>V</span></div>
-    <div class="loader-sub">House · Techno · Floor</div>
+    <div class="loader-sub">House · Techno · Afterhours</div>
     <div class="loader-bar"></div>
   </div>
   <div class="progress" id="progress"></div>
 
   <header class="nav" id="nav">
     <a class="logo" href="#top">DJ <span>DEV</span></a>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#gallery">Stills</a>
       <a href="#live">Clips</a>
       <a href="#dates">Areas</a>
       <a href="#sound">Mixes</a>
-      <a href="#contact">Book</a>
+      <a href="#contact">Booking</a>
     </nav>
-    <a class="nav-cta" href="#contact"><span>Book</span></a>
-    <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span></button>
+    <a class="nav-cta" href="#contact"><span>Make an enquiry</span><span class="cta-arrow" aria-hidden="true">→</span></a>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
   </header>
 
   <main id="main">
@@ -555,7 +549,7 @@
       <div class="slot" data-empty="hero">
         <div class="slot-card">
           <b>Hero video</b>
-          Mute loop. Booth + floor. Drop it later.
+          Muted loop showing the booth and floor. Add when ready.
           <ol>
             <li><code>assets/hero.mp4</code></li>
             <li>1920×1080, 8–20s</li>
@@ -565,43 +559,48 @@
       <div class="hero-shade"></div>
     </div>
     <div class="hero-copy">
-      <p class="eyebrow">Vidarbha · Maharashtra · House / Techno</p>
+      <p class="eyebrow">House · Techno · Afterhours</p>
       <h1>DEV<br /><em>on the floor.</em></h1>
-      <p class="hero-sub">House and techno from Vidarbha. Long-form sets for club nights, festivals, private events and rooms that actually dance.</p>
+      <p class="hero-sub">Extended-format sets built around progression, groove and the energy of the room.</p>
       <div class="hero-actions">
-        <a class="btn btn-fill" href="#contact">Request a date</a>
-        <a class="btn btn-ghost" href="#live">Live clips</a>
-        <button class="sound-btn" id="heroSound" type="button" title="Unmute hero clip">♪</button>
+        <a class="btn btn-fill" href="#contact">Make an enquiry <span class="cta-arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#sound">Listen</a>
+        <button class="sound-btn" id="heroSound" type="button" title="Toggle hero sound" aria-label="Toggle hero sound">♪</button>
       </div>
-      <p class="avail">Bookings · <b>Amravati · Akola · Nagpur · Pune</b> · Maharashtra</p>
+      <p class="avail">Based in <b>Vidarbha</b> · Available across India</p>
     </div>
   </section>
 
-  <div class="strip"><b>DEV</b> · DJ from Vidarbha · House · Techno · Club · Festival · Private events · Maharashtra</div>
+  <div class="strip"><b>DEV</b> · House · Techno · Afterhours · Club · Festival · Private events · Maharashtra</div>
 
   <section id="about">
     <div class="wrap">
       <div class="section-head reveal">
         <div>
           <p class="kicker">01 — Profile</p>
-          <h2>Vidarbha energy.<br />Maharashtra reach.</h2>
+          <h2>House / Techno /<br />Afterhours.</h2>
         </div>
-        <p class="hint">House and techno DJ based in Maharashtra. Available for serious bookings.</p>
+        <p class="hint">DJ and electronic music artist based in Vidarbha, Maharashtra.</p>
       </div>
       <div class="about-grid">
         <div class="about reveal">
-          <p>DEV is a house and techno DJ from Vidarbha, Maharashtra. The sound is built around weight, movement and long-form sets that give a room time to build properly. Available for DJ bookings in Amravati, Akola, Nagpur, Pune and across Maharashtra.</p>
+          <p>DEV is a DJ and electronic music artist focused on house, techno and extended-format club sets. His sets are built around gradual progression, rhythmic movement and the energy of the room.</p>
           <div class="bio-long" id="bioLong">
-            <p>Based in the Vidarbha region, DEV is available for club nights, festivals, private events, brand experiences and destination bookings across Maharashtra. The preferred format is a four-to-six-hour set, with enough space to move from a considered opening into a high-energy peak.</p>
-            <p>For bookings in Amravati, Akola, Nagpur, Pune or elsewhere in Maharashtra, use the booking form with the date, venue, capacity and set requirements.</p>
+            <p>Based in Vidarbha, DEV is available for club nights, festivals, private events and selected destination bookings. The preferred format is a four-to-six-hour set, moving from warm-up through peak-time and afterhours.</p>
+            <p>For Amravati, Akola, Nagpur, Pune and other Maharashtra bookings, send the date, venue, location, attendance and set requirements through the booking form.</p>
           </div>
           <button class="btn btn-ghost" id="bioToggle" type="button">Full bio</button>
           <div class="stats">
-            <div class="stat"><b>VIDARBHA</b><span>From the region</span></div>
-            <div class="stat"><b>MH</b><span>Booking region</span></div>
-            <div class="stat"><b>4–6h</b><span>Preferred set</span></div>
+            <div class="stat"><b>VIDARBHA</b><span>Base</span></div>
+            <div class="stat"><b>MH</b><span>Booking area</span></div>
+            <div class="stat"><b>4–6h</b><span>Set format</span></div>
           </div>
-          <p class="form-note">Press photos and technical details are available on request.</p>
+          <div class="epk" aria-label="Press material">
+            <div class="epk-item"><b>Press kit</b><span>Artist bio, selected work and press material.</span></div>
+            <div class="epk-item"><b>Tech rider</b><span>Technical requirements and stage setup.</span></div>
+            <div class="epk-item"><b>Photo pack</b><span>Approved high-resolution artist imagery.</span></div>
+          </div>
+          <p class="form-note">Press material is available on request.</p>
         </div>
         <div class="media portrait reveal zoom" data-full="">
           <img src="assets/dev-01.jpg" alt="DEV performing at the decks in Maharashtra" loading="eager" fetchpriority="high" />
@@ -618,7 +617,7 @@
           <p class="kicker">02 — Stills</p>
           <h2>Booth and room.</h2>
         </div>
-        <p class="hint">Press, promo and live-room stills from the DEV project.</p>
+        <p class="hint">Selected press and live-room stills.</p>
       </div>
       <div class="gallery">
         <div class="media g1 reveal zoom" data-full="">
@@ -650,9 +649,9 @@
       <div class="section-head reveal">
         <div>
           <p class="kicker">03 — Live</p>
-          <h2>Proof of room.</h2>
+          <h2>Live format.</h2>
         </div>
-        <p class="hint">Hover to play once the files are in.</p>
+        <p class="hint">4–6 hour sets designed to move naturally from warm-up through peak-time and afterhours.</p>
       </div>
       <div class="clips">
         <div class="media clip main reveal hoverplay">
@@ -680,35 +679,35 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="kicker">04 — Areas</p>
-          <h2>Bookings across Maharashtra.</h2>
+          <p class="kicker">04 — Booking areas</p>
+          <h2>Selected areas.</h2>
         </div>
-        <p class="hint">Local bookings across Vidarbha, plus selected Maharashtra cities.</p>
+        <p class="hint">Amravati, Akola, Nagpur, Pune and selected Maharashtra bookings.</p>
       </div>
       <div class="dates">
         <div class="date-row reveal">
           <time>HOME REGION</time>
           <div><h3>Amravati</h3><p>Vidarbha · Maharashtra</p></div>
           <span class="pill">Local</span>
-          <a class="ticket" href="#contact">Book</a>
+           <a class="ticket" href="#contact">Enquire</a>
         </div>
         <div class="date-row reveal">
           <time>VIDARBHA</time>
           <div><h3>Akola</h3><p>DJ bookings · Maharashtra</p></div>
           <span class="pill">Local</span>
-          <a class="ticket" href="#contact">Book</a>
+           <a class="ticket" href="#contact">Enquire</a>
         </div>
         <div class="date-row reveal">
           <time>MAHARASHTRA</time>
           <div><h3>Nagpur</h3><p>Club, festival and private events</p></div>
           <span class="pill">Available</span>
-          <a class="ticket" href="#contact">Book</a>
+           <a class="ticket" href="#contact">Enquire</a>
         </div>
         <div class="date-row reveal">
           <time>MAHARASHTRA</time>
           <div><h3>Pune</h3><p>Selected bookings · India</p></div>
           <span class="pill">Available</span>
-          <a class="ticket" href="#contact">Book</a>
+           <a class="ticket" href="#contact">Enquire</a>
         </div>
       </div>
     </div>
@@ -718,29 +717,29 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="kicker">05 — Mixes</p>
-          <h2>Listen off-site.</h2>
+          <p class="kicker">05 — Music</p>
+          <h2>Selected mixes.</h2>
         </div>
-        <p class="hint">SoundCloud / Mixcloud. Page stays a page.</p>
+        <p class="hint">Primary mix and supporting recordings. Links will be added with the final uploads.</p>
       </div>
       <div class="sound-grid">
+        <article class="mix mix-primary reveal">
+          <small>Signature mix</small>
+          <h3>House / Techno / Afterhours</h3>
+          <p>Extended-format mix · Duration to be added</p>
+          <div class="mix-foot"><span class="listen">Listen →</span><span class="mix-meta">Link to be added</span></div>
+        </article>
         <article class="mix reveal">
-          <small>Mix 01</small>
+          <small>Supporting mix</small>
           <h3>After 3AM</h3>
-          <p>Closed door. No crowd mic.</p>
-          <div class="mix-foot"><span class="listen">SoundCloud</span></div>
+          <p>Afterhours · Duration to be added</p>
+          <div class="mix-foot"><span class="listen">Listen →</span><span class="mix-meta">Link to be added</span></div>
         </article>
         <article class="mix reveal">
-          <small>Mix 02</small>
-          <h3>Main room</h3>
-          <p>Peak-time cut. 128–132.</p>
-          <div class="mix-foot"><span class="listen">Mixcloud</span></div>
-        </article>
-        <article class="mix reveal">
-          <small>Mix 03</small>
+          <small>Supporting mix</small>
           <h3>Warm-up</h3>
-          <p>Slower open. Shows the range.</p>
-          <div class="mix-foot"><span class="listen">SoundCloud</span></div>
+          <p>Warm-up · Duration to be added</p>
+          <div class="mix-foot"><span class="listen">Listen →</span><span class="mix-meta">Link to be added</span></div>
         </article>
       </div>
     </div>
@@ -751,43 +750,28 @@
       <div class="section-head reveal">
         <div>
           <p class="kicker">06 — Booking</p>
-          <h2>Date, city, room.</h2>
+          <h2>Booking.</h2>
         </div>
-          <p class="hint">Promoters, venues and event organisers across Maharashtra.</p>
+          <p class="hint">Club nights, festivals, private events and selected destination bookings.</p>
       </div>
-      <div class="contact-grid">
-        <div class="reveal">
-          <p style="color:#c9c6bb;max-width:400px">For bookings in Amravati, Akola, Nagpur, Pune and across Maharashtra, send the date, venue, capacity and set requirements.</p>
-          <div class="emails">
-            <div class="email-card">
-              <span>Bookings</span>
-              <div class="email-line">
-                <a href="mailto:bookings@djdev.in">bookings@djdev.in</a>
-                <button class="copy" data-copy="bookings@djdev.in" type="button">Copy</button>
-              </div>
+      <div class="reveal">
+        <p class="booking-copy">Availability is handled directly. Include the event date, location, venue and set requirements in your email.</p>
+        <div class="emails">
+          <div class="email-card">
+            <span>Bookings</span>
+            <div class="email-line">
+              <a href="mailto:booking@djdev.in">booking@djdev.in</a>
+              <button class="copy" data-copy="booking@djdev.in" type="button">Copy</button>
             </div>
-            <div class="email-card">
-              <span>Press / management</span>
-              <div class="email-line">
-                <a href="mailto:bookings@djdev.in">bookings@djdev.in</a>
-                <button class="copy" data-copy="bookings@djdev.in" type="button">Copy</button>
-              </div>
+          </div>
+          <div class="email-card">
+            <span>General enquiries</span>
+            <div class="email-line">
+              <a href="mailto:inquiries@djdev.in">inquiries@djdev.in</a>
+              <button class="copy" data-copy="inquiries@djdev.in" type="button">Copy</button>
             </div>
           </div>
         </div>
-        <form class="reveal" id="bookForm">
-          <div class="form-row">
-            <div><label for="name">Name</label><input id="name" name="name" required placeholder="Your name" /></div>
-            <div><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@venue.com" /></div>
-          </div>
-          <div class="form-row">
-            <div><label for="venue">City / venue</label><input id="venue" name="venue" placeholder="Amravati / venue name" /></div>
-            <div><label for="date">Date</label><input id="date" name="date" type="date" /></div>
-          </div>
-          <div><label for="msg">Details</label><textarea id="msg" name="msg" placeholder="Capacity, set length, fee range, travel."></textarea></div>
-          <button class="btn btn-fill" type="submit">Open booking email</button>
-          <p class="form-note">Opens a pre-filled mail to bookings@djdev.in.</p>
-        </form>
       </div>
     </div>
   </section>
@@ -815,10 +799,18 @@
     const progress = document.getElementById("progress");
     const nav = document.getElementById("nav");
     const heroMedia = document.getElementById("heroParallax");
+    const burger = document.getElementById("burger");
     const sections = [...document.querySelectorAll("section[id]")];
     const links = [...document.querySelectorAll(".nav-links a")];
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const finePointer = matchMedia("(pointer: fine)").matches && !reducedMotion;
+
+    const setMenu = open => {
+      nav.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+    burger.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
 
     if (finePointer) {
       addEventListener("pointermove", e => {
@@ -861,7 +853,7 @@
         const el = document.querySelector(id);
         if (!el || id === "#") return;
         e.preventDefault();
-        nav.classList.remove("open");
+        setMenu(false);
         const start = scrollY;
         const end = el.getBoundingClientRect().top + scrollY - 10;
         const t0 = performance.now();
@@ -945,7 +937,12 @@
       });
     });
     lite.addEventListener("click", e => { if (e.target === lite) closeLite(); });
-    addEventListener("keydown", e => { if (e.key === "Escape") closeLite(); });
+    addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        closeLite();
+        setMenu(false);
+      }
+    });
 
     document.querySelectorAll(".copy").forEach(btn => {
       btn.addEventListener("click", async () => {
@@ -959,16 +956,6 @@
       });
     });
 
-    document.getElementById("bookForm").addEventListener("submit", e => {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const venue = document.getElementById("venue").value;
-      const date = document.getElementById("date").value;
-      const msg = document.getElementById("msg").value;
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCity / venue: ${venue}\nDate: ${date}\n\n${msg}`);
-      location.href = `mailto:bookings@djdev.in?subject=${encodeURIComponent("DJ booking request — DEV")}&body=${body}`;
-    });
   </script>
 </body>
 </html>
