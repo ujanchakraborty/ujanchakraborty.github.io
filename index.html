@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DEV | House / Techno / Afterhours</title>
-  <meta name="description" content="DEV is a DJ and electronic music artist from Vidarbha, Maharashtra, focused on house, techno and extended-format club sets." />
+  <title>DEV | House / Afro House / Techno / Afterhours</title>
+  <meta name="description" content="DEV is a DJ and electronic music artist based in Maharashtra. House, Afro house, techno and afterhours. Available for bookings." />
   <meta name="author" content="DEV" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="theme-color" content="#070708" />
   <link rel="canonical" href="https://djdev.in/" />
+  <link rel="icon" href="assets/dev-02.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="DEV | House / Techno / Afterhours" />
-  <meta property="og:description" content="DJ and electronic music artist from Vidarbha, Maharashtra. House, techno and extended-format club sets." />
+  <meta property="og:title" content="DEV | House / Afro House / Techno / Afterhours" />
+  <meta property="og:description" content="DJ and electronic music artist based in Maharashtra. House, Afro house, techno and afterhours." />
   <meta property="og:url" content="https://djdev.in/" />
   <meta property="og:image" content="https://djdev.in/assets/dev-02.jpg" />
-  <meta property="og:image:alt" content="DEV performing as a DJ in Maharashtra" />
+  <meta property="og:image:alt" content="DEV behind the decks" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="DEV | House / Techno / Afterhours" />
-  <meta name="twitter:description" content="DJ and electronic music artist from Vidarbha, Maharashtra. House, techno and extended-format club sets." />
+  <meta name="twitter:title" content="DEV | House / Afro House / Techno / Afterhours" />
+  <meta name="twitter:description" content="DJ and electronic music artist based in Maharashtra. House, Afro house, techno and afterhours." />
   <meta name="twitter:image" content="https://djdev.in/assets/dev-02.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,8 +33,8 @@
         "@type": "WebSite",
         "@id": "https://djdev.in/#website",
         "url": "https://djdev.in/",
-        "name": "DEV — DJ",
-        "description": "Official website of DEV, a DJ and electronic music artist focused on house, techno and extended-format club sets.",
+        "name": "DEV",
+        "description": "Official website of DEV, a DJ and electronic music artist working in house, Afro house, techno and afterhours.",
         "inLanguage": "en-IN",
         "publisher": { "@id": "https://djdev.in/#person" }
       },
@@ -41,21 +44,14 @@
         "name": "DEV",
         "jobTitle": "DJ",
         "url": "https://djdev.in/",
-        "description": "DJ and electronic music artist from Vidarbha, Maharashtra, available for club nights, festivals, private events and selected destination bookings.",
+        "email": "mailto:booking@djdev.in",
+        "description": "DJ and electronic music artist based in Maharashtra. House, Afro house, techno and afterhours.",
         "image": "https://djdev.in/assets/dev-01.jpg",
         "homeLocation": {
           "@type": "Place",
-          "name": "Vidarbha, Maharashtra, India"
+          "name": "Maharashtra, India"
         },
-        "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Vidarbha" },
-          { "@type": "City", "name": "Amravati" },
-          { "@type": "City", "name": "Akola" },
-          { "@type": "City", "name": "Nagpur" },
-          { "@type": "City", "name": "Pune" },
-          { "@type": "State", "name": "Maharashtra" }
-        ],
-        "genre": ["House", "Techno"]
+        "genre": ["House", "Afro House", "Techno", "Afterhours"]
       },
       {
         "@type": "Service",
@@ -63,14 +59,7 @@
         "name": "DJ bookings with DEV",
         "serviceType": "DJ performance",
         "provider": { "@id": "https://djdev.in/#person" },
-        "areaServed": [
-          { "@type": "State", "name": "Maharashtra" },
-          { "@type": "City", "name": "Amravati" },
-          { "@type": "City", "name": "Akola" },
-          { "@type": "City", "name": "Nagpur" },
-          { "@type": "City", "name": "Pune" }
-        ],
-        "url": "https://djdev.in/#contact"
+        "url": "https://djdev.in/#booking"
       }
     ]
   }
@@ -103,6 +92,11 @@
     img, video { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; color: inherit; }
+    :focus { outline: none; }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
     .ambient, .grain, .vignette { pointer-events: none; position: fixed; inset: 0; }
     .ambient {
       z-index: 0;
@@ -180,7 +174,7 @@
     .logo { font-family: "Syne", sans-serif; font-weight: 800; letter-spacing: .18em; font-size: 13px; }
     .logo span { color: var(--accent); }
     .nav-links {
-      display: flex; gap: 20px;
+      display: flex; gap: 22px;
       font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
     }
     .nav-links a { position: relative; }
@@ -192,9 +186,9 @@
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     .nav-links a:hover, .nav-links a.active { color: var(--ink); }
     .nav-cta {
-      display: inline-flex; align-items: center; gap: 7px;
+      display: inline-flex; align-items: center; justify-content: center;
       background: var(--ink); color: #111; border: 0; border-radius: 999px;
-      padding: 9px 14px; font-size: 11px; letter-spacing: .12em;
+      min-height: 36px; padding: 9px 14px; font-size: 11px; letter-spacing: .12em;
       text-transform: uppercase; font-weight: 600; position: relative; overflow: hidden; white-space: nowrap;
       transition: color .3s;
     }
@@ -205,7 +199,6 @@
     .nav-cta span { position: relative; z-index: 1; }
     .nav-cta:hover::before { transform: none; }
     .nav-cta:hover { background: var(--accent); }
-    .cta-arrow { font-size: 16px; line-height: 1; letter-spacing: 0; }
     .burger {
       display: none; width: 38px; height: 38px;
       border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer;
@@ -219,7 +212,7 @@
       position: relative;
       display: grid;
       place-items: end start;
-      padding: 110px 5vw 64px;
+      padding: 110px 5vw 72px;
       overflow: hidden;
     }
     .hero::after {
@@ -232,88 +225,80 @@
     .hero-media {
       position: absolute; inset: 0; overflow: hidden;
       will-change: transform, filter;
+      background: #070708;
     }
-    .hero-media video, .hero-media img {
-      width: 100%; height: 120%; object-fit: cover; opacity: .38; transform: translateY(-8%);
+    .hero-media video,
+    .hero-media img {
+      width: 100%; height: 120%; object-fit: cover; object-position: center 30%; transform: translateY(-8%);
     }
+    .hero-media img.hero-fallback {
+      position: absolute; inset: 0; width: 100%; height: 120%;
+      object-fit: cover; object-position: center 30%; opacity: .38; transform: translateY(-8%);
+    }
+    .hero-media video {
+      position: absolute; inset: 0;
+      opacity: 0;
+    }
+    .hero-media.has-video img.hero-fallback { opacity: 0; }
+    .hero-media.has-video video { opacity: .38; }
     .hero-shade {
       position: absolute; inset: 0;
       background:
         linear-gradient(180deg, rgba(7,7,8,.2), rgba(7,7,8,.92)),
         linear-gradient(90deg, rgba(7,7,8,.55), transparent 55%);
     }
-    .slot {
-      position: absolute; inset: 0; display: grid; place-items: center; padding: 20px;
-    }
-    .slot-card {
-      width: min(480px, 92%);
-      padding: 18px 18px 16px;
-      border: 1px dashed rgba(214,255,58,.4);
-      border-radius: 14px;
-      background: rgba(7,7,8,.7);
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .slot-card b {
-      display: block; color: var(--accent);
-      font-family: "Syne", sans-serif; letter-spacing: .16em;
-      text-transform: uppercase; font-size: 11px; margin-bottom: 6px;
-    }
-    .slot-card code { color: var(--ink); font-size: 12px; }
-    .slot-card ol { margin: 8px 0 0 18px; }
 
-    .hero-copy { position: relative; z-index: 2; max-width: 820px; }
+    .hero-copy { position: relative; z-index: 2; max-width: 860px; }
     .eyebrow {
       font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 14px;
+      color: var(--accent); margin-bottom: 16px;
       opacity: 0; animation: fadeUp .7s .75s both;
     }
     .hero h1 {
       font-family: "Syne", sans-serif; font-weight: 800;
-      font-size: clamp(56px, 12vw, 128px);
-      line-height: .84; letter-spacing: -.06em;
+      font-size: clamp(52px, 11vw, 118px);
+      line-height: .86; letter-spacing: -.06em;
       opacity: 0; animation: fadeUp .85s .85s both;
     }
     .hero h1 em {
       font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
     }
     .hero-sub {
-      margin-top: 18px; max-width: 420px; color: var(--muted); font-size: 15px;
+      margin-top: 20px; max-width: 390px; color: var(--muted); font-size: 15px; line-height: 1.5;
       opacity: 0; animation: fadeUp .8s 1s both;
     }
-    .hero-actions { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; align-items: center; opacity: 0; animation: fadeUp .8s 1.12s both; }
-    .sound-btn {
-      width: 42px; height: 42px; border-radius: 50%;
-      border: 1px solid var(--line); background: transparent; cursor: pointer;
-      transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, background .3s;
-    }
-    .sound-btn:hover { transform: rotate(10deg) scale(1.06); border-color: rgba(243,241,234,.35); background: rgba(255,255,255,.05); }
-    .avail {
-      margin-top: 22px; font-size: 12px; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--muted); opacity: 0; animation: fadeUp .8s 1.24s both;
-    }
-    .avail b { color: var(--accent); font-weight: 600; }
+    .hero-actions { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; align-items: center; opacity: 0; animation: fadeUp .8s 1.12s both; }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: none; }
     }
 
     .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 16px; border-radius: 999px; border: 1px solid var(--line);
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      min-height: 42px; padding: 12px 16px; border-radius: 999px; border: 1px solid var(--line);
       font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-      font-weight: 600; cursor: pointer; background: transparent;
-      transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, background .3s;
+      font-weight: 600; cursor: pointer; background: transparent; position: relative; overflow: hidden;
+      transition: transform .25s cubic-bezier(.16,1,.3,1), border-color .25s;
     }
-    .btn-fill { background: var(--accent); color: #111; border-color: var(--accent); }
-    .btn-fill:hover { transform: translateY(-2px); background: #efffb1; }
+    .btn span { position: relative; z-index: 1; }
+    .btn-fill {
+      background: var(--accent);
+      color: #111;
+      border-color: var(--accent);
+      padding: 12px 18px;
+    }
+    .btn-fill::after {
+      content: ""; position: absolute; inset: 0; background: #fff;
+      transform: translateX(-110%); transition: transform .4s cubic-bezier(.16,1,.3,1);
+    }
+    .btn-fill:hover::after { transform: none; }
     .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
 
     .strip {
       position: relative; z-index: 2;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      padding: 12px 5vw;
+      padding: 13px 5vw;
       color: var(--muted);
       font-size: 11px;
       letter-spacing: .18em;
@@ -322,42 +307,44 @@
     }
     .strip b { color: var(--ink); font-weight: 600; }
 
-    section { padding: 72px 5vw; position: relative; z-index: 2; }
+    section { padding: 80px 5vw; position: relative; z-index: 2; }
     #about { background: radial-gradient(620px 480px at 92% 45%, rgba(214,255,58,.035), transparent 70%); }
     #gallery { background: radial-gradient(720px 460px at 8% 55%, rgba(80,65,255,.035), transparent 72%); }
     #live { background: radial-gradient(760px 520px at 88% 50%, rgba(214,255,58,.028), transparent 72%); }
     .wrap { width: min(100%, var(--max)); margin: 0 auto; }
     .section-head {
-      display: flex; justify-content: space-between; align-items: end; gap: 20px;
-      margin-bottom: 28px; border-bottom: 1px solid var(--line); padding-bottom: 14px;
+      display: flex; justify-content: space-between; align-items: end; gap: 24px;
+      margin-bottom: 32px; border-bottom: 1px solid var(--line); padding-bottom: 16px;
     }
     .kicker {
       font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 6px;
+      color: var(--accent); margin-bottom: 8px;
     }
     h2 {
       font-family: "Syne", sans-serif;
       font-size: clamp(28px, 4.4vw, 44px);
       line-height: .98; letter-spacing: -.04em;
     }
-    .hint { color: var(--muted); font-size: 13px; max-width: 280px; }
+    .hint { color: var(--muted); font-size: 13px; max-width: 300px; line-height: 1.5; }
     .reveal {
       opacity: 0; transform: translateY(28px) scale(.985); filter: blur(8px);
       transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1), filter .8s;
     }
     .reveal.in { opacity: 1; transform: none; filter: none; }
 
-    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; }
-    .about p { color: #c9c6bb; font-size: 16px; margin-bottom: 14px; }
-    .bio-long { display: none; }
-    .bio-long.on { display: block; animation: fadeUp .45s both; }
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
-    .stat { border-top: 1px solid var(--line); padding-top: 12px; }
-    .stat b { display: block; font-family: "Syne", sans-serif; font-size: 24px; }
-    .stat span { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: start; }
+    .about p { color: #c9c6bb; font-size: 16px; margin-bottom: 16px; max-width: 38em; }
+    .base-line {
+      margin-top: 6px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .base-line b { color: var(--accent); font-weight: 600; }
     .media {
       position: relative; overflow: hidden; border-radius: 16px;
-      background: #101014; border: 1px dashed rgba(214,255,58,.28);
+      background: #101014; border: 1px solid rgba(214,255,58,.16);
       min-height: 160px;
       transform-style: preserve-3d;
       will-change: transform;
@@ -365,8 +352,9 @@
     }
     .media.portrait { aspect-ratio: 4/5; }
     .media img, .media video { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.25,.8,.25,1); }
+    .media video { position: absolute; inset: 0; opacity: 0; }
+    .media.has-video video { opacity: 1; }
     .media.filled { border-style: solid; border-color: var(--line); }
-    .media.filled .slot { display: none; }
     .media.zoom { cursor: pointer; }
     .media.zoom:hover { transform: translateY(-6px) scale(1.015); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
     .media.zoom:hover img { transform: scale(1.08); }
@@ -377,8 +365,17 @@
     }
     .media.zoom:hover::after { opacity: 1; }
 
-    .gallery { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 220px 220px; gap: 10px; }
-    .g1 { grid-row: 1 / span 2; min-height: 220px; }
+    .gallery { display: grid; grid-template-columns: 1.1fr minmax(220px, 262px) 1fr 1fr; grid-template-rows: repeat(2, clamp(190px, 20vw, 228px)); gap: 10px; }
+    .gallery .g1 { grid-column: 1; grid-row: 1 / span 2; min-height: 228px; }
+    .gallery-video {
+      grid-column: 2; grid-row: 1 / span 2; min-height: 0;
+      overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #101014;
+    }
+    .gallery-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+    .gallery .g2 { grid-column: 3; grid-row: 1; }
+    .gallery .g3 { grid-column: 4; grid-row: 1; }
+    .gallery .g4 { grid-column: 3; grid-row: 2; }
+    .gallery .g5 { grid-column: 4; grid-row: 2; }
 
     .clips { display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px; }
     .clip.main { min-height: 420px; }
@@ -391,27 +388,10 @@
       font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
       pointer-events: none;
     }
-
-    .date-row {
-      display: grid; grid-template-columns: 110px 1fr auto auto;
-      gap: 16px; align-items: center; padding: 16px 10px;
-      border-bottom: 1px solid var(--line);
-      transition: background .3s, padding-left .35s cubic-bezier(.16,1,.3,1);
-    }
-    .date-row:hover { background: rgba(214,255,58,.035); padding-left: 16px; }
-    .date-row time { font-family: "Syne", sans-serif; font-size: 12px; color: var(--accent); }
-    .date-row h3 { font-size: 16px; }
-    .date-row p { color: var(--muted); font-size: 13px; }
-    .pill {
-      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
-      border: 1px solid var(--line); padding: 6px 10px; border-radius: 999px; color: var(--muted);
-    }
-    .ticket { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-
     .sound-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .mix {
-      padding: 18px; border: 1px solid var(--line); border-radius: 16px;
-      background: #0d0d10; min-height: 170px;
+      padding: 20px 18px 18px; border: 1px solid var(--line); border-radius: 16px;
+      background: #0d0d10; min-height: 176px;
       display: flex; flex-direction: column;
       transform-style: preserve-3d;
       will-change: transform;
@@ -424,48 +404,72 @@
     .mix-foot { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
     .listen {
       font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-      border-bottom: 1px solid var(--accent); padding-bottom: 2px;
+      color: var(--muted);
     }
+    a.listen {
+      color: var(--ink);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+    }
+    .mix-primary { grid-column: 1 / -1; min-height: 156px; }
+    .mix-meta { color: var(--muted); font-size: 12px; }
 
     .contact { background: radial-gradient(700px 520px at 78% 20%, rgba(214,255,58,.045), transparent 68%); }
-    .booking-copy { color: #c9c6bb; max-width: 520px; }
-    .form-note { color: var(--muted); font-size: 12px; }
-    .emails { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 32px; }
+    .booking-copy { color: #c9c6bb; max-width: 540px; font-size: 16px; }
+    .booking-copy + .booking-copy { margin-top: 10px; }
+    .emails { display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px; margin-top: 36px; }
     .email-card { border-top: 1px solid var(--line); padding: 18px 0 6px; }
-    .email-card span {
+    .email-card.primary a { font-size: clamp(22px, 3vw, 34px); }
+    .email-card > span {
       display: block; font-size: 11px; letter-spacing: .16em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
     }
     .email-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .email-card a { font-family: "Syne", sans-serif; font-size: clamp(18px, 2.5vw, 30px); overflow-wrap: anywhere; }
+    .email-card a { font-family: "Syne", sans-serif; font-size: clamp(18px, 2.4vw, 28px); overflow-wrap: anywhere; }
+    .pending {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(18px, 2.4vw, 28px);
+      color: var(--muted);
+      cursor: default;
+    }
     .copy {
       border: 1px solid var(--line); background: transparent; border-radius: 999px;
       padding: 6px 10px; font-size: 10px; letter-spacing: .12em;
       text-transform: uppercase; cursor: pointer; color: var(--muted);
     }
-    .epk { display: grid; gap: 10px; margin-top: 24px; }
-    .epk-item { border-top: 1px solid var(--line); padding-top: 10px; }
-    .epk-item b { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); margin-bottom: 3px; }
+    .copy:hover { color: var(--ink); border-color: rgba(243,241,234,.28); }
+    .side-contacts { display: grid; gap: 0; }
+    .epk { display: grid; gap: 10px; margin-top: 28px; }
+    .epk-item { border-top: 1px solid var(--line); padding-top: 12px; }
+    .epk-item b { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
     .epk-item span { color: var(--muted); font-size: 13px; }
-    .mix-primary { grid-column: 1 / -1; min-height: 150px; }
-    .mix-meta { color: var(--muted); font-size: 12px; }
 
-    footer { position: relative; z-index: 2; padding: 36px 5vw 28px; border-top: 1px solid var(--line); }
+    footer { position: relative; z-index: 2; padding: 40px 5vw 32px; border-top: 1px solid var(--line); }
     .foot {
       width: min(100%, var(--max)); margin: 0 auto;
-      display: flex; justify-content: space-between; gap: 16px; align-items: center; flex-wrap: wrap;
+      display: flex; justify-content: space-between; gap: 18px; align-items: end; flex-wrap: wrap;
     }
     .foot-name {
       font-family: "Syne", sans-serif; font-size: clamp(34px, 7vw, 82px); letter-spacing: -.06em; line-height: .85;
       background: linear-gradient(180deg, var(--ink), rgba(243,241,234,.18));
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
+    .foot-meta { display: grid; gap: 12px; justify-items: end; }
     .socials {
-      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center; justify-content: flex-end;
       font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
     }
-    .socials a:hover { color: var(--accent); }
+    .socials a:hover, .socials button:hover { color: var(--accent); }
+    .socials .pending {
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      color: var(--muted);
+      opacity: .7;
+    }
     .copy-tiny { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .copy-tiny a:hover { color: var(--ink); }
 
     .lightbox {
       position: fixed; inset: 0; z-index: 140; background: rgba(0,0,0,.88);
@@ -479,6 +483,11 @@
       border-radius: 50%; border: 1px solid var(--line); background: #111; cursor: pointer;
     }
 
+    @media (min-width: 1600px) {
+      :root { --max: 1240px; }
+      .hero { padding: 120px 7vw 80px; }
+      section { padding: 88px 7vw; }
+    }
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .burger { display: block; }
@@ -487,17 +496,22 @@
         top: 58px; left: 0; right: 0; background: #0b0b0d;
         border: 1px solid var(--line); border-radius: 16px; padding: 16px;
       }
-      section { padding: 56px 20px; }
-      .hero { padding: 96px 20px 48px; min-height: 92svh; }
-      .about-grid, .clips, .sound-grid, .gallery, .date-row {
+      .nav-cta { min-height: 34px; padding: 8px 11px; font-size: 10px; letter-spacing: .1em; }
+      section { padding: 60px 20px; }
+      .hero { padding: 100px 20px 52px; min-height: 92svh; }
+      .hero h1 { font-size: clamp(48px, 16vw, 84px); }
+      .hero-actions { gap: 8px; margin-top: 24px; }
+      .hero-actions .btn { min-height: 40px; padding: 11px 14px; }
+      .about-grid, .clips, .sound-grid, .gallery, .emails {
         grid-template-columns: 1fr;
       }
-      .emails { grid-template-columns: 1fr; gap: 20px; }
+      .foot-meta { justify-items: start; }
+      .socials { justify-content: flex-start; }
       .gallery, .clips { grid-template-rows: none; }
-      .g1 { grid-row: auto; }
+      .gallery .g1, .gallery .g2, .gallery .g3, .gallery .g4, .gallery .g5, .gallery-video { grid-column: auto; grid-row: auto; }
+      .gallery-video { width: min(100%, 320px); aspect-ratio: 9 / 16; justify-self: center; }
       .media.portrait { aspect-ratio: 3/4; }
       .clip.main, .clip { min-height: 220px; }
-      .date-row { gap: 6px; }
       .section-head { align-items: start; flex-direction: column; }
       .hint { max-width: none; }
     }
@@ -521,7 +535,7 @@
   <div class="vignette" aria-hidden="true"></div>
   <div class="loader" id="loader">
     <div class="loader-mark"><span>D</span><span>E</span><span>V</span></div>
-    <div class="loader-sub">House · Techno · Afterhours</div>
+    <div class="loader-sub">House · Afro House · Techno · Afterhours</div>
     <div class="loader-bar"></div>
   </div>
   <div class="progress" id="progress"></div>
@@ -530,81 +544,57 @@
     <a class="logo" href="#top">DJ <span>DEV</span></a>
     <nav class="nav-links" id="navLinks">
       <a href="#about">About</a>
-      <a href="#gallery">Stills</a>
-      <a href="#live">Clips</a>
-      <a href="#dates">Areas</a>
-      <a href="#sound">Mixes</a>
-      <a href="#contact">Booking</a>
+      <a href="#sound">Music</a>
+      <a href="#booking">Booking</a>
     </nav>
-    <a class="nav-cta" href="#contact"><span>Make an enquiry</span><span class="cta-arrow" aria-hidden="true">→</span></a>
+    <a class="nav-cta" href="#booking"><span>Make an Inquiry</span></a>
     <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
   </header>
 
   <main id="main">
   <section class="hero" id="top">
     <div class="hero-media" id="heroParallax">
-      <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="assets/dev-02.jpg">
-        <source src="assets/hero.mp4" type="video/mp4" />
+      <img class="hero-fallback" id="heroFallback" src="assets/dev-02.jpg" alt="" />
+      <video id="heroVideo" muted loop playsinline preload="none" poster="assets/dev-02.jpg">
+        <source data-src="assets/hero.mp4" type="video/mp4" />
       </video>
-      <div class="slot" data-empty="hero">
-        <div class="slot-card">
-          <b>Hero video</b>
-          Muted loop showing the booth and floor. Add when ready.
-          <ol>
-            <li><code>assets/hero.mp4</code></li>
-            <li>1920×1080, 8–20s</li>
-          </ol>
-        </div>
-      </div>
       <div class="hero-shade"></div>
     </div>
     <div class="hero-copy">
-      <p class="eyebrow">House · Techno · Afterhours</p>
-      <h1>DEV<br /><em>on the floor.</em></h1>
-      <p class="hero-sub">Extended-format sets built around progression, groove and the energy of the room.</p>
+      <p class="eyebrow">House · Afro House · Techno · Afterhours</p>
+      <h1>DEV<br /><em>behind the decks.</em></h1>
+      <p class="hero-sub">Extended sets shaped by groove, progression and the energy of the room.</p>
       <div class="hero-actions">
-        <a class="btn btn-fill" href="#contact">Make an enquiry <span class="cta-arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-fill mag" href="#booking"><span>Make an Inquiry</span></a>
         <a class="btn btn-ghost" href="#sound">Listen</a>
-        <button class="sound-btn" id="heroSound" type="button" title="Toggle hero sound" aria-label="Toggle hero sound">♪</button>
       </div>
-      <p class="avail">Based in <b>Vidarbha</b> · Available across India</p>
     </div>
   </section>
 
-  <div class="strip"><b>DEV</b> · House · Techno · Afterhours · Club · Festival · Private events · Maharashtra</div>
+  <div class="strip"><b>DEV</b> · House · Afro House · Techno · Afterhours · Clubs · Festivals · Private events · Weddings</div>
 
   <section id="about">
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="kicker">01 — Profile</p>
-          <h2>House / Techno /<br />Afterhours.</h2>
+          <p class="kicker">01 — About</p>
+          <h2>The set follows<br />the room.</h2>
         </div>
-        <p class="hint">DJ and electronic music artist based in Vidarbha, Maharashtra.</p>
+        <p class="hint">DJ and electronic music artist based in Maharashtra.</p>
       </div>
       <div class="about-grid">
         <div class="about reveal">
-          <p>DEV is a DJ and electronic music artist focused on house, techno and extended-format club sets. His sets are built around gradual progression, rhythmic movement and the energy of the room.</p>
-          <div class="bio-long" id="bioLong">
-            <p>Based in Vidarbha, DEV is available for club nights, festivals, private events and selected destination bookings. The preferred format is a four-to-six-hour set, moving from warm-up through peak-time and afterhours.</p>
-            <p>For Amravati, Akola, Nagpur, Pune and other Maharashtra bookings, send the date, venue, location, attendance and set requirements through the booking form.</p>
+          <p>DEV is a DJ and electronic music artist working across House, Afro House, Techno and Afterhours. The work is built around groove, progression, and reading the room.</p>
+          <p>Sets are adapted to the night as it happens. The floor sets the pace, and the music follows that energy rather than a fixed plan.</p>
+          <p class="base-line">Based in <b>Maharashtra</b> · Playing across the world</p>
+          <div class="epk" aria-label="Artist material">
+            <div class="epk-item"><b>Press kit</b><span>Artist bio, selected work and press material. Placeholder — file to be added.</span></div>
+            <div class="epk-item"><b>Tech rider</b><span>Technical requirements and stage setup. Placeholder — file to be added.</span></div>
+            <div class="epk-item"><b>Photo pack</b><span>Approved high-resolution artist imagery. Placeholder — file to be added.</span></div>
           </div>
-          <button class="btn btn-ghost" id="bioToggle" type="button">Full bio</button>
-          <div class="stats">
-            <div class="stat"><b>VIDARBHA</b><span>Base</span></div>
-            <div class="stat"><b>MH</b><span>Booking area</span></div>
-            <div class="stat"><b>4–6h</b><span>Set format</span></div>
-          </div>
-          <div class="epk" aria-label="Press material">
-            <div class="epk-item"><b>Press kit</b><span>Artist bio, selected work and press material.</span></div>
-            <div class="epk-item"><b>Tech rider</b><span>Technical requirements and stage setup.</span></div>
-            <div class="epk-item"><b>Photo pack</b><span>Approved high-resolution artist imagery.</span></div>
-          </div>
-          <p class="form-note">Press material is available on request.</p>
         </div>
-        <div class="media portrait reveal zoom" data-full="">
-          <img src="assets/dev-01.jpg" alt="DEV performing at the decks in Maharashtra" loading="eager" fetchpriority="high" />
-          <div class="slot"><div class="slot-card"><b>Image 01 — portrait</b>Vertical booth shot. <code>assets/dev-01.jpg</code></div></div>
+        <div class="media portrait reveal zoom" data-full="assets/dev-01.jpg" role="button" tabindex="0" aria-label="Open portrait of DEV">
+          <img src="assets/dev-01.jpg" alt="DEV behind the decks" loading="eager" fetchpriority="high" />
         </div>
       </div>
     </div>
@@ -617,28 +607,28 @@
           <p class="kicker">02 — Stills</p>
           <h2>Booth and room.</h2>
         </div>
-        <p class="hint">Selected press and live-room stills.</p>
+        <p class="hint">Selected stills from the booth, the floor and the hours after peak.</p>
       </div>
       <div class="gallery">
-        <div class="media g1 reveal zoom" data-full="">
-          <img src="assets/dev-02.jpg" alt="DEV DJ booth and dance floor in Maharashtra" loading="lazy" />
-          <div class="slot"><div class="slot-card"><b>Image 02</b><code>assets/dev-02.jpg</code></div></div>
+        <div class="media g1 reveal zoom" data-full="assets/dev-02.jpg" role="button" tabindex="0" aria-label="Open still of DEV at the booth">
+          <img src="assets/dev-02.jpg" alt="DEV at the booth and dance floor" loading="lazy" />
         </div>
-        <div class="media reveal zoom" data-full="">
-          <img src="assets/dev-03.jpg" alt="Crowd at a DEV house and techno DJ set" loading="lazy" />
-          <div class="slot"><div class="slot-card"><b>Image 03</b><code>assets/dev-03.jpg</code></div></div>
+        <div class="media gallery-video reveal">
+          <video controls playsinline preload="metadata" poster="assets/dev-06.jpg" aria-label="Temporary vertical performance video">
+            <source src="assets/9.16-dabo.mp4" type="video/mp4" />
+          </video>
         </div>
-        <div class="media reveal zoom" data-full="">
-          <img src="assets/dev-04.jpg" alt="DJ decks during a DEV performance" loading="lazy" />
-          <div class="slot"><div class="slot-card"><b>Image 04</b><code>assets/dev-04.jpg</code></div></div>
+        <div class="media g2 reveal zoom" data-full="assets/dev-03.jpg" role="button" tabindex="0" aria-label="Open still of the room">
+          <img src="assets/dev-03.jpg" alt="Crowd during a DEV set" loading="lazy" />
         </div>
-        <div class="media reveal zoom" data-full="">
-          <img src="assets/dev-05.jpg" alt="Club room and lighting during a DEV DJ set" loading="lazy" />
-          <div class="slot"><div class="slot-card"><b>Image 05</b><code>assets/dev-05.jpg</code></div></div>
+        <div class="media g3 reveal zoom" data-full="assets/dev-04.jpg" role="button" tabindex="0" aria-label="Open still of the decks">
+          <img src="assets/dev-04.jpg" alt="Decks during a DEV performance" loading="lazy" />
         </div>
-        <div class="media reveal zoom" data-full="">
-          <img src="assets/dev-06.jpg" alt="Afterhours atmosphere at a DEV DJ performance" loading="lazy" />
-          <div class="slot"><div class="slot-card"><b>Image 06</b><code>assets/dev-06.jpg</code></div></div>
+        <div class="media g4 reveal zoom" data-full="assets/dev-05.jpg" role="button" tabindex="0" aria-label="Open still of club lighting">
+          <img src="assets/dev-05.jpg" alt="Club lighting during a DEV set" loading="lazy" />
+        </div>
+        <div class="media g5 reveal zoom" data-full="assets/dev-06.jpg" role="button" tabindex="0" aria-label="Open afterhours still">
+          <img src="assets/dev-06.jpg" alt="Afterhours atmosphere at a DEV performance" loading="lazy" />
         </div>
       </div>
     </div>
@@ -649,65 +639,33 @@
       <div class="section-head reveal">
         <div>
           <p class="kicker">03 — Live</p>
-          <h2>Live format.</h2>
+          <h2>In the room.</h2>
         </div>
-        <p class="hint">4–6 hour sets designed to move naturally from warm-up through peak-time and afterhours.</p>
+        <p class="hint">Performance footage from the booth — warmth, peak, and the hours that follow.</p>
       </div>
       <div class="clips">
         <div class="media clip main reveal hoverplay">
-          <video muted loop playsinline poster=""><source src="" type="video/mp4" /></video>
-          <div class="slot"><div class="slot-card"><b>Clip A</b><code>assets/clip-main.mp4</code></div></div>
+          <img src="assets/dev-02.jpg" alt="Main room performance still" loading="lazy" />
+          <video muted loop playsinline preload="none" poster="assets/dev-02.jpg">
+            <source data-src="assets/clip-main.mp4" type="video/mp4" />
+          </video>
           <div class="clip-meta"><div>Main room</div><div>▶</div></div>
         </div>
         <div class="clip-stack">
           <div class="media clip reveal hoverplay">
-            <video muted loop playsinline poster=""><source src="" type="video/mp4" /></video>
-            <div class="slot"><div class="slot-card"><b>Clip B</b><code>assets/clip-02.mp4</code></div></div>
+            <img src="assets/dev-03.jpg" alt="Open air performance still" loading="lazy" />
+            <video muted loop playsinline preload="none" poster="assets/dev-03.jpg">
+              <source data-src="assets/clip-02.mp4" type="video/mp4" />
+            </video>
             <div class="clip-meta"><div>Open air</div><div>▶</div></div>
           </div>
           <div class="media clip reveal hoverplay">
-            <video muted loop playsinline poster=""><source src="" type="video/mp4" /></video>
-            <div class="slot"><div class="slot-card"><b>Clip C</b><code>assets/clip-03.mp4</code></div></div>
+            <img src="assets/dev-06.jpg" alt="Afterhours performance still" loading="lazy" />
+            <video muted loop playsinline preload="none" poster="assets/dev-06.jpg">
+              <source data-src="assets/clip-03.mp4" type="video/mp4" />
+            </video>
             <div class="clip-meta"><div>Afterhours</div><div>▶</div></div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="dates" style="padding-top:8px">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="kicker">04 — Booking areas</p>
-          <h2>Selected areas.</h2>
-        </div>
-        <p class="hint">Amravati, Akola, Nagpur, Pune and selected Maharashtra bookings.</p>
-      </div>
-      <div class="dates">
-        <div class="date-row reveal">
-          <time>HOME REGION</time>
-          <div><h3>Amravati</h3><p>Vidarbha · Maharashtra</p></div>
-          <span class="pill">Local</span>
-           <a class="ticket" href="#contact">Enquire</a>
-        </div>
-        <div class="date-row reveal">
-          <time>VIDARBHA</time>
-          <div><h3>Akola</h3><p>DJ bookings · Maharashtra</p></div>
-          <span class="pill">Local</span>
-           <a class="ticket" href="#contact">Enquire</a>
-        </div>
-        <div class="date-row reveal">
-          <time>MAHARASHTRA</time>
-          <div><h3>Nagpur</h3><p>Club, festival and private events</p></div>
-          <span class="pill">Available</span>
-           <a class="ticket" href="#contact">Enquire</a>
-        </div>
-        <div class="date-row reveal">
-          <time>MAHARASHTRA</time>
-          <div><h3>Pune</h3><p>Selected bookings · India</p></div>
-          <span class="pill">Available</span>
-           <a class="ticket" href="#contact">Enquire</a>
         </div>
       </div>
     </div>
@@ -717,58 +675,68 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="kicker">05 — Music</p>
+          <p class="kicker">04 — Music</p>
           <h2>Selected mixes.</h2>
         </div>
-        <p class="hint">Primary mix and supporting recordings. Links will be added with the final uploads.</p>
+        <p class="hint">A path into the sound — house, Afro house, techno and afterhours.</p>
       </div>
       <div class="sound-grid">
-        <article class="mix mix-primary reveal">
-          <small>Signature mix</small>
-          <h3>House / Techno / Afterhours</h3>
-          <p>Extended-format mix · Duration to be added</p>
-          <div class="mix-foot"><span class="listen">Listen →</span><span class="mix-meta">Link to be added</span></div>
+        <article class="mix mix-primary reveal" data-mix="featured">
+          <small>Featured mix</small>
+          <h3>House / Afro House / Techno / Afterhours</h3>
+          <p>Placeholder — mix title and link to be added</p>
+          <div class="mix-foot"><span class="listen">Listen</span><span class="mix-meta">Link to be added</span></div>
         </article>
-        <article class="mix reveal">
-          <small>Supporting mix</small>
+        <article class="mix reveal" data-mix="afterhours">
+          <small>Selected mix</small>
           <h3>After 3AM</h3>
-          <p>Afterhours · Duration to be added</p>
-          <div class="mix-foot"><span class="listen">Listen →</span><span class="mix-meta">Link to be added</span></div>
+          <p>Placeholder — mix title and link to be added</p>
+          <div class="mix-foot"><span class="listen">Listen</span><span class="mix-meta">Link to be added</span></div>
         </article>
-        <article class="mix reveal">
-          <small>Supporting mix</small>
+        <article class="mix reveal" data-mix="warmup">
+          <small>Selected mix</small>
           <h3>Warm-up</h3>
-          <p>Warm-up · Duration to be added</p>
-          <div class="mix-foot"><span class="listen">Listen →</span><span class="mix-meta">Link to be added</span></div>
+          <p>Placeholder — mix title and link to be added</p>
+          <div class="mix-foot"><span class="listen">Listen</span><span class="mix-meta">Link to be added</span></div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="contact" id="contact">
+  <section class="contact" id="booking">
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="kicker">06 — Booking</p>
+          <p class="kicker">05 — Booking</p>
           <h2>Booking.</h2>
         </div>
-          <p class="hint">Club nights, festivals, private events and selected destination bookings.</p>
+        <p class="hint">Clubs, festivals, private events and weddings.</p>
       </div>
       <div class="reveal">
-        <p class="booking-copy">Availability is handled directly. Include the event date, location, venue and set requirements in your email.</p>
+        <p class="booking-copy">DEV is available for bookings. Inquiries are handled directly.</p>
+        <p class="booking-copy">For booking inquiries, please include the date, event type, venue or location, and any relevant requirements.</p>
+        <p class="base-line">Based in <b>Maharashtra</b> · Playing across the world</p>
         <div class="emails">
-          <div class="email-card">
+          <div class="email-card primary">
             <span>Bookings</span>
             <div class="email-line">
-              <a href="mailto:booking@djdev.in">booking@djdev.in</a>
+              <a href="mailto:booking@djdev.in">booking@DJDEV.in</a>
               <button class="copy" data-copy="booking@djdev.in" type="button">Copy</button>
             </div>
           </div>
-          <div class="email-card">
-            <span>General enquiries</span>
-            <div class="email-line">
-              <a href="mailto:inquiries@djdev.in">inquiries@djdev.in</a>
-              <button class="copy" data-copy="inquiries@djdev.in" type="button">Copy</button>
+          <div class="side-contacts">
+            <div class="email-card">
+              <span>General inquiries</span>
+              <div class="email-line">
+                <a href="mailto:inquiry@djdev.in">inquiry@DJDEV.in</a>
+                <button class="copy" data-copy="inquiry@djdev.in" type="button">Copy</button>
+              </div>
+            </div>
+            <div class="email-card">
+              <span>WhatsApp inquiries</span>
+              <div class="email-line">
+                <span class="pending" data-social="whatsapp">WhatsApp</span>
+              </div>
             </div>
           </div>
         </div>
@@ -778,23 +746,53 @@
   </main>
 
   <footer>
-      <div class="foot">
+    <div class="foot">
       <div class="foot-name">DEV</div>
-      <div class="socials">
-        <button class="copy" id="sharePage" type="button">Copy link</button>
+      <div class="foot-meta">
+        <div class="socials">
+          <a href="mailto:booking@djdev.in">booking@DJDEV.in</a>
+          <a href="mailto:inquiry@djdev.in">inquiry@DJDEV.in</a>
+          <span class="pending" data-social="instagram">Instagram</span>
+          <span class="pending" data-social="soundcloud">SoundCloud</span>
+          <button class="copy" id="sharePage" type="button">Copy link</button>
+        </div>
+        <div class="copy-tiny">© 2026 DEV · <a href="#top">Top</a></div>
       </div>
-      <div class="copy-tiny">© 2026 DEV · Maharashtra · <a href="#top">Top</a></div>
     </div>
   </footer>
 
-  <div class="lightbox" id="lightbox">
-    <button type="button" aria-label="Close" onclick="closeLite()">×</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+    <button type="button" aria-label="Close" id="liteClose">×</button>
     <img id="liteImg" alt="DEV still" />
   </div>
 
   <script>
+    const SITE = {
+      heroFallback: "assets/dev-02.jpg",
+      heroVideo: "assets/hero.mp4",
+      instagram: "",
+      soundcloud: "",
+      whatsapp: "",
+      mixes: {
+        featured: "",
+        afterhours: "",
+        warmup: ""
+      }
+    };
+
     const loader = document.getElementById("loader");
-    setTimeout(() => loader.classList.add("done"), 1100);
+    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finePointer = matchMedia("(pointer: fine)").matches && !reducedMotion;
+    const saveData = navigator.connection?.saveData === true;
+    const coarsePointer = matchMedia("(pointer: coarse)").matches;
+    const smallViewport = matchMedia("(max-width: 900px)").matches;
+    const allowVideo = !reducedMotion && !saveData && !coarsePointer && !smallViewport;
+
+    if (loader) {
+      const hideLoader = () => loader.classList.add("done");
+      if (reducedMotion) hideLoader();
+      else setTimeout(hideLoader, 1100);
+    }
 
     const progress = document.getElementById("progress");
     const nav = document.getElementById("nav");
@@ -802,15 +800,61 @@
     const burger = document.getElementById("burger");
     const sections = [...document.querySelectorAll("section[id]")];
     const links = [...document.querySelectorAll(".nav-links a")];
-    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const finePointer = matchMedia("(pointer: fine)").matches && !reducedMotion;
+    const heroFallback = document.getElementById("heroFallback");
+    const heroVid = document.getElementById("heroVideo");
+    const pageMain = document.getElementById("main");
+
+    if (heroFallback && SITE.heroFallback) {
+      heroFallback.src = SITE.heroFallback;
+      if (heroVid) heroVid.setAttribute("poster", SITE.heroFallback);
+    }
+
+    const applyExternalLinks = () => {
+      document.querySelectorAll("[data-social]").forEach(el => {
+        const url = SITE[el.dataset.social];
+        if (!url) return;
+        const a = document.createElement("a");
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = el.textContent;
+        if (el.closest(".email-card")) {
+          a.style.fontFamily = "Syne, sans-serif";
+          a.style.fontSize = "clamp(18px, 2.4vw, 28px)";
+        }
+        el.replaceWith(a);
+      });
+
+      document.querySelectorAll("[data-mix]").forEach(card => {
+        const url = SITE.mixes?.[card.dataset.mix];
+        const listen = card.querySelector(".listen");
+        const meta = card.querySelector(".mix-meta");
+        if (!listen || !url) return;
+        const a = document.createElement("a");
+        a.className = "listen";
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = "Listen";
+        listen.replaceWith(a);
+        if (meta) meta.textContent = "Open mix";
+      });
+    };
+    applyExternalLinks();
 
     const setMenu = open => {
+      if (!nav || !burger) return;
       nav.classList.toggle("open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
       burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     };
-    burger.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+    burger?.addEventListener("click", e => {
+      e.stopPropagation();
+      setMenu(!nav.classList.contains("open"));
+    });
+    document.addEventListener("click", e => {
+      if (nav?.classList.contains("open") && !nav.contains(e.target)) setMenu(false);
+    });
 
     if (finePointer) {
       addEventListener("pointermove", e => {
@@ -827,13 +871,21 @@
         });
         card.addEventListener("pointerleave", () => { card.style.transform = ""; });
       });
+
+      document.querySelectorAll(".mag").forEach(btn => {
+        btn.addEventListener("pointermove", e => {
+          const rect = btn.getBoundingClientRect();
+          btn.style.transform = `translate(${(((e.clientX - rect.left) / rect.width) - .5) * 10}px, ${(((e.clientY - rect.top) / rect.height) - .5) * 8}px)`;
+        });
+        btn.addEventListener("pointerleave", () => { btn.style.transform = ""; });
+      });
     }
 
-    addEventListener("scroll", () => {
+    const onScroll = () => {
       const y = scrollY;
       const max = document.documentElement.scrollHeight - innerHeight;
-      progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
-      nav.classList.toggle("scrolled", y > 40);
+      if (progress) progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+      nav?.classList.toggle("scrolled", y > 40);
       if (heroMedia && !reducedMotion) {
         const blur = Math.min(y * .012, 7);
         heroMedia.style.transform = `translateY(${y * .12}px) scale(${1 + Math.min(y * .00008, .035)})`;
@@ -844,21 +896,37 @@
       }
       let current = "top";
       sections.forEach(s => { if (s.offsetTop <= y + 110) current = s.id; });
-      links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
-    }, { passive: true });
+      const activeMap = { top: "", about: "#about", gallery: "#about", live: "#about", sound: "#sound", booking: "#booking" };
+      const href = activeMap[current] || "";
+      links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === href));
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", e => {
         const id = a.getAttribute("href");
+        if (!id || id === "#") {
+          e.preventDefault();
+          return;
+        }
         const el = document.querySelector(id);
-        if (!el || id === "#") return;
+        if (!el) {
+          e.preventDefault();
+          return;
+        }
         e.preventDefault();
         setMenu(false);
         const start = scrollY;
         const end = el.getBoundingClientRect().top + scrollY - 10;
+        const duration = reducedMotion ? 0 : 600;
+        if (!duration) {
+          scrollTo(0, end);
+          return;
+        }
         const t0 = performance.now();
         (function step(now) {
-          const p = Math.min(1, (now - t0) / 600);
+          const p = Math.min(1, (now - t0) / duration);
           scrollTo(0, start + (end - start) * (1 - Math.pow(1 - p, 3)));
           if (p < 1) requestAnimationFrame(step);
         })(t0);
@@ -870,73 +938,163 @@
     }, { threshold: .14 });
     document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-    document.querySelectorAll("img").forEach(img => {
+    const disableZoom = box => {
+      if (!box) return;
+      box.classList.remove("zoom", "filled");
+      box.removeAttribute("tabindex");
+      box.removeAttribute("role");
+      box.removeAttribute("data-full");
+    };
+
+    document.querySelectorAll(".media img").forEach(img => {
+      if (img.classList.contains("hero-fallback") || img.id === "liteImg") return;
       const box = img.closest(".media");
       const markImageLoaded = () => {
         if (!img.naturalWidth) return;
-        img.style.display = "block";
         box?.classList.add("filled");
-        const slot = box?.querySelector(".slot");
-        if (slot) slot.style.display = "none";
-        if (box && !box.dataset.full) box.dataset.full = img.getAttribute("src");
+        if (box && !box.dataset.full) box.dataset.full = img.getAttribute("src") || "";
       };
-      if (!img.getAttribute("src")) img.style.display = "none";
-      else if (img.complete) markImageLoaded();
+      if (img.complete && img.naturalWidth) markImageLoaded();
       img.addEventListener("load", markImageLoaded);
       img.addEventListener("error", () => {
-        img.style.display = "none";
-        box?.classList.remove("filled");
+        img.removeAttribute("src");
+        img.alt = "";
+        img.style.visibility = "hidden";
+        if (box?.classList.contains("clip")) disableZoom(box);
+        else disableZoom(box);
       });
     });
 
-    document.querySelectorAll("video").forEach(vid => {
-      const src = vid.querySelector("source")?.getAttribute("src");
-      const box = vid.closest(".media") || vid.parentElement;
-      if (!src) vid.style.display = "none";
-      else vid.addEventListener("loadeddata", () => {
-        box?.classList?.add("filled");
-        const empty = box.querySelector('[data-empty="hero"]');
-        if (empty) empty.style.display = "none";
-      });
+    heroFallback?.addEventListener("error", () => {
+      heroFallback.removeAttribute("src");
+      heroMedia?.classList.remove("has-video");
     });
 
-    document.getElementById("bioToggle").addEventListener("click", function () {
-      const long = document.getElementById("bioLong");
-      long.classList.toggle("on");
-      this.textContent = long.classList.contains("on") ? "Less" : "Full bio";
-    });
+    const cancelVideo = vid => {
+      if (!vid) return;
+      vid.pause();
+      vid.removeAttribute("src");
+      vid.querySelectorAll("source").forEach(source => source.removeAttribute("src"));
+      try { vid.load(); } catch {}
+    };
 
-    const heroVid = document.getElementById("heroVideo");
-    document.getElementById("heroSound").addEventListener("click", function () {
-      heroVid.muted = !heroVid.muted;
-      this.textContent = heroVid.muted ? "♪" : "🔇";
-      if (!heroVid.muted) heroVid.play().catch(() => {});
+    const attachSource = (vid, src) => {
+      const source = vid?.querySelector("source");
+      if (!source) return false;
+      const path = src || source.dataset.src;
+      if (!path) return false;
+      source.src = path;
+      return true;
+    };
+
+    if (heroVid) {
+      if (!allowVideo) {
+        cancelVideo(heroVid);
+        heroMedia?.classList.remove("has-video");
+      } else if (attachSource(heroVid, SITE.heroVideo)) {
+        const failHero = () => {
+          cancelVideo(heroVid);
+          heroMedia?.classList.remove("has-video");
+        };
+        heroVid.addEventListener("loadeddata", () => {
+          heroVid.muted = true;
+          heroVid.play().then(() => {
+            heroMedia?.classList.add("has-video");
+          }).catch(failHero);
+        }, { once: true });
+        heroVid.addEventListener("error", failHero);
+        heroVid.preload = "metadata";
+        heroVid.load();
+      } else {
+        cancelVideo(heroVid);
+        heroMedia?.classList.remove("has-video");
+      }
+    }
+
+    document.querySelectorAll(".clip video").forEach(vid => {
+      const box = vid.closest(".media");
+      if (!allowVideo || !attachSource(vid)) {
+        cancelVideo(vid);
+        box?.classList.remove("has-video");
+        return;
+      }
+      const enable = () => box?.classList.add("has-video", "filled");
+      const fail = () => {
+        cancelVideo(vid);
+        box?.classList.remove("has-video");
+      };
+      vid.addEventListener("loadeddata", enable);
+      vid.addEventListener("error", fail);
+      const clipIo = new IntersectionObserver(ents => {
+        ents.forEach(e => {
+          if (e.isIntersecting) {
+            vid.preload = "metadata";
+            vid.load();
+            clipIo.disconnect();
+          }
+        });
+      }, { rootMargin: "200px" });
+      clipIo.observe(box || vid);
     });
 
     document.querySelectorAll(".hoverplay").forEach(card => {
       const vid = card.querySelector("video");
-      card.addEventListener("mouseenter", () => {
-        if (vid?.querySelector("source")?.src) vid.play().catch(() => {});
-      });
-      card.addEventListener("mouseleave", () => vid?.pause());
+      if (!vid) return;
+      const play = () => { if (card.classList.contains("has-video")) vid.play().catch(() => {}); };
+      const pause = () => { if (card.classList.contains("has-video")) vid.pause(); };
+      if (coarsePointer) {
+        card.addEventListener("click", () => {
+          if (!card.classList.contains("has-video")) return;
+          if (vid.paused) play();
+          else pause();
+        });
+      } else {
+        card.addEventListener("mouseenter", play);
+        card.addEventListener("mouseleave", pause);
+      }
     });
 
     const lite = document.getElementById("lightbox");
     const liteImg = document.getElementById("liteImg");
-    window.closeLite = () => {
+    const liteClose = document.getElementById("liteClose");
+    let liteOpener = null;
+    const closeLite = () => {
+      if (!lite) return;
       lite.classList.remove("on");
+      lite.hidden = true;
       document.body.classList.remove("locked");
+      pageMain?.removeAttribute("aria-hidden");
+      liteImg?.removeAttribute("src");
+      if (liteOpener && typeof liteOpener.focus === "function") {
+        try { liteOpener.focus(); } catch {}
+      }
+      liteOpener = null;
     };
+    const openLite = card => {
+      if (!lite || !liteImg || !card.classList.contains("zoom")) return;
+      const img = card.querySelector("img");
+      const src = card.dataset.full || img?.currentSrc || img?.getAttribute("src");
+      if (!src || img?.style.visibility === "hidden") return;
+      liteOpener = card;
+      liteImg.src = src;
+      lite.hidden = false;
+      lite.classList.add("on");
+      document.body.classList.add("locked");
+      pageMain?.setAttribute("aria-hidden", "true");
+      liteClose?.focus();
+    };
+    liteClose?.addEventListener("click", closeLite);
+    liteImg?.addEventListener("error", closeLite);
     document.querySelectorAll(".zoom").forEach(card => {
-      card.addEventListener("click", e => {
-        const src = card.dataset.full || card.querySelector("img")?.getAttribute("src");
-        if (!src) return;
-        liteImg.src = src;
-        lite.classList.add("on");
-        document.body.classList.add("locked");
+      card.addEventListener("click", () => openLite(card));
+      card.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openLite(card);
+        }
       });
     });
-    lite.addEventListener("click", e => { if (e.target === lite) closeLite(); });
+    lite?.addEventListener("click", e => { if (e.target === lite) closeLite(); });
     addEventListener("keydown", e => {
       if (e.key === "Escape") {
         closeLite();
@@ -947,6 +1105,7 @@
     document.querySelectorAll(".copy").forEach(btn => {
       btn.addEventListener("click", async () => {
         const val = btn.id === "sharePage" ? location.href : btn.dataset.copy;
+        if (!val) return;
         try {
           await navigator.clipboard.writeText(val);
           const old = btn.textContent;
@@ -955,7 +1114,6 @@
         } catch {}
       });
     });
-
   </script>
 </body>
 </html>
