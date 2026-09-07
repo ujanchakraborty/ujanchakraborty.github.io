@@ -786,7 +786,7 @@
     const saveData = navigator.connection?.saveData === true;
     const coarsePointer = matchMedia("(pointer: coarse)").matches;
     const smallViewport = matchMedia("(max-width: 900px)").matches;
-    const allowVideo = !reducedMotion && !saveData && !coarsePointer && !smallViewport;
+    const allowVideo = !reducedMotion && !saveData && !coarsePointer;
 
     if (loader) {
       const hideLoader = () => loader.classList.add("done");
