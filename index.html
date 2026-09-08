@@ -555,7 +555,7 @@
   <section class="hero" id="top">
     <div class="hero-media" id="heroParallax">
       <img class="hero-fallback" id="heroFallback" src="assets/dev-02.jpg" alt="" />
-      <video id="heroVideo" muted loop playsinline preload="none" poster="assets/dev-02.jpg">
+      <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="assets/dev-02.jpg">
         <source data-src="assets/hero.mp4" type="video/mp4" />
       </video>
       <div class="hero-shade"></div>
@@ -786,7 +786,7 @@
     const saveData = navigator.connection?.saveData === true;
     const coarsePointer = matchMedia("(pointer: coarse)").matches;
     const smallViewport = matchMedia("(max-width: 900px)").matches;
-    const allowVideo = !reducedMotion && !saveData && !coarsePointer && !smallViewport;
+    const allowVideo = !reducedMotion && !saveData && !coarsePointer;
 
     if (loader) {
       const hideLoader = () => loader.classList.add("done");
