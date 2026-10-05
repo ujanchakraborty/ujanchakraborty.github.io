@@ -153,7 +153,7 @@ section{padding:140px 0;position:relative}
 
 /* ---------- the arc ---------- */
 .arc-track{position:relative;max-width:860px;margin:90px auto 0;padding-left:70px}
-.arc-svg{position:absolute;left:14px;top:0;bottom:0;width:10px;height:100%;overflow:visible}
+.arc-svg{position:absolute;left:16px;top:0;bottom:0;width:10px;height:100%;overflow:visible}
 .arcwire-draw{stroke:var(--orange);fill:none;stroke-linecap:round}
 #arcwire{stroke-width:3;filter:drop-shadow(0 0 8px rgba(249,115,22,.9))}
 .arcwire-glow{stroke-width:9;opacity:.22}
@@ -292,7 +292,7 @@ footer{border-top:1px solid var(--line);padding:100px 0 40px;position:relative;o
   .f-row{grid-template-columns:1fr}
   .arc-track{padding-left:52px}
   .arc-node::before{left:-42px}
-  .arc-svg{left:12px}
+  .arc-svg{left:14px}
 }
 @media(max-width:640px){
   .hud .night,.hud .sep.clock-sep{display:none}
@@ -798,8 +798,8 @@ function layoutArc(){
   if(!arcTrack || !arcSvg) return;
   const nodes = arcTrack.querySelectorAll('.arc-node');
   if(nodes.length < 2) return;
-  const start = nodes[0].offsetTop + 15;
-  const end = nodes[nodes.length - 1].offsetTop + 15;
+  const start = nodes[0].offsetTop + 17;
+  const end = nodes[nodes.length - 1].offsetTop + 17;
   arcSvg.style.top = start + 'px';
   arcSvg.style.height = Math.max(end - start, 1) + 'px';
   arcSvg.style.bottom = 'auto';
