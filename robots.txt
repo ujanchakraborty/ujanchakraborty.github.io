@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://djdev.in/sitemap.xml

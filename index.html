@@ -1,1119 +1,933 @@
 <!DOCTYPE html>
-<html lang="en-IN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DEV | House / Afro House / Techno / Afterhours</title>
-  <meta name="description" content="DEV is a DJ and electronic music artist based in Maharashtra. House, Afro house, techno and afterhours. Available for bookings." />
-  <meta name="author" content="DEV" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-  <meta name="theme-color" content="#070708" />
-  <link rel="canonical" href="https://djdev.in/" />
-  <link rel="icon" href="assets/dev-02.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="DEV | House / Afro House / Techno / Afterhours" />
-  <meta property="og:description" content="DJ and electronic music artist based in Maharashtra. House, Afro house, techno and afterhours." />
-  <meta property="og:url" content="https://djdev.in/" />
-  <meta property="og:image" content="https://djdev.in/assets/dev-02.jpg" />
-  <meta property="og:image:alt" content="DEV behind the decks" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="DEV | House / Afro House / Techno / Afterhours" />
-  <meta name="twitter:description" content="DJ and electronic music artist based in Maharashtra. House, Afro house, techno and afterhours." />
-  <meta name="twitter:image" content="https://djdev.in/assets/dev-02.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://djdev.in/#website",
-        "url": "https://djdev.in/",
-        "name": "DEV",
-        "description": "Official website of DEV, a DJ and electronic music artist working in house, Afro house, techno and afterhours.",
-        "inLanguage": "en-IN",
-        "publisher": { "@id": "https://djdev.in/#person" }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://djdev.in/#person",
-        "name": "DEV",
-        "jobTitle": "DJ",
-        "url": "https://djdev.in/",
-        "email": "mailto:booking@djdev.in",
-        "description": "DJ and electronic music artist based in Maharashtra. House, Afro house, techno and afterhours.",
-        "image": "https://djdev.in/assets/dev-01.jpg",
-        "homeLocation": {
-          "@type": "Place",
-          "name": "Maharashtra, India"
-        },
-        "genre": ["House", "Afro House", "Techno", "Afterhours"]
-      },
-      {
-        "@type": "Service",
-        "@id": "https://djdev.in/#booking-service",
-        "name": "DJ bookings with DEV",
-        "serviceType": "DJ performance",
-        "provider": { "@id": "https://djdev.in/#person" },
-        "url": "https://djdev.in/#booking"
-      }
-    ]
-  }
-  </script>
-  <style>
-    :root {
-      --bg: #070708;
-      --ink: #f3f1ea;
-      --muted: #9a978c;
-      --line: rgba(243,241,234,.12);
-      --accent: #d6ff3a;
-      --max: 1120px;
-      --mx: 70vw;
-      --my: 30vh;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: auto; }
-    body {
-      font-family: "DM Sans", system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.55;
-      overflow-x: hidden;
-      isolation: isolate;
-      background:
-        radial-gradient(900px 520px at 4% -10%, rgba(214,255,58,.045), transparent 68%),
-        var(--bg);
-    }
-    body.locked { overflow: hidden; }
-    img, video { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; }
-    :focus { outline: none; }
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-    .ambient, .grain, .vignette { pointer-events: none; position: fixed; inset: 0; }
-    .ambient {
-      z-index: 0;
-      background:
-        radial-gradient(circle at var(--mx) var(--my), rgba(214,255,58,.11), transparent 30%),
-        radial-gradient(ellipse at 85% 100%, rgba(92,73,255,.07), transparent 42%);
-      transition: background .25s linear;
-    }
-    .grain {
-      z-index: 30; opacity: .028; mix-blend-mode: screen;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 220px 220px;
-      animation: grainPulse 12s ease-in-out infinite;
-    }
-    .vignette {
-      z-index: 29;
-      background: radial-gradient(ellipse at center, transparent 44%, rgba(0,0,0,.42) 100%);
-    }
-    @keyframes grainPulse {
-      0%, 100% { opacity: .024; }
-      50% { opacity: .038; }
-    }
-    .skip {
-      position: absolute; left: 12px; top: -40px;
-      background: var(--accent); color: #111; padding: 8px 12px; z-index: 300;
-    }
-    .skip:focus { top: 12px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEV — One Night | djdev.in</title>
+<meta name="description" content="DEV — DJ and electronic music artist, Maharashtra India. House, Afro House, Techno, Afterhours. The set follows the room.">
+<meta name="theme-color" content="#050505">
+<link rel="canonical" href="https://djdev.in/">
+<!-- social preview: add og:image (1200x630) when the artwork exists -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DJDEV.IN">
+<meta property="og:title" content="DEV — One Night | djdev.in">
+<meta property="og:description" content="DEV — DJ and electronic music artist, Maharashtra India. House, Afro House, Techno, Afterhours. The set follows the room.">
+<meta property="og:url" content="https://djdev.in/">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DEV — One Night | djdev.in">
+<meta name="twitter:description" content="DEV — DJ and electronic music artist, Maharashtra India. House, Afro House, Techno, Afterhours. The set follows the room.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%23F97316'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ================= DJDEV.IN — ONE NIGHT ================= */
+:root{
+  --void:#050505;
+  --panel:#0B0B0C;
+  --orange:#F97316;
+  --ember:#EA580C;
+  --hot:#FFB066;
+  --bone:#FAFAFA;
+  --ash:#A3A3A3;
+  --dim:#7A7A85;
+  --line:rgba(255,255,255,.08);
+  --fd:'Inter',sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,.61,.21,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body.locked{overflow:hidden}
+body{background:var(--void);color:var(--bone);font-family:var(--fd);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:default}
+::selection{background:var(--orange);color:#050505}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.mono{font-family:var(--fm);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 
-    .loader {
-      position: fixed; inset: 0; z-index: 200; background: #050506;
-      display: grid; place-items: center;
-      transition: transform .9s cubic-bezier(.77,0,.18,1);
-    }
-    .loader.done { transform: translateY(-101%); pointer-events: none; }
-    .loader-mark {
-      font-family: "Syne", sans-serif; font-weight: 800;
-      letter-spacing: .42em; font-size: clamp(28px, 8vw, 72px); overflow: hidden;
-    }
-    .loader-mark span { display: inline-block; transform: translateY(110%); animation: rise .7s cubic-bezier(.16,1,.3,1) .1s forwards; }
-    .loader-mark span:nth-child(2) { animation-delay: .18s; }
-    .loader-mark span:nth-child(3) { animation-delay: .26s; }
-    .loader-sub { position: absolute; bottom: 28px; left: 28px; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
-    .loader-bar {
-      position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
-      background: var(--accent); animation: load 1.15s cubic-bezier(.77,0,.18,1) forwards;
-    }
-    @keyframes rise { to { transform: none; } }
-    @keyframes load { to { width: 100%; } }
+/* ---------- fixed layers ---------- */
+#storm{position:fixed;inset:0;z-index:0;pointer-events:none}
+#grain{position:fixed;inset:-50%;z-index:70;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  animation:grain 8s steps(10) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-2%)}80%{transform:translate(3%,3%)}}
+#flash{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:0;
+  background:radial-gradient(circle at 50% 42%,rgba(255,176,102,.55),rgba(249,115,22,.18) 40%,transparent 70%)}
+main,footer{position:relative;z-index:1}
 
-    .progress {
-      position: fixed; top: 0; left: 0; height: 2px; width: 0;
-      background: var(--accent); z-index: 90;
-    }
 
-    .nav {
-      position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
-      width: min(calc(100% - 24px), var(--max));
-      z-index: 50; display: flex; align-items: center; justify-content: space-between;
-      padding: 10px 12px 10px 18px;
-      border: 1px solid var(--line); border-radius: 999px;
-      background: rgba(7,7,8,.72); backdrop-filter: blur(16px);
-      transition: background .35s, backdrop-filter .35s, transform .35s, box-shadow .35s;
-      animation: navDrop .8s .25s both;
-    }
-    .nav.scrolled {
-      background: rgba(7,7,8,.9);
-      backdrop-filter: blur(24px);
-      transform: translateX(-50%) scale(.985);
-      box-shadow: 0 12px 34px rgba(0,0,0,.24);
-    }
-    @keyframes navDrop {
-      from { opacity: 0; transform: translate(-50%, -20px); }
-      to { opacity: 1; transform: translate(-50%, 0); }
-    }
-    .logo { font-family: "Syne", sans-serif; font-weight: 800; letter-spacing: .18em; font-size: 13px; }
-    .logo span { color: var(--accent); }
-    .nav-links {
-      display: flex; gap: 22px;
-      font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
-    }
-    .nav-links a { position: relative; }
-    .nav-links a::after {
-      content: ""; position: absolute; left: 0; bottom: -5px;
-      width: 0; height: 1px; background: var(--accent);
-      transition: width .35s cubic-bezier(.16,1,.3,1);
-    }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
-    .nav-cta {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--ink); color: #111; border: 0; border-radius: 999px;
-      min-height: 36px; padding: 9px 14px; font-size: 11px; letter-spacing: .12em;
-      text-transform: uppercase; font-weight: 600; position: relative; overflow: hidden; white-space: nowrap;
-      transition: color .3s;
-    }
-    .nav-cta::before {
-      content: ""; position: absolute; inset: 0; background: var(--accent);
-      transform: translateY(100%); transition: transform .35s cubic-bezier(.16,1,.3,1);
-    }
-    .nav-cta span { position: relative; z-index: 1; }
-    .nav-cta:hover::before { transform: none; }
-    .nav-cta:hover { background: var(--accent); }
-    .burger {
-      display: none; width: 38px; height: 38px;
-      border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer;
-    }
-    .burger span { display: block; width: 14px; height: 1.5px; background: var(--ink); margin: 3px auto; transition: transform .3s; }
-    .nav.open .burger span:first-child { transform: translateY(4.5px) rotate(45deg); }
-    .nav.open .burger span:last-child { transform: translateY(-4.5px) rotate(-45deg); }
+/* ---------- preloader ---------- */
+#loader{position:fixed;inset:0;z-index:300;background:var(--void);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:28px;transition:opacity .7s var(--ease),visibility .7s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .mono{color:var(--orange)}
+#loadbar{width:min(420px,70vw);height:2px;background:rgba(255,255,255,.08);position:relative;overflow:hidden;border-radius:2px}
+#loadfill{position:absolute;inset:0;width:0%;background:linear-gradient(90deg,var(--ember),var(--hot));
+  box-shadow:0 0 18px var(--orange)}
+#loadpct{font-family:var(--fm);font-size:13px;letter-spacing:.3em;color:var(--ash)}
 
-    .hero {
-      min-height: 100svh;
-      position: relative;
-      display: grid;
-      place-items: end start;
-      padding: 110px 5vw 72px;
-      overflow: hidden;
-    }
-    .hero::after {
-      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background:
-        radial-gradient(circle at 82% 22%, rgba(214,255,58,.1), transparent 28%),
-        radial-gradient(circle at 12% 72%, rgba(84,65,255,.055), transparent 30%);
-      mix-blend-mode: screen;
-    }
-    .hero-media {
-      position: absolute; inset: 0; overflow: hidden;
-      will-change: transform, filter;
-      background: #070708;
-    }
-    .hero-media video,
-    .hero-media img {
-      width: 100%; height: 120%; object-fit: cover; object-position: center 30%; transform: translateY(-8%);
-    }
-    .hero-media img.hero-fallback {
-      position: absolute; inset: 0; width: 100%; height: 120%;
-      object-fit: cover; object-position: center 30%; opacity: .38; transform: translateY(-8%);
-    }
-    .hero-media video {
-      position: absolute; inset: 0;
-      opacity: 0;
-    }
-    .hero-media.has-video img.hero-fallback { opacity: 0; }
-    .hero-media.has-video video { opacity: .38; }
-    .hero-shade {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(180deg, rgba(7,7,8,.2), rgba(7,7,8,.92)),
-        linear-gradient(90deg, rgba(7,7,8,.55), transparent 55%);
-    }
+/* ---------- nav / HUD ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  background:rgba(5,5,5,.62);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1440px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:800;font-size:19px;letter-spacing:.05em;display:flex;align-items:center;gap:10px}
+.brand i{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange);
+  animation:blink 2.2s infinite;font-style:normal}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.hud{display:flex;align-items:center;gap:26px;font-family:var(--fm);font-size:11px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
+.hud .phase{color:var(--orange)}
+.hud .night{color:var(--bone)}
+.hud .bpm{color:var(--ash)}
+.hud .sep{color:var(--dim)}
+.hud .ist{color:var(--ash)}
+.nav-book{font-family:var(--fm);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);
+  border:1px solid rgba(249,115,22,.45);padding:10px 22px;border-radius:999px;transition:all .3s var(--ease);white-space:nowrap}
+.nav-book:hover{background:var(--orange);color:#050505;box-shadow:0 0 24px rgba(249,115,22,.55)}
 
-    .hero-copy { position: relative; z-index: 2; max-width: 860px; }
-    .eyebrow {
-      font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 16px;
-      opacity: 0; animation: fadeUp .7s .75s both;
-    }
-    .hero h1 {
-      font-family: "Syne", sans-serif; font-weight: 800;
-      font-size: clamp(52px, 11vw, 118px);
-      line-height: .86; letter-spacing: -.06em;
-      opacity: 0; animation: fadeUp .85s .85s both;
-    }
-    .hero h1 em {
-      font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
-    }
-    .hero-sub {
-      margin-top: 20px; max-width: 390px; color: var(--muted); font-size: 15px; line-height: 1.5;
-      opacity: 0; animation: fadeUp .8s 1s both;
-    }
-    .hero-actions { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; align-items: center; opacity: 0; animation: fadeUp .8s 1.12s both; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: none; }
-    }
+/* ---------- left rail ---------- */
+#rail{position:fixed;left:26px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;
+  align-items:center;gap:18px;pointer-events:none}
+#rail svg{overflow:visible}
+#railwire{stroke:var(--orange);stroke-width:2;fill:none;filter:drop-shadow(0 0 6px rgba(249,115,22,.8))}
+#rail .vtext{writing-mode:vertical-rl;font-family:var(--fm);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--dim)}
 
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-      min-height: 42px; padding: 12px 16px; border-radius: 999px; border: 1px solid var(--line);
-      font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-      font-weight: 600; cursor: pointer; background: transparent; position: relative; overflow: hidden;
-      transition: transform .25s cubic-bezier(.16,1,.3,1), border-color .25s;
-    }
-    .btn span { position: relative; z-index: 1; }
-    .btn-fill {
-      background: var(--accent);
-      color: #111;
-      border-color: var(--accent);
-      padding: 12px 18px;
-    }
-    .btn-fill::after {
-      content: ""; position: absolute; inset: 0; background: #fff;
-      transform: translateX(-110%); transition: transform .4s cubic-bezier(.16,1,.3,1);
-    }
-    .btn-fill:hover::after { transform: none; }
-    .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+/* ---------- hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:104px 24px 98px;position:relative;overflow:hidden}
+.hero-eyebrow{color:var(--orange);margin-bottom:26px;display:flex;align-items:center;justify-content:center;gap:12px}
+.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px var(--orange);animation:blink 1.8s infinite}
+.hero h1{font-size:clamp(120px,24vw,380px);font-weight:800;letter-spacing:-.045em;line-height:.82;text-transform:uppercase}
+.hero-sub{margin-top:28px;font-family:var(--fm);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ash)}
+.hero-sub b{color:var(--orange);font-weight:500}
+.wire-zone{margin-top:44px;display:flex;flex-direction:column;align-items:center}
+.wire-wrap{position:relative;display:inline-block;padding:58px 88px;cursor:pointer;transition:transform .3s var(--ease)}
+.wire-wrap::before{content:'';position:absolute;inset:-70px;pointer-events:none;opacity:0;transition:opacity .6s var(--ease);
+  background:radial-gradient(circle at center,rgba(249,115,22,.24) 0%,rgba(249,115,22,.09) 42%,rgba(249,115,22,0) 68%)}
+.wire-wrap:hover::before,.wire-wrap.force-hover::before{opacity:1}
+.wire-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.wire-btn{position:relative;width:300px;height:100px;background:rgba(24,14,7,.72);border:1px solid rgba(249,115,22,.35);
+  border-radius:18px;color:var(--bone);font-family:var(--fm);font-size:15px;font-weight:700;letter-spacing:.34em;
+  text-indent:.34em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(4px);z-index:2;
+  transition:border-color .35s,box-shadow .35s}
+.wire-wrap:hover .wire-btn,.wire-wrap.force-hover .wire-btn{border-color:rgba(249,115,22,.85);box-shadow:inset 0 0 24px rgba(249,115,22,.14)}
+.wire-hint{margin-top:22px;color:var(--dim);font-size:10px}
+.wire-hint b{color:var(--ash);font-weight:500}
+.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;
+  align-items:center;gap:10px;color:var(--dim)}
+.scroll-cue .mono{font-size:10px}
+.scroll-cue .wire-v{width:1px;height:44px;background:linear-gradient(var(--orange),transparent);position:relative;overflow:hidden}
+.scroll-cue .wire-v::after{content:'';position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--hot);
+  animation:drop 1.8s var(--ease) infinite}
+@keyframes drop{to{top:110%}}
 
-    .strip {
-      position: relative; z-index: 2;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 13px 5vw;
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, rgba(214,255,58,.035), transparent 35%, rgba(255,255,255,.018));
-    }
-    .strip b { color: var(--ink); font-weight: 600; }
+/* ---------- phase marquee ---------- */
+.pmarquee{position:relative;z-index:1;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;overflow:hidden;background:rgba(5,5,5,.6)}
+.pmq-track{display:flex;gap:0;width:max-content;animation:mq 30s linear infinite}
+.pmq-track span{font-weight:800;font-size:clamp(48px,7vw,110px);letter-spacing:-.02em;text-transform:uppercase;
+  white-space:nowrap;color:var(--void);paint-order:stroke;-webkit-text-stroke:1.5px rgba(255,255,255,.38);padding-right:60px}
+.pmq-track span.solid{color:var(--orange);-webkit-text-stroke:0;text-shadow:0 0 40px rgba(249,115,22,.35)}
+@keyframes mq{to{transform:translateX(-50%)}}
 
-    section { padding: 80px 5vw; position: relative; z-index: 2; }
-    #about { background: radial-gradient(620px 480px at 92% 45%, rgba(214,255,58,.035), transparent 70%); }
-    #gallery { background: radial-gradient(720px 460px at 8% 55%, rgba(80,65,255,.035), transparent 72%); }
-    #live { background: radial-gradient(760px 520px at 88% 50%, rgba(214,255,58,.028), transparent 72%); }
-    .wrap { width: min(100%, var(--max)); margin: 0 auto; }
-    .section-head {
-      display: flex; justify-content: space-between; align-items: end; gap: 24px;
-      margin-bottom: 32px; border-bottom: 1px solid var(--line); padding-bottom: 16px;
-    }
-    .kicker {
-      font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 8px;
-    }
-    h2 {
-      font-family: "Syne", sans-serif;
-      font-size: clamp(28px, 4.4vw, 44px);
-      line-height: .98; letter-spacing: -.04em;
-    }
-    .hint { color: var(--muted); font-size: 13px; max-width: 300px; line-height: 1.5; }
-    .reveal {
-      opacity: 0; transform: translateY(28px) scale(.985); filter: blur(8px);
-      transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1), filter .8s;
-    }
-    .reveal.in { opacity: 1; transform: none; filter: none; }
+/* ---------- sections ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+section{padding:140px 0;position:relative}
+.sec-tag{color:var(--orange);margin-bottom:30px;display:flex;align-items:center;gap:14px;justify-content:center}
+.sec-tag::before,.sec-tag::after{content:'';height:1px;width:56px;background:linear-gradient(90deg,transparent,rgba(249,115,22,.6))}
+.sec-tag::after{background:linear-gradient(90deg,rgba(249,115,22,.6),transparent)}
+.sec-title{font-size:clamp(40px,5.4vw,68px);font-weight:600;letter-spacing:-.025em;line-height:1.04;text-align:center}
+.sec-sub{color:var(--ash);text-align:center;max-width:580px;margin:20px auto 0;font-size:17px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
 
-    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: start; }
-    .about p { color: #c9c6bb; font-size: 16px; margin-bottom: 16px; max-width: 38em; }
-    .base-line {
-      margin-top: 6px;
-      font-size: 12px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .base-line b { color: var(--accent); font-weight: 600; }
-    .media {
-      position: relative; overflow: hidden; border-radius: 16px;
-      background: #101014; border: 1px solid rgba(214,255,58,.16);
-      min-height: 160px;
-      transform-style: preserve-3d;
-      will-change: transform;
-      transition: transform .4s cubic-bezier(.25,.8,.25,1), box-shadow .4s, border-color .3s;
-    }
-    .media.portrait { aspect-ratio: 4/5; }
-    .media img, .media video { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.25,.8,.25,1); }
-    .media video { position: absolute; inset: 0; opacity: 0; }
-    .media.has-video video { opacity: 1; }
-    .media.filled { border-style: solid; border-color: var(--line); }
-    .media.zoom { cursor: pointer; }
-    .media.zoom:hover { transform: translateY(-6px) scale(1.015); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
-    .media.zoom:hover img { transform: scale(1.08); }
-    .media.zoom::after {
-      content: ""; position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.55));
-      opacity: 0; transition: opacity .4s;
-    }
-    .media.zoom:hover::after { opacity: 1; }
+/* ---------- manifesto ---------- */
+.manifesto #maniText{font-size:clamp(26px,3.6vw,46px);font-weight:600;letter-spacing:-.02em;line-height:1.35;
+  max-width:1000px;margin:0 auto;text-align:center}
+.manifesto .w{color:rgba(250,250,250,.14);transition:color .5s,text-shadow .5s}
+.manifesto .w.lit{color:var(--bone);text-shadow:0 0 26px rgba(249,115,22,.35)}
+.manifesto .w.hot.lit{color:var(--hot)}
+.manifesto .sig{margin-top:56px;text-align:center;color:var(--dim)}
+.manifesto .sig b{color:var(--orange);font-weight:500}
 
-    .gallery { display: grid; grid-template-columns: 1.1fr minmax(220px, 262px) 1fr 1fr; grid-template-rows: repeat(2, clamp(190px, 20vw, 228px)); gap: 10px; }
-    .gallery .g1 { grid-column: 1; grid-row: 1 / span 2; min-height: 228px; }
-    .gallery-video {
-      grid-column: 2; grid-row: 1 / span 2; min-height: 0;
-      overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #101014;
-    }
-    .gallery-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; }
-    .gallery .g2 { grid-column: 3; grid-row: 1; }
-    .gallery .g3 { grid-column: 4; grid-row: 1; }
-    .gallery .g4 { grid-column: 3; grid-row: 2; }
-    .gallery .g5 { grid-column: 4; grid-row: 2; }
+/* ---------- the arc ---------- */
+.arc-track{position:relative;max-width:860px;margin:90px auto 0;padding-left:70px}
+.arc-svg{position:absolute;left:14px;top:0;bottom:0;width:10px;height:100%;overflow:visible}
+.arcwire-draw{stroke:var(--orange);fill:none;stroke-linecap:round}
+#arcwire{stroke-width:3;filter:drop-shadow(0 0 8px rgba(249,115,22,.9))}
+.arcwire-glow{stroke-width:9;opacity:.22}
+.arc-node{position:relative;padding:0 0 90px}
+.arc-node:last-child{padding-bottom:0}
+.arc-node::before{content:'';position:absolute;left:-58px;top:8px;width:14px;height:14px;border-radius:50%;
+  background:var(--void);border:2px solid var(--dim);transition:all .4s}
+.arc-node.on::before{background:var(--orange);border-color:var(--hot);box-shadow:0 0 18px var(--orange)}
+.arc-node .mono{color:var(--orange);margin-bottom:12px;display:block}
+.arc-node h3{font-size:clamp(30px,4vw,46px);font-weight:700;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:6px}
+.arc-node .bpm{font-family:var(--fm);font-size:13px;letter-spacing:.24em;color:var(--ash);margin-bottom:14px;display:block}
+.arc-node p{color:var(--ash);font-size:17px;max-width:560px}
 
-    .clips { display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px; }
-    .clip.main { min-height: 420px; }
-    .clip { min-height: 205px; transition: transform .4s cubic-bezier(.25,.8,.25,1), box-shadow .4s; }
-    .clip-stack { display: grid; gap: 10px; }
-    .clip:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.45); }
-    .clip-meta {
-      position: absolute; left: 14px; bottom: 14px; right: 14px; z-index: 2;
-      display: flex; justify-content: space-between; align-items: end;
-      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-      pointer-events: none;
-    }
-    .sound-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .mix {
-      padding: 20px 18px 18px; border: 1px solid var(--line); border-radius: 16px;
-      background: #0d0d10; min-height: 176px;
-      display: flex; flex-direction: column;
-      transform-style: preserve-3d;
-      will-change: transform;
-      transition: transform .4s cubic-bezier(.25,.8,.25,1), box-shadow .4s, border-color .3s;
-    }
-    .mix:hover { border-color: rgba(214,255,58,.35); transform: translateY(-5px); box-shadow: 0 14px 36px rgba(0,0,0,.4); }
-    .mix small { color: var(--accent); letter-spacing: .14em; text-transform: uppercase; font-size: 11px; }
-    .mix h3 { margin: 8px 0 6px; font-family: "Syne", sans-serif; font-size: 20px; }
-    .mix p { color: var(--muted); font-size: 14px; }
-    .mix-foot { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-    .listen {
-      font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--muted);
-    }
-    a.listen {
-      color: var(--ink);
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 2px;
-    }
-    .mix-primary { grid-column: 1 / -1; min-height: 156px; }
-    .mix-meta { color: var(--muted); font-size: 12px; }
+/* ---------- stills ---------- */
+.stills-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:80px}
+.still{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#000;min-height:280px}
+.still img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .5s;filter:saturate(.9) contrast(1.04)}
+.still:hover img{transform:scale(1.07);filter:saturate(1.12) contrast(1.06)}
+.still::after{content:'';position:absolute;inset:0;border-radius:18px;pointer-events:none;transition:box-shadow .4s;
+  box-shadow:inset 0 0 0 1px rgba(249,115,22,0)}
+.still:hover::after{box-shadow:inset 0 0 0 1px rgba(249,115,22,.6),inset 0 0 70px rgba(249,115,22,.14)}
+.still figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 18px;
+  background:linear-gradient(transparent,rgba(0,0,0,.88));font-family:var(--fm);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ash);opacity:0;transform:translateY(8px);transition:all .4s var(--ease)}
+.still:hover figcaption{opacity:1;transform:none}
+.still figcaption b{color:var(--orange);font-weight:500}
+.sg-1{grid-column:span 7;height:460px}.sg-2{grid-column:span 5;height:460px}
+.sg-3{grid-column:span 4;height:360px}.sg-4{grid-column:span 4;height:360px}.sg-5{grid-column:span 4;height:360px}
+/* ---------- image placeholders (client drops real photos in) ---------- */
+.ph{position:relative;border-radius:18px;border:1px dashed rgba(249,115,22,.38);
+  background:repeating-linear-gradient(45deg,rgba(255,255,255,.016) 0 14px,transparent 14px 28px),#0A0A0C;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:280px;
+  transition:border-color .3s,box-shadow .3s;text-align:center;padding:24px}
+.ph:hover{border-color:rgba(249,115,22,.75);box-shadow:0 0 34px rgba(249,115,22,.12)}
+.ph svg{opacity:.5}
+.ph .mono{color:var(--orange);font-size:11px}
+.ph small{font-family:var(--fm);font-size:10px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase;line-height:1.9}
+.ph small b{color:var(--ash);font-weight:500}
+.ph{overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none;
+  transition:transform 1s var(--ease),filter .5s,opacity .4s;filter:saturate(.9) contrast(1.04)}
+.ph.has-img{border-style:solid;border-color:var(--line);padding:0}
+.ph.has-img img{opacity:1}
+.ph.has-img>svg,.ph.has-img>.mono,.ph.has-img>small{display:none}
+.ph.has-img:hover{border-color:rgba(249,115,22,.6);box-shadow:inset 0 0 70px rgba(249,115,22,.14),0 0 34px rgba(249,115,22,.12)}
+.ph.has-img:hover img{transform:scale(1.06);filter:saturate(1.12) contrast(1.06)}
+/* ---------- sample copy framing (client content guide) ---------- */
+.sample-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--orange);border:1px dashed rgba(249,115,22,.5);border-radius:999px;padding:8px 18px}
+.sample-wrap{text-align:center;margin:26px 0 40px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.client-note{font-family:var(--fm);font-size:11px;letter-spacing:.06em;color:var(--dim);max-width:560px;line-height:1.9}
+.client-note b{color:var(--ash);font-weight:500}
 
-    .contact { background: radial-gradient(700px 520px at 78% 20%, rgba(214,255,58,.045), transparent 68%); }
-    .booking-copy { color: #c9c6bb; max-width: 540px; font-size: 16px; }
-    .booking-copy + .booking-copy { margin-top: 10px; }
-    .emails { display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px; margin-top: 36px; }
-    .email-card { border-top: 1px solid var(--line); padding: 18px 0 6px; }
-    .email-card.primary a { font-size: clamp(22px, 3vw, 34px); }
-    .email-card > span {
-      display: block; font-size: 11px; letter-spacing: .16em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
-    }
-    .email-line { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .email-card a { font-family: "Syne", sans-serif; font-size: clamp(18px, 2.4vw, 28px); overflow-wrap: anywhere; }
-    .pending {
-      font-family: "Syne", sans-serif;
-      font-size: clamp(18px, 2.4vw, 28px);
-      color: var(--muted);
-      cursor: default;
-    }
-    .copy {
-      border: 1px solid var(--line); background: transparent; border-radius: 999px;
-      padding: 6px 10px; font-size: 10px; letter-spacing: .12em;
-      text-transform: uppercase; cursor: pointer; color: var(--muted);
-    }
-    .copy:hover { color: var(--ink); border-color: rgba(243,241,234,.28); }
-    .side-contacts { display: grid; gap: 0; }
-    .epk { display: grid; gap: 10px; margin-top: 28px; }
-    .epk-item { border-top: 1px solid var(--line); padding-top: 12px; }
-    .epk-item b { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
-    .epk-item span { color: var(--muted); font-size: 13px; }
+/* ---------- mixes ---------- */
+.mix-row{display:grid;grid-template-columns:64px 1fr auto;gap:28px;align-items:center;padding:26px 30px;
+  border:1px solid var(--line);border-radius:18px;margin-top:14px;background:rgba(255,255,255,.015);
+  transition:border-color .3s,transform .3s var(--ease),box-shadow .3s}
+.mix-row:hover{border-color:rgba(249,115,22,.5);transform:translateX(6px);box-shadow:0 10px 34px rgba(249,115,22,.1)}
+.mix-num{font-family:var(--fm);color:var(--dim);font-size:12px}
+.mix-row h4{font-size:20px;font-weight:600;margin-bottom:10px}
+.mix-row .genre{font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:12px}
+canvas.wave{width:100%;height:44px;display:block}
+.mix-side{display:flex;align-items:center;gap:18px}
+.mix-dur{font-family:var(--fm);font-size:12px;color:var(--dim)}
+.play-btn{width:54px;height:54px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:none;color:var(--bone);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;flex-shrink:0}
+.play-btn:hover{background:var(--orange);border-color:var(--orange);color:#050505;box-shadow:0 0 22px rgba(249,115,22,.6);transform:scale(1.08)}
+.mix-note{margin-top:28px;color:var(--dim);font-size:14px;text-align:center}
+.mix-note .mono{color:var(--orange);font-size:10px;margin-right:10px}
 
-    footer { position: relative; z-index: 2; padding: 40px 5vw 32px; border-top: 1px solid var(--line); }
-    .foot {
-      width: min(100%, var(--max)); margin: 0 auto;
-      display: flex; justify-content: space-between; gap: 18px; align-items: end; flex-wrap: wrap;
-    }
-    .foot-name {
-      font-family: "Syne", sans-serif; font-size: clamp(34px, 7vw, 82px); letter-spacing: -.06em; line-height: .85;
-      background: linear-gradient(180deg, var(--ink), rgba(243,241,234,.18));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .foot-meta { display: grid; gap: 12px; justify-items: end; }
-    .socials {
-      display: flex; gap: 16px; flex-wrap: wrap; align-items: center; justify-content: flex-end;
-      font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
-    }
-    .socials a:hover, .socials button:hover { color: var(--accent); }
-    .socials .pending {
-      font-family: inherit;
-      font-size: inherit;
-      letter-spacing: inherit;
-      text-transform: inherit;
-      color: var(--muted);
-      opacity: .7;
-    }
-    .copy-tiny { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-    .copy-tiny a:hover { color: var(--ink); }
+/* ---------- booking ---------- */
+.book-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;margin-top:80px;align-items:start}
+.book-info h3{font-size:clamp(28px,3.4vw,40px);font-weight:600;letter-spacing:-.02em;margin:18px 0 16px;line-height:1.15}
+.book-info>p{color:var(--ash);font-size:17px;margin-bottom:32px;max-width:420px}
+.type-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.type-chips span{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:10px 20px;color:var(--ash);transition:all .25s}
+.type-chips span:hover{border-color:var(--orange);color:var(--orange);box-shadow:0 0 16px rgba(249,115,22,.25)}
+.req-list{list-style:none;border-top:1px solid var(--line)}
+.req-list li{padding:16px 0;border-bottom:1px solid var(--line);color:var(--ash);font-size:15px;display:flex;gap:14px;align-items:baseline}
+.req-list li::before{content:'→';color:var(--orange);font-family:var(--fm)}
+form{background:rgba(11,11,12,.85);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:22px;
+  padding:46px;position:relative;overflow:hidden}
+form::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(249,115,22,.7),transparent)}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f-group{margin-bottom:20px;display:flex;flex-direction:column;gap:10px}
+.f-group label{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.f-group input,.f-group select,.f-group textarea{background:#08080A;border:1px solid var(--line);border-radius:12px;
+  padding:15px 18px;color:var(--bone);font-family:var(--fd);font-size:15px;transition:border-color .25s,box-shadow .25s;width:100%}
+.f-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A3A3A3' fill='none' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center}
+.f-group textarea{min-height:118px;resize:vertical}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(249,115,22,.14)}
+.f-submit{width:100%;margin-top:10px;background:var(--orange);border:0;border-radius:12px;color:#050505;cursor:pointer;
+  font-family:var(--fm);font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;padding:18px;
+  transition:all .3s var(--ease);display:flex;align-items:center;justify-content:center;gap:10px}
+.f-submit:hover{box-shadow:0 0 34px rgba(249,115,22,.55);transform:translateY(-2px)}
+.form-ok{display:none;text-align:center;padding:44px 20px}
+.ok-ring{width:78px;height:78px;border-radius:50%;border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;
+  color:var(--orange);margin:0 auto 24px;box-shadow:0 0 36px rgba(249,115,22,.35)}
+.form-ok h3{font-size:26px;font-weight:600;margin-bottom:10px}
+.form-ok p{color:var(--ash)}
 
-    .lightbox {
-      position: fixed; inset: 0; z-index: 140; background: rgba(0,0,0,.88);
-      display: none; place-items: center; padding: 28px;
-    }
-    .lightbox.on { display: grid; animation: fadeIn .35s both; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .lightbox img { max-width: min(1000px, 92vw); max-height: 82vh; object-fit: contain; border-radius: 10px; }
-    .lightbox button {
-      position: absolute; top: 16px; right: 16px; width: 40px; height: 40px;
-      border-radius: 50%; border: 1px solid var(--line); background: #111; cursor: pointer;
-    }
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:100px 0 40px;position:relative;overflow:hidden;background:rgba(5,5,5,.7)}
+.foot-mark{position:relative;max-width:1080px;margin:0 auto 70px;user-select:none}
+.foot-mark svg{display:block;width:100%;height:auto}
+.fm-base{font-family:var(--fd);font-weight:800;font-size:255px;letter-spacing:-6px;fill:var(--void);paint-order:stroke;
+  stroke:rgba(255,255,255,.16);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.fm-lamp{font-family:var(--fd);font-weight:800;font-size:255px;letter-spacing:-6px;fill:var(--void);paint-order:stroke;
+  stroke:#FF9A4D;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+#lampGroup{transition:opacity .5s var(--ease)}
+.foot-mark.lit #lampGroup{opacity:1}
+.foot-grid{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;padding-top:32px;border-top:1px solid var(--line)}
+.foot-grid .mono{color:var(--dim);font-size:10px}
+.foot-links{display:flex;gap:26px}
+.foot-links a{font-family:var(--fm);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);transition:color .25s}
+.foot-links a:hover{color:var(--orange)}
+.to-top{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;transition:all .25s}
+.to-top:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-4px);box-shadow:0 0 18px rgba(249,115,22,.35)}
 
-    @media (min-width: 1600px) {
-      :root { --max: 1240px; }
-      .hero { padding: 120px 7vw 80px; }
-      section { padding: 88px 7vw; }
-    }
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .burger { display: block; }
-      .nav.open .nav-links {
-        display: flex; flex-direction: column; position: absolute;
-        top: 58px; left: 0; right: 0; background: #0b0b0d;
-        border: 1px solid var(--line); border-radius: 16px; padding: 16px;
-      }
-      .nav-cta { min-height: 34px; padding: 8px 11px; font-size: 10px; letter-spacing: .1em; }
-      section { padding: 60px 20px; }
-      .hero { padding: 100px 20px 52px; min-height: 92svh; }
-      .hero h1 { font-size: clamp(48px, 16vw, 84px); }
-      .hero-actions { gap: 8px; margin-top: 24px; }
-      .hero-actions .btn { min-height: 40px; padding: 11px 14px; }
-      .about-grid, .clips, .sound-grid, .gallery, .emails {
-        grid-template-columns: 1fr;
-      }
-      .foot-meta { justify-items: start; }
-      .socials { justify-content: flex-start; }
-      .gallery, .clips { grid-template-rows: none; }
-      .gallery .g1, .gallery .g2, .gallery .g3, .gallery .g4, .gallery .g5, .gallery-video { grid-column: auto; grid-row: auto; }
-      .gallery-video { width: min(100%, 320px); aspect-ratio: 9 / 16; justify-self: center; }
-      .media.portrait { aspect-ratio: 3/4; }
-      .clip.main, .clip { min-height: 220px; }
-      .section-head { align-items: start; flex-direction: column; }
-      .hint { max-width: none; }
-    }
-    @media (hover: none) {
-      .media.zoom:hover, .clip:hover, .mix:hover { transform: none; box-shadow: none; }
-      .media.zoom:hover img { transform: none; }
-      .media.zoom:hover::after { opacity: 0; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
-      .reveal { opacity: 1; transform: none; filter: none; }
-      .loader { display: none; }
-      .grain { animation: none; }
-    }
-  </style>
+/* ---------- responsive ---------- */
+@media(max-width:1240px){#rail{display:none}}
+@media(max-width:960px){
+  .hud .ist,.hud .sep.ist-sep{display:none}
+  .hud{gap:16px}
+  .book-grid{grid-template-columns:1fr;gap:52px}
+  .sg-1,.sg-2{grid-column:span 12;height:340px}
+  .sg-3,.sg-4,.sg-5{grid-column:span 12;height:300px}
+  .mix-row{grid-template-columns:1fr auto;gap:14px}
+  .mix-num,.mix-dur{display:none}
+  .wire-btn{width:260px;height:92px}
+  .wire-wrap{padding:56px 64px}
+  section{padding:96px 0}
+  form{padding:32px 22px}
+  .f-row{grid-template-columns:1fr}
+  .arc-track{padding-left:52px}
+  .arc-node::before{left:-42px}
+  .arc-svg{left:12px}
+}
+@media(max-width:640px){
+  .hud .night,.hud .sep.clock-sep{display:none}
+  .hud{font-size:10px;letter-spacing:.14em;gap:12px}
+  .nav-in{padding:0 20px}
+  .wrap{padding:0 20px}
+  .sec-tag{flex-wrap:wrap;row-gap:10px}
+  .sec-tag::before,.sec-tag::after{width:34px}
+  .hero{padding:96px 24px 100px}
+  .wire-wrap{padding:52px 38px}
+  .wire-wrap::before{inset:-44px}
+  .hero-sub{letter-spacing:.16em}
+  .hero-eyebrow{letter-spacing:.14em;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  #grain{animation:none}
+}
+</style>
+<noscript><style>
+  #loader{display:none}
+  body.locked{overflow:auto}
+  .rv{opacity:1;transform:none}
+</style></noscript>
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="ambient" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="vignette" aria-hidden="true"></div>
-  <div class="loader" id="loader">
-    <div class="loader-mark"><span>D</span><span>E</span><span>V</span></div>
-    <div class="loader-sub">House · Afro House · Techno · Afterhours</div>
-    <div class="loader-bar"></div>
+<body class="locked">
+<!-- preloader -->
+<div id="loader" role="status" aria-label="Loading">
+  <p class="mono">Charging the wire</p>
+  <div id="loadbar"><div id="loadfill"></div></div>
+  <p id="loadpct">000</p>
+</div>
+
+<canvas id="storm" aria-hidden="true"></canvas>
+<div id="grain" aria-hidden="true"></div>
+<div id="flash"></div>
+
+<!-- nav / night HUD -->
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="#top" data-hover><i></i>DEV</a>
+    <div class="hud" aria-live="off">
+      <span class="phase" id="hudPhase">DOORS</span>
+      <span class="sep clock-sep">/</span>
+      <span class="night" id="hudNight">22:00</span>
+      <span class="sep bpm-sep">/</span>
+      <span class="bpm" id="hudBpm">118 BPM</span>
+      <span class="sep ist-sep">/</span>
+      <span class="ist" id="hudIst">--:-- IST</span>
+    </div>
+    <a href="#booking" class="nav-book" data-hover>Book</a>
   </div>
-  <div class="progress" id="progress"></div>
+</nav>
 
-  <header class="nav" id="nav">
-    <a class="logo" href="#top">DJ <span>DEV</span></a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#sound">Music</a>
-      <a href="#booking">Booking</a>
-    </nav>
-    <a class="nav-cta" href="#booking"><span>Make an Inquiry</span></a>
-    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
-  </header>
+<!-- left rail -->
+<div id="rail" aria-hidden="true">
+  <svg width="4" height="300" viewBox="0 0 4 300" preserveAspectRatio="none">
+    <path id="railwire" d="M2,0 C2,60 2,90 2,150 C2,210 2,240 2,300" />
+  </svg>
+  <span class="vtext">Afterhours transmission — djdev.in</span>
+</div>
 
-  <main id="main">
-  <section class="hero" id="top">
-    <div class="hero-media" id="heroParallax">
-      <img class="hero-fallback" id="heroFallback" src="assets/dev-02.jpg" alt="" />
-      <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="assets/dev-02.jpg">
-        <source data-src="assets/hero.mp4" type="video/mp4" />
-      </video>
-      <div class="hero-shade"></div>
+<main>
+<!-- ============ DOORS / HERO ============ -->
+<header class="hero" id="top">
+  <div>
+    <p class="mono hero-eyebrow"><span class="dot"></span>DJDEV.IN&nbsp;&nbsp;/&nbsp;&nbsp;DOORS 22:00</p>
+    <h1>DEV</h1>
+    <p class="hero-sub">House <b>·</b> Afro House <b>·</b> Techno <b>·</b> Afterhours</p>
+    <div class="wire-zone">
+      <div class="wire-wrap" id="wireWrap" data-hover>
+        <canvas class="wire-fx" id="wireFx" aria-hidden="true"></canvas>
+        <button class="wire-btn" id="wireBtn" type="button" aria-label="Enter the room">Enter the room</button>
+      </div>
+      <p class="mono wire-hint">Scroll — <b>the night moves with you.</b></p>
     </div>
-    <div class="hero-copy">
-      <p class="eyebrow">House · Afro House · Techno · Afterhours</p>
-      <h1>DEV<br /><em>behind the decks.</em></h1>
-      <p class="hero-sub">Extended sets shaped by groove, progression and the energy of the room.</p>
-      <div class="hero-actions">
-        <a class="btn btn-fill mag" href="#booking"><span>Make an Inquiry</span></a>
-        <a class="btn btn-ghost" href="#sound">Listen</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="strip"><b>DEV</b> · House · Afro House · Techno · Afterhours · Clubs · Festivals · Private events · Weddings</div>
-
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="kicker">01 — About</p>
-          <h2>The set follows<br />the room.</h2>
-        </div>
-        <p class="hint">DJ and electronic music artist based in Maharashtra.</p>
-      </div>
-      <div class="about-grid">
-        <div class="about reveal">
-          <p>DEV is a DJ and electronic music artist working across House, Afro House, Techno and Afterhours. The work is built around groove, progression, and reading the room.</p>
-          <p>Sets are adapted to the night as it happens. The floor sets the pace, and the music follows that energy rather than a fixed plan.</p>
-          <p class="base-line">Based in <b>Maharashtra</b> · Playing across the world</p>
-          <div class="epk" aria-label="Artist material">
-            <div class="epk-item"><b>Press kit</b><span>Artist bio, selected work and press material. Placeholder — file to be added.</span></div>
-            <div class="epk-item"><b>Tech rider</b><span>Technical requirements and stage setup. Placeholder — file to be added.</span></div>
-            <div class="epk-item"><b>Photo pack</b><span>Approved high-resolution artist imagery. Placeholder — file to be added.</span></div>
-          </div>
-        </div>
-        <div class="media portrait reveal zoom" data-full="assets/dev-01.jpg" role="button" tabindex="0" aria-label="Open portrait of DEV">
-          <img src="assets/dev-01.jpg" alt="DEV behind the decks" loading="eager" fetchpriority="high" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="gallery" style="padding-top:8px">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="kicker">02 — Stills</p>
-          <h2>Booth and room.</h2>
-        </div>
-        <p class="hint">Selected stills from the booth, the floor and the hours after peak.</p>
-      </div>
-      <div class="gallery">
-        <div class="media g1 reveal zoom" data-full="assets/dev-02.jpg" role="button" tabindex="0" aria-label="Open still of DEV at the booth">
-          <img src="assets/dev-02.jpg" alt="DEV at the booth and dance floor" loading="lazy" />
-        </div>
-<div class="media gallery-video reveal">
-          <video autoplay muted loop playsinline preload="metadata" poster="assets/dev-06.jpg" aria-label="Temporary vertical performance video">
-            <source src="assets/9.16-dabo.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="media g2 reveal zoom" data-full="assets/dev-03.jpg" role="button" tabindex="0" aria-label="Open still of the room">
-          <img src="assets/dev-03.jpg" alt="Crowd during a DEV set" loading="lazy" />
-        </div>
-        <div class="media g3 reveal zoom" data-full="assets/dev-04.jpg" role="button" tabindex="0" aria-label="Open still of the decks">
-          <img src="assets/dev-04.jpg" alt="Decks during a DEV performance" loading="lazy" />
-        </div>
-        <div class="media g4 reveal zoom" data-full="assets/dev-05.jpg" role="button" tabindex="0" aria-label="Open still of club lighting">
-          <img src="assets/dev-05.jpg" alt="Club lighting during a DEV set" loading="lazy" />
-        </div>
-        <div class="media g5 reveal zoom" data-full="assets/dev-06.jpg" role="button" tabindex="0" aria-label="Open afterhours still">
-          <img src="assets/dev-06.jpg" alt="Afterhours atmosphere at a DEV performance" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="live">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="kicker">03 — Live</p>
-          <h2>In the room.</h2>
-        </div>
-        <p class="hint">Performance footage from the booth — warmth, peak, and the hours that follow.</p>
-      </div>
-      <div class="clips">
-        <div class="media clip main reveal hoverplay">
-          <img src="assets/dev-02.jpg" alt="Main room performance still" loading="lazy" />
-          <video muted loop playsinline preload="none" poster="assets/dev-02.jpg">
-            <source data-src="assets/clip-main.mp4" type="video/mp4" />
-          </video>
-          <div class="clip-meta"><div>Main room</div><div>▶</div></div>
-        </div>
-        <div class="clip-stack">
-          <div class="media clip reveal hoverplay">
-            <img src="assets/dev-03.jpg" alt="Open air performance still" loading="lazy" />
-            <video muted loop playsinline preload="none" poster="assets/dev-03.jpg">
-              <source data-src="assets/clip-02.mp4" type="video/mp4" />
-            </video>
-            <div class="clip-meta"><div>Open air</div><div>▶</div></div>
-          </div>
-          <div class="media clip reveal hoverplay">
-            <img src="assets/dev-06.jpg" alt="Afterhours performance still" loading="lazy" />
-            <video muted loop playsinline preload="none" poster="assets/dev-06.jpg">
-              <source data-src="assets/clip-03.mp4" type="video/mp4" />
-            </video>
-            <div class="clip-meta"><div>Afterhours</div><div>▶</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="sound">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="kicker">04 — Music</p>
-          <h2>Selected mixes.</h2>
-        </div>
-        <p class="hint">A path into the sound — house, Afro house, techno and afterhours.</p>
-      </div>
-      <div class="sound-grid">
-        <article class="mix mix-primary reveal" data-mix="featured">
-          <small>Featured mix</small>
-          <h3>House / Afro House / Techno / Afterhours</h3>
-          <p>Placeholder — mix title and link to be added</p>
-          <div class="mix-foot"><span class="listen">Listen</span><span class="mix-meta">Link to be added</span></div>
-        </article>
-        <article class="mix reveal" data-mix="afterhours">
-          <small>Selected mix</small>
-          <h3>After 3AM</h3>
-          <p>Placeholder — mix title and link to be added</p>
-          <div class="mix-foot"><span class="listen">Listen</span><span class="mix-meta">Link to be added</span></div>
-        </article>
-        <article class="mix reveal" data-mix="warmup">
-          <small>Selected mix</small>
-          <h3>Warm-up</h3>
-          <p>Placeholder — mix title and link to be added</p>
-          <div class="mix-foot"><span class="listen">Listen</span><span class="mix-meta">Link to be added</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact" id="booking">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="kicker">05 — Booking</p>
-          <h2>Booking.</h2>
-        </div>
-        <p class="hint">Clubs, festivals, private events and weddings.</p>
-      </div>
-      <div class="reveal">
-        <p class="booking-copy">DEV is available for bookings. Inquiries are handled directly.</p>
-        <p class="booking-copy">For booking inquiries, please include the date, event type, venue or location, and any relevant requirements.</p>
-        <p class="base-line">Based in <b>Maharashtra</b> · Playing across the world</p>
-        <div class="emails">
-          <div class="email-card primary">
-            <span>Bookings</span>
-            <div class="email-line">
-              <a href="mailto:booking@djdev.in">booking@DJDEV.in</a>
-              <button class="copy" data-copy="booking@djdev.in" type="button">Copy</button>
-            </div>
-          </div>
-          <div class="side-contacts">
-            <div class="email-card">
-              <span>General inquiries</span>
-              <div class="email-line">
-                <a href="mailto:inquiry@djdev.in">inquiry@DJDEV.in</a>
-                <button class="copy" data-copy="inquiry@djdev.in" type="button">Copy</button>
-              </div>
-            </div>
-            <div class="email-card">
-              <span>WhatsApp inquiries</span>
-              <div class="email-line">
-                <span class="pending" data-social="whatsapp">WhatsApp</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  </main>
-
-  <footer>
-    <div class="foot">
-      <div class="foot-name">DEV</div>
-      <div class="foot-meta">
-        <div class="socials">
-          <a href="mailto:booking@djdev.in">booking@DJDEV.in</a>
-          <a href="mailto:inquiry@djdev.in">inquiry@DJDEV.in</a>
-          <span class="pending" data-social="instagram">Instagram</span>
-          <span class="pending" data-social="soundcloud">SoundCloud</span>
-          <button class="copy" id="sharePage" type="button">Copy link</button>
-        </div>
-        <div class="copy-tiny">© 2026 DEV · <a href="#top">Top</a></div>
-      </div>
-    </div>
-  </footer>
-
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
-    <button type="button" aria-label="Close" id="liteClose">×</button>
-    <img id="liteImg" alt="DEV still" />
   </div>
+  <div class="scroll-cue" aria-hidden="true">
+    <span class="wire-v"></span>
+  </div>
+</header>
 
-  <script>
-    const SITE = {
-      heroFallback: "assets/dev-02.jpg",
-      heroVideo: "assets/hero.mp4",
-      instagram: "",
-      soundcloud: "",
-      whatsapp: "",
-      mixes: {
-        featured: "",
-        afterhours: "",
-        warmup: ""
-      }
-    };
+<!-- phase marquee -->
+<div class="pmarquee" aria-hidden="true">
+  <div class="pmq-track">
+    <span>The set follows the room</span><span class="solid">·</span><span>The set follows the room</span><span class="solid">·</span>
+    <span>The set follows the room</span><span class="solid">·</span><span>The set follows the room</span><span class="solid">·</span>
+  </div>
+</div>
 
-    const loader = document.getElementById("loader");
-    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const finePointer = matchMedia("(pointer: fine)").matches && !reducedMotion;
-    const saveData = navigator.connection?.saveData === true;
-    const coarsePointer = matchMedia("(pointer: coarse)").matches;
-    const smallViewport = matchMedia("(max-width: 900px)").matches;
-    const allowVideo = !reducedMotion && !saveData && !coarsePointer;
+<!-- ============ WARM-UP / MANIFESTO ============ -->
+<section class="manifesto" id="manifesto">
+  <div class="wrap">
+    <p class="mono sec-tag rv">Phase 01&nbsp;&nbsp;/&nbsp;&nbsp;Warm-up · 23:00</p>
+    <div class="sample-wrap rv">
+      <span class="sample-pill">Sample copy</span>
+      <p class="client-note"><b>Client note</b> — example text. The artist provides their own words here: 60–80 words on how their night unfolds, first person. This sets the voice for the whole site.</p>
+    </div>
+    <p id="maniText">Every night is a circuit. The doors open. The room is cold. I warm the wire, 118, 120, 122, until the floor starts moving on its own. Then we climb. 124. 126. 128. Peak isn't a moment. It's a decision the whole room makes at once. After 3AM the rules dissolve. Hypnotic. Open-ended. No plan survives the sunrise. The set follows the room. The room follows the current. I just hold the wire.</p>
+    <p class="sig mono rv">— DEV, <b>Maharashtra, India</b></p>
+  </div>
+</section>
 
-    if (loader) {
-      const hideLoader = () => loader.classList.add("done");
-      if (reducedMotion) hideLoader();
-      else setTimeout(hideLoader, 1100);
+<!-- phase marquee -->
+<div class="pmarquee" aria-hidden="true">
+  <div class="pmq-track">
+    <span>118 — 122 — 128</span><span class="solid">·</span><span>118 — 122 — 128</span><span class="solid">·</span>
+    <span>118 — 122 — 128</span><span class="solid">·</span><span>118 — 122 — 128</span><span class="solid">·</span>
+  </div>
+</div>
+<!-- ============ PEAK / THE ARC ============ -->
+<section id="arc">
+  <div class="wrap">
+    <p class="mono sec-tag rv">Phase 02&nbsp;&nbsp;/&nbsp;&nbsp;Peak · 01:00</p>
+    <h2 class="sec-title rv">One night,<br>three movements.</h2>
+    <p class="sec-sub rv">The arc every set follows. The wire draws itself as you descend.</p>
+    <div class="sample-wrap rv">
+      <span class="sample-pill">Sample copy</span>
+      <p class="client-note"><b>Client note</b> — example text. Replace each movement with the artist's own description: 1–2 lines per phase, in their voice.</p>
+    </div>
+    <div class="arc-track">
+      <svg class="arc-svg" viewBox="0 0 10 1000" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <filter id="wireGlow" x="-200%" y="-5%" width="500%" height="110%">
+            <feGaussianBlur stdDeviation="4"/>
+          </filter>
+        </defs>
+        <path class="arcwire-draw arcwire-glow" pathLength="1" d="M5,0 C5,200 5,300 5,500 C5,700 5,800 5,1000" filter="url(#wireGlow)"/>
+        <path class="arcwire-draw" id="arcwire" pathLength="1" d="M5,0 C5,200 5,300 5,500 C5,700 5,800 5,1000"/>
+      </svg>
+      <div class="arc-node rv" data-node>
+        <span class="mono">Movement 01</span>
+        <h3>Warm-up</h3>
+        <span class="bpm">118 – 122 BPM</span>
+        <p>Deep. Rolling. Patient. I read the room before the room knows it's being read. Groove first, pressure later.</p>
+      </div>
+      <div class="arc-node rv" data-node>
+        <span class="mono">Movement 02</span>
+        <h3>Peak</h3>
+        <span class="bpm">124 – 128 BPM</span>
+        <p>Driving. Committed. No holding back. The whole room makes the decision at once, and the wire carries it.</p>
+      </div>
+      <div class="arc-node rv" data-node>
+        <span class="mono">Movement 03</span>
+        <h3>Afterhours</h3>
+        <span class="bpm">Open-ended</span>
+        <p>Hypnotic. Stripped. The rules dissolve after 3AM — this is where nights become stories.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AFTERHOURS / STILLS ============ -->
+<section id="stills" style="background:rgba(5,5,5,.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="mono sec-tag rv">Phase 03&nbsp;&nbsp;/&nbsp;&nbsp;Afterhours · 03:00</p>
+    <h2 class="sec-title rv">Booth and room.</h2>
+    <p class="sec-sub rv">Selected stills from the booth, the floor and the hours after peak.</p>
+    <div class="stills-grid">
+      <div class="ph sg-1 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 01</span><small><b>assets/dev-02.jpg</b><br>1600 × 900 — drop the artist image here</small><img src="assets/dev-02.jpg" alt="" loading="lazy"></div>
+      <div class="ph sg-2 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 02</span><small><b>assets/dev-03.jpg</b><br>1200 × 900 — drop the artist image here</small><img src="assets/dev-03.jpg" alt="" loading="lazy"></div>
+      <div class="ph sg-3 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 03</span><small><b>assets/dev-04.jpg</b><br>900 × 900 — drop the artist image here</small><img src="assets/dev-04.jpg" alt="" loading="lazy"></div>
+      <div class="ph sg-4 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 04</span><small><b>assets/dev-05.jpg</b><br>900 × 900 — drop the artist image here</small><img src="assets/dev-05.jpg" alt="" loading="lazy"></div>
+      <div class="ph sg-5 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 05</span><small><b>assets/dev-06.jpg</b><br>900 × 900 — drop the artist image here</small><img src="assets/dev-06.jpg" alt="" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUNRISE / MIXES ============ -->
+<section id="mixes">
+  <div class="wrap">
+    <p class="mono sec-tag rv">Phase 04&nbsp;&nbsp;/&nbsp;&nbsp;Sunrise · 05:00</p>
+    <h2 class="sec-title rv">Selected mixes.</h2>
+    <p class="sec-sub rv">A path into the sound. Recorded live, one take, no edits.</p>
+    <div style="margin-top:64px">
+      <div class="mix-row rv" data-hover>
+        <span class="mix-num">003</span>
+        <div><h4>House / Afro House / Techno / Afterhours</h4><span class="genre">Featured — the statement</span><canvas class="wave" data-seed="7" aria-hidden="true"></canvas></div>
+        <div class="mix-side"><span class="mix-dur">—:—</span><button class="play-btn" aria-label="Play featured mix"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg></button></div>
+      </div>
+      <div class="mix-row rv" data-hover>
+        <span class="mix-num">002</span>
+        <div><h4>After 3AM</h4><span class="genre">Afterhours · Hypnotic</span><canvas class="wave" data-seed="21" aria-hidden="true"></canvas></div>
+        <div class="mix-side"><span class="mix-dur">—:—</span><button class="play-btn" aria-label="Play After 3AM"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg></button></div>
+      </div>
+      <div class="mix-row rv" data-hover>
+        <span class="mix-num">001</span>
+        <div><h4>Warm-up</h4><span class="genre">Deep House · Rolling</span><canvas class="wave" data-seed="42" aria-hidden="true"></canvas></div>
+        <div class="mix-side"><span class="mix-dur">—:—</span><button class="play-btn" aria-label="Play Warm-up"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg></button></div>
+      </div>
+    </div>
+    <p class="mix-note rv"><span class="mono">Note</span>Mix links are being uploaded. This page updates the moment they drop.</p>
+  </div>
+</section>
+
+<!-- ============ CLOSE THE CIRCUIT / BOOKING ============ -->
+<section id="booking" style="background:rgba(5,5,5,.55);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <p class="mono sec-tag rv">Phase 05&nbsp;&nbsp;/&nbsp;&nbsp;06:00</p>
+    <h2 class="sec-title rv">Close the circuit.</h2>
+    <p class="sec-sub rv">Clubs, festivals, private events, weddings. One wire between you and the night.</p>
+    <div class="book-grid">
+      <div class="book-info rv">
+        <h3>The night ends.<br>Yours starts here.</h3>
+        <p>Tell us about the event: date, type, venue. Then the current starts moving.</p>
+        <div class="type-chips">
+          <span>Clubs</span><span>Festivals</span><span>Private events</span><span>Weddings</span><span>Afterhours</span>
+        </div>
+        <ul class="req-list">
+          <li>Include the date, event type and venue / location.</li>
+          <li>Mention set length and expected crowd size.</li>
+          <li>Tech rider shared on confirmation. Standard club setup.</li>
+        </ul>
+      </div>
+      <form id="bookForm" class="rv" novalidate>
+        <div id="formFields">
+          <div class="f-row">
+            <div class="f-group"><label for="fName">Your name</label><input id="fName" name="name" type="text" placeholder="Full name" required></div>
+            <div class="f-group"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" placeholder="you@venue.com" required></div>
+          </div>
+          <div class="f-row">
+            <div class="f-group"><label for="fDate">Event date</label><input id="fDate" name="date" type="date" required></div>
+            <div class="f-group"><label for="fType">Event type</label><select id="fType" name="type" required>
+              <option value="" disabled selected>Select…</option><option>Club night</option><option>Festival</option>
+              <option>Private event</option><option>Wedding</option><option>Afterhours</option>
+            </select></div>
+          </div>
+          <div class="f-group"><label for="fVenue">Venue / location</label><input id="fVenue" name="venue" type="text" placeholder="Venue name, city" required></div>
+          <div class="f-group"><label for="fMsg">Anything we should know</label><textarea id="fMsg" name="message" placeholder="Set length, crowd size, lineup…"></textarea></div>
+          <button type="submit" class="f-submit" data-hover>Send booking inquiry <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="vertical-align:-1px"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button>
+        </div>
+        <div class="form-ok" id="formOk">
+          <div class="ok-ring"><svg width="30" height="30" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></div>
+          <h3>Discharge received.</h3>
+          <p>Your inquiry is on the wire. We'll answer before the next doors open.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-mark" id="footMark">
+      <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="DEV">
+        <defs>
+          <radialGradient id="lampGrad" gradientUnits="userSpaceOnUse" cx="500" cy="150" r="200">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="0.65" stop-color="#ffffff" stop-opacity="0"/>
+          </radialGradient>
+          <mask id="lampMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="300">
+            <rect width="1000" height="300" fill="url(#lampGrad)"/>
+          </mask>
+          <filter id="lampGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#F97316" flood-opacity="0.55"/>
+            <feDropShadow dx="0" dy="0" stdDeviation="28" flood-color="#F97316" flood-opacity="0.22"/>
+          </filter>
+        </defs>
+        <text x="500" y="238" text-anchor="middle" class="fm-base">DEV</text>
+        <g id="lampGroup" mask="url(#lampMask)" opacity="0">
+          <text x="500" y="238" text-anchor="middle" class="fm-lamp" filter="url(#lampGlow)">DEV</text>
+        </g>
+      </svg>
+    </div>
+    <div class="foot-grid">
+      <span class="mono">© <span id="year">2026</span> DJDEV.IN — Maharashtra, India · v24</span>
+      <div class="foot-links">
+        <a href="#manifesto" data-hover>Manifesto</a>
+        <a href="#stills" data-hover>Stills</a>
+        <a href="#mixes" data-hover>Mixes</a>
+        <a href="#booking" data-hover>Booking</a>
+      </div>
+      <a href="#top" class="to-top" aria-label="Back to top" data-hover><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 14V2M3 7l5-5 5 5"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+const SDPR = Math.min(window.devicePixelRatio || 1, 1.25);
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ORANGE = '#F97316';
+const fine = window.matchMedia('(pointer:fine)').matches;
+
+/* ============ PRELOADER ============ */
+const loader = document.getElementById('loader');
+const loadfill = document.getElementById('loadfill');
+const loadpct = document.getElementById('loadpct');
+(function charge(){
+  const t0 = performance.now(), DUR = reduced ? 1 : 1300;
+  (function step(t){
+    const p = Math.min((t - t0) / DUR, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    loadfill.style.width = (e * 100).toFixed(1) + '%';
+    loadpct.textContent = String(Math.round(e * 100)).padStart(3, '0');
+    if(p < 1) requestAnimationFrame(step);
+    else { loader.classList.add('done'); document.body.classList.remove('locked'); }
+  })(t0);
+})();
+
+/* ============ STORM — fish gradient, zero gray (no fade) ============ */
+const storm = document.getElementById('storm');
+const sx = storm.getContext('2d');
+let SW = 0, SH = 0, parts = [];
+let intensity = 0.25, targetIntensity = 0.25;
+let smx = -9999, smy = -9999;
+const PALETTE = ['249,115,22', '249,115,22', '249,115,22', '234,88,12', '255,176,102'];
+const TRAIL = 14;
+function spawn(p, anywhere){
+  p.x = Math.random() * SW;
+  p.y = anywhere ? Math.random() * SH : (Math.random() < 0.5 ? -12 : SH + 12);
+  p.hist = [];
+  for(let k = 0; k < TRAIL; k++) p.hist.push([p.x, p.y]);
+  p.life = 0.6 + Math.random() * 0.4;
+  p.c = PALETTE[(Math.random() * PALETTE.length) | 0];
+}
+function sizeStorm(){
+  SW = window.innerWidth; SH = window.innerHeight;
+  storm.width = SW * SDPR; storm.height = SH * SDPR;
+  storm.style.width = SW + 'px'; storm.style.height = SH + 'px';
+  const n = Math.min(500, Math.floor(SW * SH / 4500));
+  parts = [];
+  for(let i = 0; i < n; i++){ const p = {}; spawn(p, true); parts.push(p); }
+  sx.setTransform(SDPR, 0, 0, SDPR, 0, 0);
+}
+window.addEventListener('mousemove', e => { smx = e.clientX; smy = e.clientY; }, {passive: true});
+function drawStorm(t){
+  intensity += (targetIntensity - intensity) * 0.035;
+  sx.clearRect(0, 0, SW, SH);
+  const sp = 0.5 + intensity * 2.9;
+  const baseA = 0.12 + intensity * 0.3;
+  sx.lineWidth = 1;
+  sx.lineCap = 'round';
+  for(let i = 0; i < parts.length; i++){
+    const p = parts[i];
+    const a = (Math.sin(p.x * 0.0022 + t * 0.00042) + Math.cos(p.y * 0.0026 - t * 0.00031)) * Math.PI;
+    p.x += Math.cos(a) * sp;
+    p.y += Math.sin(a) * sp;
+    const dx = p.x - smx, dy = p.y - smy, d2 = dx * dx + dy * dy;
+    if(d2 < 22500){
+      const d = Math.sqrt(d2) || 1, f = (150 - d) / 150;
+      p.x += (dx / d) * f * 3.2; p.y += (dy / d) * f * 3.2;
     }
-
-    const progress = document.getElementById("progress");
-    const nav = document.getElementById("nav");
-    const heroMedia = document.getElementById("heroParallax");
-    const burger = document.getElementById("burger");
-    const sections = [...document.querySelectorAll("section[id]")];
-    const links = [...document.querySelectorAll(".nav-links a")];
-    const heroFallback = document.getElementById("heroFallback");
-    const heroVid = document.getElementById("heroVideo");
-    const pageMain = document.getElementById("main");
-
-    if (heroFallback && SITE.heroFallback) {
-      heroFallback.src = SITE.heroFallback;
-      if (heroVid) heroVid.setAttribute("poster", SITE.heroFallback);
+    p.life -= 0.004 + intensity * 0.006;
+    if(p.life <= 0 || p.x < -20 || p.x > SW + 20 || p.y < -20 || p.y > SH + 20){ spawn(p, false); continue; }
+    p.hist.pop();
+    p.hist.unshift([p.x, p.y]);
+    // draw gradient trail: bright head → transparent tail, no fade buildup
+    for(let k = 0; k < TRAIL - 1; k++){
+      const fa = baseA * (1 - k / TRAIL);
+      if(fa < 0.02) continue;
+      sx.strokeStyle = 'rgba(' + p.c + ',' + fa.toFixed(3) + ')';
+      sx.beginPath();
+      sx.moveTo(p.hist[k][0], p.hist[k][1]);
+      sx.lineTo(p.hist[k+1][0], p.hist[k+1][1]);
+      sx.stroke();
     }
+  }
+}
 
-    const applyExternalLinks = () => {
-      document.querySelectorAll("[data-social]").forEach(el => {
-        const url = SITE[el.dataset.social];
-        if (!url) return;
-        const a = document.createElement("a");
-        a.href = url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.textContent = el.textContent;
-        if (el.closest(".email-card")) {
-          a.style.fontFamily = "Syne, sans-serif";
-          a.style.fontSize = "clamp(18px, 2.4vw, 28px)";
-        }
-        el.replaceWith(a);
-      });
+/* ============ NIGHT HUD — scroll is time ============ */
+const hudPhase = document.getElementById('hudPhase');
+const hudNight = document.getElementById('hudNight');
+const hudBpm = document.getElementById('hudBpm');
+const railwire = document.getElementById('railwire');
+let railLen = 0;
+try { railLen = railwire.getTotalLength(); railwire.style.strokeDasharray = railLen; } catch(e){}
+function fmtClock(mins){
+  const h = Math.floor(mins / 60) % 24, m = Math.floor(mins % 60);
+  return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+}
+function nightUpdate(){
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const p = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+  let phase, stormT, bpm;
+  if(p < 0.18){ phase = 'DOORS'; stormT = 0.25; bpm = '118'; }
+  else if(p < 0.38){ phase = 'WARM-UP'; stormT = 0.45; bpm = String(Math.round(118 + (p - 0.18) / 0.2 * 4)); }
+  else if(p < 0.62){ phase = 'PEAK'; stormT = 1.0; bpm = String(Math.round(124 + (p - 0.38) / 0.24 * 4)); }
+  else if(p < 0.85){ phase = 'AFTERHOURS'; stormT = 0.6; bpm = '128'; }
+  else { phase = 'SUNRISE'; stormT = 0.25; bpm = 'OPEN'; }
+  targetIntensity = stormT;
+  if(hudPhase.textContent !== phase) hudPhase.textContent = phase;
+  hudNight.textContent = fmtClock(22 * 60 + p * 8 * 60);
+  if(hudBpm) hudBpm.textContent = bpm + (bpm === 'OPEN' ? '' : ' BPM');
+  if(railLen) railwire.style.strokeDashoffset = railLen * (1 - p);
+  // arc wire draw
+  drawArc(p);
+}
 
-      document.querySelectorAll("[data-mix]").forEach(card => {
-        const url = SITE.mixes?.[card.dataset.mix];
-        const listen = card.querySelector(".listen");
-        const meta = card.querySelector(".mix-meta");
-        if (!listen || !url) return;
-        const a = document.createElement("a");
-        a.className = "listen";
-        a.href = url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.textContent = "Listen";
-        listen.replaceWith(a);
-        if (meta) meta.textContent = "Open mix";
-      });
-    };
-    applyExternalLinks();
+/* ============ PLASMA TUBE CTA + magnetic ============ */
+const wrap = document.getElementById('wireWrap');
+const fx = document.getElementById('wireFx');
+const fctx = fx.getContext('2d');
+let hovering = false, dischargeUntil = 0;
+function sizeWire(){
+  const r = wrap.getBoundingClientRect();
+  fx.width = Math.max(r.width * DPR, 1);
+  fx.height = Math.max(r.height * DPR, 1);
+}
+function btnRect(){
+  const b = document.getElementById('wireBtn');
+  return {x: b.offsetLeft, y: b.offsetTop, w: b.offsetWidth, h: b.offsetHeight, r: 18};
+}
+function tubePath(R, expand){
+  const rr = Math.max(R.r + expand * 0.55, 1);
+  fctx.beginPath();
+  if(fctx.roundRect) fctx.roundRect(R.x - expand, R.y - expand, R.w + expand * 2, R.h + expand * 2, rr);
+  else fctx.rect(R.x - expand, R.y - expand, R.w + expand * 2, R.h + expand * 2);
+}
+function tubePerimeter(R, expand){
+  const w = R.w + expand * 2, h = R.h + expand * 2, r = Math.max(R.r + expand * 0.55, 1);
+  return 2 * (w - 2 * r) + 2 * (h - 2 * r) + 2 * Math.PI * r;
+}
+function drawWire(){
+  const W = fx.width / DPR, H = fx.height / DPR;
+  fctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  fctx.clearRect(0, 0, W, H);
+  const R = btnRect();
+  const now = performance.now();
+  const discharging = now < dischargeUntil;
+  const t = now / 1000;
+  const boost = discharging ? 2.8 : (hovering ? 1.55 : 1);
+  const breathe = 0.82 + 0.18 * Math.sin(t * 2.1);
+  const flick = 0.93 + 0.07 * Math.sin(t * 31.0) * Math.sin(t * 11.7);
+  const k = Math.min(boost * breathe * flick, 3.2);
+  fctx.save();
+  fctx.lineJoin = 'round'; fctx.lineCap = 'round';
+  fctx.shadowColor = ORANGE;
+  const blooms = [[30, 0.10], [14, 0.20], [6, 0.38]];
+  for(const [w, a] of blooms){
+    fctx.strokeStyle = 'rgba(249,115,22,' + Math.min(a * k, 0.85).toFixed(3) + ')';
+    fctx.lineWidth = w * (discharging ? 1.5 : 1);
+    fctx.shadowBlur = 34 * boost;
+    tubePath(R, 10); fctx.stroke();
+  }
+  fctx.strokeStyle = 'rgba(255,214,165,' + Math.min(0.95 * flick * (hovering || discharging ? 1 : 0.85), 1).toFixed(3) + ')';
+  fctx.lineWidth = discharging ? 3 : 2;
+  fctx.shadowBlur = 14 * boost;
+  tubePath(R, 10); fctx.stroke();
+  const perim = tubePerimeter(R, 10);
+  const n = discharging ? 5 : (hovering ? 2 : 1);
+  const speed = perim * (discharging ? 1.6 : 0.28);
+  fctx.strokeStyle = 'rgba(255,244,230,0.95)';
+  fctx.lineWidth = discharging ? 4 : 3;
+  fctx.shadowBlur = 22 * boost;
+  for(let i = 0; i < n; i++){
+    const off = (t * speed + (i * perim) / n) % perim;
+    fctx.setLineDash([perim * 0.09, perim * 0.91]);
+    fctx.lineDashOffset = -off;
+    tubePath(R, 10); fctx.stroke();
+  }
+  fctx.setLineDash([]);
+  fctx.restore();
+}
+wrap.addEventListener('mouseenter', () => hovering = true);
+wrap.addEventListener('mouseleave', () => { hovering = false; wrap.style.transform = ''; });
+const flash = document.getElementById('flash');
+function fireWire(scrollTarget){
+  dischargeUntil = performance.now() + 650;
+  drawWire();
+  flash.style.transition = 'none'; flash.style.opacity = '1';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    flash.style.transition = 'opacity .7s ease'; flash.style.opacity = '0';
+  }));
+  setTimeout(() => document.querySelector(scrollTarget).scrollIntoView({behavior: reduced ? 'auto' : 'smooth'}), 320);
+}
+document.getElementById('wireBtn').addEventListener('click', () => fireWire('#manifesto'));
+// magnetic pull (desktop)
+if(fine && !reduced){
+  wrap.addEventListener('mousemove', e => {
+    const r = wrap.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+    const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+    wrap.style.transform = 'translate(' + (dx * 14).toFixed(1) + 'px,' + (dy * 10).toFixed(1) + 'px)';
+  });
+}
 
-    const setMenu = open => {
-      if (!nav || !burger) return;
-      nav.classList.toggle("open", open);
-      burger.setAttribute("aria-expanded", open ? "true" : "false");
-      burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    };
-    burger?.addEventListener("click", e => {
-      e.stopPropagation();
-      setMenu(!nav.classList.contains("open"));
-    });
-    document.addEventListener("click", e => {
-      if (nav?.classList.contains("open") && !nav.contains(e.target)) setMenu(false);
-    });
+/* ============ KINETIC MANIFESTO ============ */
+(function(){
+  const el = document.getElementById('maniText');
+  const words = el.textContent.trim().split(/\s+/);
+  el.innerHTML = words.map((w, i) => {
+    const hot = /\d/.test(w) || /wire|current|sunrise|circuit/i.test(w);
+    return '<span class="w' + (hot ? ' hot' : '') + '" style="transition-delay:' + (i * 26) + 'ms">' + w + '</span>';
+  }).join(' ');
+  if(reduced){ el.querySelectorAll('.w').forEach(s => s.classList.add('lit')); return; }
+  new IntersectionObserver((es, io) => es.forEach(e => {
+    if(e.isIntersecting){ el.querySelectorAll('.w').forEach(s => s.classList.add('lit')); io.disconnect(); }
+  }), {threshold: 0.25}).observe(el);
+})();
 
-    if (finePointer) {
-      addEventListener("pointermove", e => {
-        document.documentElement.style.setProperty("--mx", `${e.clientX}px`);
-        document.documentElement.style.setProperty("--my", `${e.clientY}px`);
-      }, { passive: true });
+/* ============ ARC wire draw + nodes ============ */
+const arcPaths = Array.from(document.querySelectorAll('.arcwire-draw'));
+arcPaths.forEach(p => { p.style.strokeDasharray = '1'; p.style.strokeDashoffset = '1'; });
+const arcTrack = document.querySelector('.arc-track');
+const arcSvg = document.querySelector('.arc-svg');
+function layoutArc(){
+  if(!arcTrack || !arcSvg) return;
+  const nodes = arcTrack.querySelectorAll('.arc-node');
+  if(nodes.length < 2) return;
+  const start = nodes[0].offsetTop + 15;
+  const end = nodes[nodes.length - 1].offsetTop + 15;
+  arcSvg.style.top = start + 'px';
+  arcSvg.style.height = Math.max(end - start, 1) + 'px';
+  arcSvg.style.bottom = 'auto';
+}
+function drawArc(){
+  if(!arcSvg) return;
+  const r = arcSvg.getBoundingClientRect();
+  const vh = window.innerHeight;
+  const p = Math.min(Math.max((vh - r.top) / r.height, 0), 1);
+  arcPaths.forEach(el => { el.style.strokeDashoffset = String(1 - p); });
+}
+document.querySelectorAll('[data-node]').forEach(n => {
+  new IntersectionObserver((es, io) => es.forEach(e => {
+    if(e.isIntersecting){ n.classList.add('on'); io.disconnect(); }
+  }), {threshold: 0.4}).observe(n);
+});
 
-      document.querySelectorAll(".media.zoom, .clip, .mix").forEach(card => {
-        card.addEventListener("pointermove", e => {
-          const rect = card.getBoundingClientRect();
-          const x = (e.clientX - rect.left) / rect.width - .5;
-          const y = (e.clientY - rect.top) / rect.height - .5;
-          card.style.transform = `perspective(900px) rotateX(${(-y * 3.5).toFixed(2)}deg) rotateY(${(x * 4.5).toFixed(2)}deg) translateY(-4px)`;
-        });
-        card.addEventListener("pointerleave", () => { card.style.transform = ""; });
-      });
-
-      document.querySelectorAll(".mag").forEach(btn => {
-        btn.addEventListener("pointermove", e => {
-          const rect = btn.getBoundingClientRect();
-          btn.style.transform = `translate(${(((e.clientX - rect.left) / rect.width) - .5) * 10}px, ${(((e.clientY - rect.top) / rect.height) - .5) * 8}px)`;
-        });
-        btn.addEventListener("pointerleave", () => { btn.style.transform = ""; });
-      });
+/* ============ WAVEFORMS ============ */
+function seeded(s){ let x = s; return () => { x = (x * 1664525 + 1013904223) >>> 0; return x / 4294967296; }; }
+function drawWaves(){
+  document.querySelectorAll('canvas.wave').forEach(c => {
+    const d = Math.min(window.devicePixelRatio || 1, 2);
+    const w = c.clientWidth || 300, h = 44;
+    if(!w) return;
+    c.width = w * d; c.height = h * d;
+    const g = c.getContext('2d'); g.setTransform(d, 0, 0, d, 0, 0);
+    g.clearRect(0, 0, w, h);
+    const rnd = seeded(parseInt(c.dataset.seed || '1', 10));
+    const bars = Math.floor(w / 5);
+    for(let i = 0; i < bars; i++){
+      const env = Math.sin(i / bars * Math.PI);
+      const bh = 4 + rnd() * 34 * env;
+      g.fillStyle = 'rgba(249,115,22,' + (0.25 + rnd() * 0.55).toFixed(2) + ')';
+      g.fillRect(i * 5, (h - bh) / 2, 2.5, bh);
     }
+  });
+}
+drawWaves();
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(drawWaves);
 
-    const onScroll = () => {
-      const y = scrollY;
-      const max = document.documentElement.scrollHeight - innerHeight;
-      if (progress) progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
-      nav?.classList.toggle("scrolled", y > 40);
-      if (heroMedia && !reducedMotion) {
-        const blur = Math.min(y * .012, 7);
-        heroMedia.style.transform = `translateY(${y * .12}px) scale(${1 + Math.min(y * .00008, .035)})`;
-        heroMedia.style.filter = `blur(${blur}px)`;
-      } else if (heroMedia) {
-        heroMedia.style.transform = "";
-        heroMedia.style.filter = "";
-      }
-      let current = "top";
-      sections.forEach(s => { if (s.offsetTop <= y + 110) current = s.id; });
-      const activeMap = { top: "", about: "#about", gallery: "#about", live: "#about", sound: "#sound", booking: "#booking" };
-      const href = activeMap[current] || "";
-      links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === href));
-    };
-    addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+/* ============ GALLERY IMAGES (drop-in) ============ */
+document.querySelectorAll('.ph').forEach(ph => {
+  const img = ph.querySelector('img');
+  if(!img) return;
+  const ok = () => ph.classList.add('has-img');
+  const bad = () => { img.remove(); ph.classList.remove('has-img'); };
+  img.addEventListener('load', ok);
+  img.addEventListener('error', bad);
+  if(img.complete){ img.naturalWidth ? ok() : bad(); }
+});
 
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", e => {
-        const id = a.getAttribute("href");
-        if (!id || id === "#") {
-          e.preventDefault();
-          return;
-        }
-        const el = document.querySelector(id);
-        if (!el) {
-          e.preventDefault();
-          return;
-        }
-        e.preventDefault();
-        setMenu(false);
-        const start = scrollY;
-        const end = el.getBoundingClientRect().top + scrollY - 10;
-        const duration = reducedMotion ? 0 : 600;
-        if (!duration) {
-          scrollTo(0, end);
-          return;
-        }
-        const t0 = performance.now();
-        (function step(now) {
-          const p = Math.min(1, (now - t0) / duration);
-          scrollTo(0, start + (end - start) * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) requestAnimationFrame(step);
-        })(t0);
-      });
-    });
+/* ============ BOOKING ============ */
+document.getElementById('bookForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  if(!this.checkValidity()){ this.reportValidity(); return; }
+  fireWire('#booking');
+  setTimeout(() => {
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('formOk').style.display = 'block';
+  }, 500);
+});
 
-    const io = new IntersectionObserver(ents => {
-      ents.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
-    }, { threshold: .14 });
-    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+/* ============ FOOTER LAMP ============ */
+(function(){
+  const mark = document.getElementById('footMark');
+  const svg = mark.querySelector('svg');
+  const grad = document.getElementById('lampGrad');
+  if(!mark || !svg || !grad || reduced) return;
+  let tx = 500, ty = 150, cx = 500, cy = 150, raf = null;
+  function toSVG(e){
+    try{
+      const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+      const m = svg.getScreenCTM();
+      if(m) return pt.matrixTransform(m.inverse());
+    }catch(err){}
+    const r = svg.getBoundingClientRect();
+    return {x: (e.clientX - r.left) / r.width * 1000, y: (e.clientY - r.top) / r.height * 300};
+  }
+  function tick(){
+    cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
+    grad.setAttribute('cx', cx.toFixed(1)); grad.setAttribute('cy', cy.toFixed(1));
+    raf = (Math.abs(tx - cx) > 0.6 || Math.abs(ty - cy) > 0.6) ? requestAnimationFrame(tick) : null;
+  }
+  mark.addEventListener('mousemove', e => {
+    mark.classList.add('lit');
+    const p = toSVG(e); tx = p.x; ty = p.y;
+    if(!raf) raf = requestAnimationFrame(tick);
+  });
+  mark.addEventListener('mouseleave', () => mark.classList.remove('lit'));
+})();
 
-    const disableZoom = box => {
-      if (!box) return;
-      box.classList.remove("zoom", "filled");
-      box.removeAttribute("tabindex");
-      box.removeAttribute("role");
-      box.removeAttribute("data-full");
-    };
+/* ============ REVEALS + CLOCK + LOOPS ============ */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold: 0.12});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-    document.querySelectorAll(".media img").forEach(img => {
-      if (img.classList.contains("hero-fallback") || img.id === "liteImg") return;
-      const box = img.closest(".media");
-      const markImageLoaded = () => {
-        if (!img.naturalWidth) return;
-        box?.classList.add("filled");
-        if (box && !box.dataset.full) box.dataset.full = img.getAttribute("src") || "";
-      };
-      if (img.complete && img.naturalWidth) markImageLoaded();
-      img.addEventListener("load", markImageLoaded);
-      img.addEventListener("error", () => {
-        img.removeAttribute("src");
-        img.alt = "";
-        img.style.visibility = "hidden";
-        if (box?.classList.contains("clip")) disableZoom(box);
-        else disableZoom(box);
-      });
-    });
+function tickIst(){
+  try{
+    document.getElementById('hudIst').textContent =
+      new Date().toLocaleTimeString('en-IN', {timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false}) + ' IST';
+  }catch(e){}
+}
+tickIst(); setInterval(tickIst, 15000);
+document.getElementById('year').textContent = new Date().getFullYear();
 
-    heroFallback?.addEventListener("error", () => {
-      heroFallback.removeAttribute("src");
-      heroMedia?.classList.remove("has-video");
-    });
-
-    const cancelVideo = vid => {
-      if (!vid) return;
-      vid.pause();
-      vid.removeAttribute("src");
-      vid.querySelectorAll("source").forEach(source => source.removeAttribute("src"));
-      try { vid.load(); } catch {}
-    };
-
-    const attachSource = (vid, src) => {
-      const source = vid?.querySelector("source");
-      if (!source) return false;
-      const path = src || source.dataset.src;
-      if (!path) return false;
-      source.src = path;
-      return true;
-    };
-
-    if (heroVid) {
-      if (!allowVideo) {
-        cancelVideo(heroVid);
-        heroMedia?.classList.remove("has-video");
-      } else if (attachSource(heroVid, SITE.heroVideo)) {
-        const failHero = () => {
-          cancelVideo(heroVid);
-          heroMedia?.classList.remove("has-video");
-        };
-        heroVid.addEventListener("loadeddata", () => {
-          heroVid.muted = true;
-          heroVid.play().then(() => {
-            heroMedia?.classList.add("has-video");
-          }).catch(failHero);
-        }, { once: true });
-        heroVid.addEventListener("error", failHero);
-        heroVid.preload = "metadata";
-        heroVid.load();
-      } else {
-        cancelVideo(heroVid);
-        heroMedia?.classList.remove("has-video");
-      }
-    }
-
-    document.querySelectorAll(".clip video").forEach(vid => {
-      const box = vid.closest(".media");
-      if (!allowVideo || !attachSource(vid)) {
-        cancelVideo(vid);
-        box?.classList.remove("has-video");
-        return;
-      }
-      const enable = () => box?.classList.add("has-video", "filled");
-      const fail = () => {
-        cancelVideo(vid);
-        box?.classList.remove("has-video");
-      };
-      vid.addEventListener("loadeddata", enable);
-      vid.addEventListener("error", fail);
-      const clipIo = new IntersectionObserver(ents => {
-        ents.forEach(e => {
-          if (e.isIntersecting) {
-            vid.preload = "metadata";
-            vid.load();
-            clipIo.disconnect();
-          }
-        });
-      }, { rootMargin: "200px" });
-      clipIo.observe(box || vid);
-    });
-
-    document.querySelectorAll(".hoverplay").forEach(card => {
-      const vid = card.querySelector("video");
-      if (!vid) return;
-      const play = () => { if (card.classList.contains("has-video")) vid.play().catch(() => {}); };
-      const pause = () => { if (card.classList.contains("has-video")) vid.pause(); };
-      if (coarsePointer) {
-        card.addEventListener("click", () => {
-          if (!card.classList.contains("has-video")) return;
-          if (vid.paused) play();
-          else pause();
-        });
-      } else {
-        card.addEventListener("mouseenter", play);
-        card.addEventListener("mouseleave", pause);
-      }
-    });
-
-    const lite = document.getElementById("lightbox");
-    const liteImg = document.getElementById("liteImg");
-    const liteClose = document.getElementById("liteClose");
-    let liteOpener = null;
-    const closeLite = () => {
-      if (!lite) return;
-      lite.classList.remove("on");
-      lite.hidden = true;
-      document.body.classList.remove("locked");
-      pageMain?.removeAttribute("aria-hidden");
-      liteImg?.removeAttribute("src");
-      if (liteOpener && typeof liteOpener.focus === "function") {
-        try { liteOpener.focus(); } catch {}
-      }
-      liteOpener = null;
-    };
-    const openLite = card => {
-      if (!lite || !liteImg || !card.classList.contains("zoom")) return;
-      const img = card.querySelector("img");
-      const src = card.dataset.full || img?.currentSrc || img?.getAttribute("src");
-      if (!src || img?.style.visibility === "hidden") return;
-      liteOpener = card;
-      liteImg.src = src;
-      lite.hidden = false;
-      lite.classList.add("on");
-      document.body.classList.add("locked");
-      pageMain?.setAttribute("aria-hidden", "true");
-      liteClose?.focus();
-    };
-    liteClose?.addEventListener("click", closeLite);
-    liteImg?.addEventListener("error", closeLite);
-    document.querySelectorAll(".zoom").forEach(card => {
-      card.addEventListener("click", () => openLite(card));
-      card.addEventListener("keydown", e => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openLite(card);
-        }
-      });
-    });
-    lite?.addEventListener("click", e => { if (e.target === lite) closeLite(); });
-    addEventListener("keydown", e => {
-      if (e.key === "Escape") {
-        closeLite();
-        setMenu(false);
-      }
-    });
-
-    document.querySelectorAll(".copy").forEach(btn => {
-      btn.addEventListener("click", async () => {
-        const val = btn.id === "sharePage" ? location.href : btn.dataset.copy;
-        if (!val) return;
-        try {
-          await navigator.clipboard.writeText(val);
-          const old = btn.textContent;
-          btn.textContent = "Copied";
-          setTimeout(() => { btn.textContent = old; }, 1100);
-        } catch {}
-      });
-    });
-  </script>
+layoutArc(); sizeStorm(); sizeWire(); nightUpdate();
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layoutArc(); sizeStorm(); sizeWire(); drawArc(); });
+let resizeT = 0;
+window.addEventListener('resize', () => {
+  layoutArc(); sizeStorm(); sizeWire(); nightUpdate();
+  clearTimeout(resizeT); resizeT = setTimeout(drawWaves, 180);
+});
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if(!ticking){ requestAnimationFrame(() => { nightUpdate(); ticking = false; }); ticking = true; }
+}, {passive: true});
+let pageVisible = !document.hidden;
+document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; });
+if(reduced){
+  drawWire();
+} else {
+  (function loop(t){
+    if(pageVisible){ drawStorm(t || 0); drawWire(); }
+    requestAnimationFrame(loop);
+  })();
+}
+})();
+</script>
 </body>
 </html>
