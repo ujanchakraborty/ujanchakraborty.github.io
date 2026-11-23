@@ -154,10 +154,6 @@ section{padding:140px 0;position:relative}
 .sec-sub{color:var(--ash);text-align:center;max-width:580px;margin:20px auto 0;font-size:17px}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .rv.in{opacity:1;transform:none}
-/* arc-nodes must not translate — fitArcWire() uses offsetTop (layout coords) */
-.arc-node.rv{transform:none}
-.arc-node.rv.in{opacity:1;transform:none}
-
 /* ---------- manifesto ---------- */
 .manifesto p{font-size:clamp(26px,3.6vw,46px);font-weight:600;letter-spacing:-.02em;line-height:1.35;
   max-width:1000px;margin:0 auto;text-align:center}
@@ -167,23 +163,86 @@ section{padding:140px 0;position:relative}
 .manifesto .sig{margin-top:56px;text-align:center;color:var(--dim)}
 .manifesto .sig b{color:var(--orange);font-weight:500}
 
-/* ---------- the arc ---------- */
-.arc-track{position:relative;max-width:860px;margin:90px auto 0;padding-left:70px}
-/* arc-line: plain div replaces SVG — same CSS box model as the dots, no sub-pixel SVG drift.
-   dot center = padding-left(70px) - dot-offset(58px) + dot-outer-radius(9px) = 21px from arc-track left.
-   line is centered at 21px using left:21px and transform:translateX(-50%). */
-.arc-line{position:absolute;left:21px;transform:translateX(-50%);width:2px;background:var(--orange);
-  box-shadow:0 0 8px var(--orange),0 0 24px rgba(232,89,12,.45);
-  border-radius:1px;pointer-events:none;z-index:0}
-.arc-node{position:relative;padding:0 0 90px;z-index:1}
-.arc-node:last-child{padding-bottom:0}
-.arc-node::before{content:'';position:absolute;left:-58px;top:8px;width:14px;height:14px;border-radius:50%;
-  background:var(--void);border:2px solid var(--dim);transition:all .4s}
-.arc-node.on::before{background:var(--orange);border-color:var(--hot);box-shadow:0 0 18px var(--orange)}
-.arc-node .mono{color:var(--orange);margin-bottom:12px;display:block}
-.arc-node h3{font-size:clamp(30px,4vw,46px);font-weight:700;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:6px}
-.arc-node .bpm{font-family:var(--fm);font-size:13px;letter-spacing:.24em;color:var(--ash);margin-bottom:14px;display:block}
-.arc-node p{color:var(--ash);font-size:17px;max-width:560px}
+/* ---------- THE LIVING ARC (Interactive Scroll-Driven Console) ---------- */
+.arc-console{display:grid;grid-template-columns:300px 1fr;gap:44px;margin-top:70px;align-items:start;position:relative}
+.arc-telemetry{position:sticky;top:96px;display:flex;flex-direction:column;gap:20px}
+
+/* Left Telemetry HUD box */
+.arc-hud-box{background:linear-gradient(160deg,rgba(25,21,18,.85),rgba(12,11,10,.92));
+  border:1px solid rgba(252,252,249,.1);border-radius:18px;padding:24px 22px;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 18px 48px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.02);
+  display:flex;flex-direction:column;gap:16px}
+.arc-hud-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px}
+.arc-hud-head .phase-tag{display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-weight:600;font-size:10px;letter-spacing:.2em}
+.arc-hud-head .phase-tag i{width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px var(--orange);animation:blink 1.8s infinite;display:inline-block}
+.arc-hud-time{color:var(--dim);font-size:10px;letter-spacing:.18em}
+
+.arc-hud-dial{display:flex;align-items:baseline;justify-content:space-between}
+.arc-hud-bpm{font-size:36px;font-weight:800;letter-spacing:-.03em;color:var(--bone);line-height:1}
+.arc-hud-bpm small{font-size:12px;font-family:var(--fm);letter-spacing:.2em;color:var(--orange);margin-left:6px;font-weight:500}
+.arc-hud-energy{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.arc-hud-energy .label{color:var(--dim);font-size:9px;letter-spacing:.24em}
+.arc-hud-energy .val{font-size:15px;font-weight:700;color:var(--hot);font-family:var(--fm)}
+
+/* Dynamic LED VU Spectrum Bars */
+.arc-vu-meter{display:flex;align-items:flex-end;gap:5px;height:38px;padding:6px 0;border-top:1px dashed rgba(255,255,255,.07);border-bottom:1px dashed rgba(255,255,255,.07)}
+.arc-vu-bar{flex:1;background:rgba(255,255,255,.06);border-radius:2px;position:relative;height:100%;overflow:hidden}
+.arc-vu-fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,var(--orange),var(--hot));border-radius:2px;transition:height .35s ease;box-shadow:0 0 10px rgba(232,89,12,.5)}
+
+/* Interactive Scrubber Rail */
+.arc-rail-nav{display:flex;flex-direction:column;gap:10px;position:relative;padding-left:24px}
+.arc-rail-conduit{position:absolute;left:8px;top:10px;bottom:10px;width:3px;background:rgba(255,255,255,.08);border-radius:999px;overflow:visible}
+.arc-rail-progress{position:absolute;top:0;left:0;width:100%;height:0%;background:linear-gradient(180deg,var(--orange),var(--hot));border-radius:999px;box-shadow:0 0 12px var(--orange);transition:height .15s linear}
+.arc-rail-laser{position:absolute;left:50%;top:0%;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;background:var(--hot);
+  box-shadow:0 0 16px 3px var(--orange),0 0 32px var(--flame);pointer-events:none;z-index:2;transition:top .15s linear}
+.arc-rail-laser::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(255,214,165,.6);animation:blink 1.5s infinite}
+
+.arc-tab-btn{display:flex;flex-direction:column;gap:2px;background:none;border:none;text-align:left;padding:8px 12px;border-radius:10px;
+  cursor:pointer;color:var(--dim);transition:all .3s var(--ease);position:relative}
+.arc-tab-btn:hover{color:var(--ash);background:rgba(255,255,255,.03)}
+.arc-tab-btn.on{color:var(--bone);background:rgba(232,89,12,.1)}
+.arc-tab-btn.on .tab-title{color:var(--orange)}
+.arc-tab-btn .tab-top{display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:.22em}
+.arc-tab-btn .tab-title{font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--ash);transition:color .3s}
+
+/* Right Cards Container */
+.arc-cards{display:flex;flex-direction:column;gap:28px}
+.arc-card{position:relative;border-radius:22px;border:1px solid rgba(252,252,249,.09);
+  background:linear-gradient(155deg,rgba(22,18,15,.7),rgba(12,11,10,.88));
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  padding:38px 42px;transition:all .5s cubic-bezier(.22,.61,.21,1);overflow:hidden;cursor:pointer}
+.arc-card:hover{border-color:rgba(232,89,12,.45);transform:translateY(-3px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 30px rgba(232,89,12,.12)}
+.arc-card.on{border-color:rgba(232,89,12,.85);box-shadow:0 28px 70px rgba(0,0,0,.6),0 0 50px rgba(232,89,12,.22),inset 0 0 0 1px rgba(232,89,12,.35)}
+
+.arc-card-watermark{position:absolute;right:24px;bottom:10px;font-family:var(--fd);font-weight:900;font-size:150px;line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(252,252,249,.04);pointer-events:none;user-select:none;transition:all .5s}
+.arc-card.on .arc-card-watermark{color:transparent;-webkit-text-stroke:1px rgba(232,89,12,.18);transform:scale(1.04)}
+
+.arc-card-inner{position:relative;z-index:2;display:flex;flex-direction:column;gap:20px}
+.arc-card-meta-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.arc-card-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;
+  background:rgba(232,89,12,.12);border:1px solid rgba(232,89,12,.3);color:var(--orange);font-size:10px;letter-spacing:.22em}
+.arc-card-pill i{width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.arc-card-status{color:var(--dim);font-size:10px;letter-spacing:.24em}
+.arc-card.on .arc-card-status{color:var(--hot)}
+
+.arc-card-title-group h3{font-size:clamp(32px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.04;text-transform:uppercase;margin-bottom:6px}
+.arc-card.on .arc-card-title-group h3{text-shadow:0 0 36px rgba(232,89,12,.45)}
+.arc-card-sub{color:var(--ash);font-size:12px;letter-spacing:.22em;display:flex;align-items:center;gap:10px}
+.arc-card-sub b{color:var(--orange);font-weight:600}
+
+.arc-card-p{color:var(--ash);font-size:17px;line-height:1.65;max-width:640px}
+.arc-card.on .arc-card-p{color:var(--bone)}
+
+/* Interactive Real-Time Waveform Canvas */
+.arc-card-wave-box{height:52px;width:100%;background:rgba(5,5,5,.4);border-radius:12px;border:1px solid rgba(255,255,255,.05);padding:6px 12px;display:flex;align-items:center}
+canvas.arc-live-wave{width:100%;height:40px;display:block}
+
+/* Micro Telemetry Tags */
+.arc-card-tags{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}
+.arc-tag-chip{font-family:var(--fm);font-size:10px;letter-spacing:.16em;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,.03);color:var(--dim);border:1px solid rgba(255,255,255,.05)}
+.arc-card.on .arc-tag-chip{color:var(--ash);border-color:rgba(232,89,12,.2);background:rgba(232,89,12,.05)}
 
 /* ---------- stills ---------- */
 .stills-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:80px}
@@ -458,10 +517,11 @@ footer{border-top:1px solid var(--line);padding:100px 0 40px;position:relative;o
   section{padding:96px 0}
   form{padding:32px 22px}
   .f-row{grid-template-columns:1fr}
-  .arc-track{padding-left:52px}
-  .arc-node::before{left:-42px}
-  /* mobile: dot center = 52px - 42px + 9px = 19px */
-  .arc-line{left:19px}
+  .arc-console{grid-template-columns:1fr;gap:36px}
+  .arc-telemetry{position:relative;top:0}
+  .arc-hud-box{padding:20px}
+  .arc-card{padding:30px 24px}
+  .arc-card-watermark{font-size:110px}
   .setup-grid{grid-template-columns:1fr}
   .mix-body{grid-template-columns:1fr 1fr}
   .level-col{grid-column:1 / -1;order:3}
@@ -474,6 +534,10 @@ footer{border-top:1px solid var(--line);padding:100px 0 40px;position:relative;o
   .wrap{padding:0 20px}
   .sec-tag{flex-wrap:wrap;row-gap:10px}
   .sec-tag::before,.sec-tag::after{width:34px}
+  .arc-card{padding:24px 20px}
+  .arc-card-title-group h3{font-size:30px}
+  .arc-card-p{font-size:15px}
+  .arc-tag-chip{font-size:9px;padding:4px 8px}
   /* mobile: one CDJ only */
   [data-deck="2"]{display:none}
   .mixer{display:none}
@@ -595,35 +659,137 @@ footer{border-top:1px solid var(--line);padding:100px 0 40px;position:relative;o
     <span>118 — 122 — 128</span><span class="solid">·</span><span>118 — 122 — 128</span><span class="solid">·</span>
   </div>
 </div>
-<!-- ============ PEAK / THE ARC ============ -->
-<section id="arc">
+<!-- ============ PEAK / THE LIVING ARC ============ -->
+<section id="arc" class="arc-section">
   <div class="wrap">
-    <p class="mono sec-tag rv">Phase 02&nbsp;&nbsp;/&nbsp;&nbsp;Peak · 01:00</p>
+    <p class="mono sec-tag rv">Phase 02&nbsp;&nbsp;/&nbsp;&nbsp;The Sonic Arc</p>
     <h2 class="sec-title rv">One night,<br>three movements.</h2>
-    <p class="sec-sub rv">The arc every set follows. One wire, three movements.</p>
-    <div class="sample-wrap rv">
-      <span class="sample-pill">Sample copy</span>
-      <p class="client-note"><b>Client note</b> — example text. Replace each movement with the artist's own description: 1–2 lines per phase, in their voice.</p>
-    </div>
-    <div class="arc-track">
-      <div class="arc-line" aria-hidden="true"></div>
-      <div class="arc-node rv" data-node>
-        <span class="mono">Movement 01</span>
-        <h3>Warm-up</h3>
-        <span class="bpm">118 – 122 BPM</span>
-        <p>Deep. Rolling. Patient. I read the room before the room knows it's being read. Groove first, pressure later.</p>
-      </div>
-      <div class="arc-node rv" data-node>
-        <span class="mono">Movement 02</span>
-        <h3>Peak</h3>
-        <span class="bpm">124 – 128 BPM</span>
-        <p>Driving. Committed. No holding back. The whole room makes the decision at once, and the wire carries it.</p>
-      </div>
-      <div class="arc-node rv" data-node>
-        <span class="mono">Movement 03</span>
-        <h3>Afterhours</h3>
-        <span class="bpm">Open-ended</span>
-        <p>Hypnotic. Stripped. The rules dissolve after 3AM — this is where nights become stories.</p>
+    <p class="sec-sub rv">The living trajectory of the room. Scroll to track the night's frequency in real time.</p>
+
+    <div class="arc-console" id="arcConsole">
+      <!-- Left side: dynamic scroll-reactive Telemetry Rail -->
+      <aside class="arc-telemetry">
+        <div class="arc-hud-box">
+          <div class="arc-hud-head">
+            <span class="mono phase-tag"><i></i><span id="arcHudPhaseText">PHASE 01 // 23:00</span></span>
+            <span class="mono arc-hud-time">CURRENT</span>
+          </div>
+
+          <div class="arc-hud-dial">
+            <div class="arc-hud-bpm" id="arcHudBpm">118<small>BPM</small></div>
+            <div class="arc-hud-energy">
+              <span class="mono label">CIRCUIT LOAD</span>
+              <span class="val" id="arcHudEnergyVal">35%</span>
+            </div>
+          </div>
+
+          <!-- Dynamic LED VU Spectrum Bars -->
+          <div class="arc-vu-meter" aria-hidden="true">
+            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:35%"></div></div>
+            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:55%"></div></div>
+            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:80%"></div></div>
+            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:45%"></div></div>
+            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:90%"></div></div>
+            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:60%"></div></div>
+            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:40%"></div></div>
+          </div>
+
+          <!-- Interactive Scrubber Rail -->
+          <nav class="arc-rail-nav" aria-label="Movement timeline">
+            <div class="arc-rail-conduit" aria-hidden="true">
+              <div class="arc-rail-progress" id="arcRailProgress"></div>
+              <div class="arc-rail-laser" id="arcRailLaser"></div>
+            </div>
+
+            <button class="arc-tab-btn on" data-idx="0" type="button">
+              <span class="tab-top mono"><span>01</span><span>23:00</span></span>
+              <span class="tab-title">Warm-up</span>
+            </button>
+            <button class="arc-tab-btn" data-idx="1" type="button">
+              <span class="tab-top mono"><span>02</span><span>01:00</span></span>
+              <span class="tab-title">Peak</span>
+            </button>
+            <button class="arc-tab-btn" data-idx="2" type="button">
+              <span class="tab-top mono"><span>03</span><span>03:00</span></span>
+              <span class="tab-title">Afterhours</span>
+            </button>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Right side: 3 Luxury Movement Glass Cards -->
+      <div class="arc-cards" id="arcCards">
+        <!-- Movement 01 -->
+        <article class="arc-card on rv" data-m="0">
+          <span class="arc-card-watermark mono" aria-hidden="true">01</span>
+          <div class="arc-card-inner">
+            <div class="arc-card-meta-top">
+              <span class="arc-card-pill mono"><i></i>MOVEMENT 01 &nbsp;·&nbsp; 23:00</span>
+              <span class="arc-card-status mono">WARMING THE WIRE</span>
+            </div>
+            <div class="arc-card-title-group">
+              <h3>Warm-up</h3>
+              <p class="arc-card-sub mono"><b>118 — 122 BPM</b> <span>·</span> Deep House / Afro Roots</p>
+            </div>
+            <p class="arc-card-p">Deep. Rolling. Patient. I read the room before the room knows it's being read. Groove first, pressure later.</p>
+            <div class="arc-card-wave-box" aria-hidden="true">
+              <canvas class="arc-live-wave" data-wave="0"></canvas>
+            </div>
+            <div class="arc-card-tags">
+              <span class="arc-tag-chip">SUB-BASS: 42 Hz ROLLING</span>
+              <span class="arc-tag-chip">CROWD: GATHERING</span>
+              <span class="arc-tag-chip">PRESSURE: PATIENT</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Movement 02 -->
+        <article class="arc-card rv" data-m="1">
+          <span class="arc-card-watermark mono" aria-hidden="true">02</span>
+          <div class="arc-card-inner">
+            <div class="arc-card-meta-top">
+              <span class="arc-card-pill mono"><i></i>MOVEMENT 02 &nbsp;·&nbsp; 01:00</span>
+              <span class="arc-card-status mono">PEAK CURRENT</span>
+            </div>
+            <div class="arc-card-title-group">
+              <h3>Peak</h3>
+              <p class="arc-card-sub mono"><b>124 — 128 BPM</b> <span>·</span> Melodic / Driving Techno</p>
+            </div>
+            <p class="arc-card-p">Driving. Committed. No holding back. The whole room makes the decision at once, and the wire carries it.</p>
+            <div class="arc-card-wave-box" aria-hidden="true">
+              <canvas class="arc-live-wave" data-wave="1"></canvas>
+            </div>
+            <div class="arc-card-tags">
+              <span class="arc-tag-chip">VELOCITY: MAXIMUM</span>
+              <span class="arc-tag-chip">ENERGY: 100% DISCHARGE</span>
+              <span class="arc-tag-chip">WIRE: REDLINE</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Movement 03 -->
+        <article class="arc-card rv" data-m="2">
+          <span class="arc-card-watermark mono" aria-hidden="true">03</span>
+          <div class="arc-card-inner">
+            <div class="arc-card-meta-top">
+              <span class="arc-card-pill mono"><i></i>MOVEMENT 03 &nbsp;·&nbsp; 03:00</span>
+              <span class="arc-card-status mono">AFTERHOURS</span>
+            </div>
+            <div class="arc-card-title-group">
+              <h3>Afterhours</h3>
+              <p class="arc-card-sub mono"><b>OPEN-ENDED</b> <span>·</span> Hypnotic / Minimal / Sunrise</p>
+            </div>
+            <p class="arc-card-p">Hypnotic. Stripped. The rules dissolve after 3AM — this is where nights become stories. No plan survives the sunrise.</p>
+            <div class="arc-card-wave-box" aria-hidden="true">
+              <canvas class="arc-live-wave" data-wave="2"></canvas>
+            </div>
+            <div class="arc-card-tags">
+              <span class="arc-tag-chip">FREQUENCY: 3AM HYPNOSIS</span>
+              <span class="arc-tag-chip">DURATION: UNTIL SUNRISE</span>
+              <span class="arc-tag-chip">CIRCUIT: UNBOUND</span>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </div>
@@ -1159,22 +1325,139 @@ if(fine && !reduced){
   }), {threshold: 0.25}).observe(el);
 })();
 
-/* ============ ARC wire: plain div, pixel-exact alignment ============ */
-function fitArcWire(){
-  const line  = document.querySelector('.arc-line');
-  const nodes = Array.from(document.querySelectorAll('.arc-node'));
-  if(!line || nodes.length < 2) return;
-  // Content-box dot has 14px content + 4px border = 18px (radius 9px). top: 8px.
-  // Center = offsetTop + 8 + 9 = offsetTop + 17px.
-  const top    = nodes[0].offsetTop + 17;
-  const bottom = nodes[nodes.length - 1].offsetTop + 17;
-  line.style.top    = top + 'px';
-  line.style.height = Math.max(bottom - top, 0) + 'px';
-  line.style.bottom = 'auto';
-}
-window.addEventListener('load', fitArcWire);
-window.addEventListener('resize', fitArcWire);
-fitArcWire();
+/* ============ THE LIVING ARC: SCROLL-DRIVEN CONSOLE & WAVEFORMS ============ */
+(function(){
+  const consoleEl = document.getElementById('arcConsole');
+  if(!consoleEl) return;
+  const cards = Array.from(document.querySelectorAll('.arc-card'));
+  const tabs = Array.from(document.querySelectorAll('.arc-tab-btn'));
+  const railProgress = document.getElementById('arcRailProgress');
+  const railLaser = document.getElementById('arcRailLaser');
+  const bpmEl = document.getElementById('arcHudBpm');
+  const energyEl = document.getElementById('arcHudEnergyVal');
+  const phaseEl = document.getElementById('arcHudPhaseText');
+  const vuFills = Array.from(document.querySelectorAll('.arc-vu-fill'));
+
+  const movementData = [
+    { num: '01', title: 'Warm-up', bpm: '118 BPM', energy: '35%', phase: 'PHASE 01 // 23:00' },
+    { num: '02', title: 'Peak', bpm: '126 BPM', energy: '98%', phase: 'PHASE 02 // 01:00' },
+    { num: '03', title: 'Afterhours', bpm: 'Open', energy: '70%', phase: 'PHASE 03 // 03:00' }
+  ];
+
+  let activeIdx = 0;
+
+  function setActive(idx, userScroll = false){
+    if(idx < 0 || idx >= cards.length) return;
+    activeIdx = idx;
+    cards.forEach((c, i) => c.classList.toggle('on', i === idx));
+    tabs.forEach((t, i) => t.classList.toggle('on', i === idx));
+    const d = movementData[idx];
+    if(bpmEl) bpmEl.innerHTML = d.bpm.replace(' BPM', '<small>BPM</small>');
+    if(energyEl) energyEl.textContent = d.energy;
+    if(phaseEl) phaseEl.textContent = d.phase;
+
+    // Adjust VU meter animation intensity
+    vuFills.forEach((f, i) => {
+      const base = idx === 1 ? 0.88 : (idx === 2 ? 0.62 : 0.42);
+      const h = Math.round((base * 0.4 + Math.sin(i * 1.3 + idx) * 0.25 + 0.35) * 100);
+      f.style.height = Math.min(Math.max(h, 15), 100) + '%';
+    });
+
+    if(userScroll && cards[idx]){
+      cards[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // Waypoint button click
+  tabs.forEach((t, i) => t.addEventListener('click', () => setActive(i, true)));
+  cards.forEach((c, i) => c.addEventListener('click', () => setActive(i)));
+
+  // Scroll tracking: laser playhead smoothly glides along rail
+  function updateArcScroll(){
+    const rect = consoleEl.getBoundingClientRect();
+    const h = rect.height;
+    const vh = window.innerHeight;
+    // Normalized scroll progress through the console section (0 to 1)
+    const start = vh * 0.7;
+    const end = -h + vh * 0.3;
+    const p = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
+
+    if(railProgress) railProgress.style.height = (p * 100).toFixed(1) + '%';
+    if(railLaser) railLaser.style.top = (p * 100).toFixed(1) + '%';
+
+    // Find which card is closest to viewport center
+    let closestIdx = 0, closestDist = Infinity;
+    const targetY = vh * 0.48;
+    cards.forEach((card, i) => {
+      const cr = card.getBoundingClientRect();
+      const cardCenter = cr.top + cr.height / 2;
+      const dist = Math.abs(cardCenter - targetY);
+      if(dist < closestDist){
+        closestDist = dist;
+        closestIdx = i;
+      }
+    });
+
+    if(closestIdx !== activeIdx){
+      setActive(closestIdx);
+    }
+  }
+
+  window.addEventListener('scroll', () => requestAnimationFrame(updateArcScroll), { passive: true });
+  window.addEventListener('resize', updateArcScroll);
+  updateArcScroll();
+
+  /* --- Interactive Waveform Synthesis on each card --- */
+  const waveCanvases = Array.from(document.querySelectorAll('canvas.arc-live-wave'));
+  const waveContexts = waveCanvases.map(c => {
+    const d = Math.min(window.devicePixelRatio || 1, 2);
+    const w = c.clientWidth || 400, h = 40;
+    c.width = w * d; c.height = h * d;
+    const ctx = c.getContext('2d');
+    ctx.setTransform(d, 0, 0, d, 0, 0);
+    return { c, ctx, w, h, d, type: parseInt(c.dataset.wave || '0', 10) };
+  });
+
+  function drawArcWaves(now){
+    const t = now * 0.003;
+    waveContexts.forEach(({ c, ctx, w, h, type }) => {
+      ctx.clearRect(0, 0, w, h);
+      const isCardActive = (type === activeIdx);
+      const bars = Math.floor(w / 6);
+      const barW = 3;
+      const speed = isCardActive ? 1.8 : 0.8;
+      const amp = isCardActive ? 1.0 : 0.45;
+
+      for(let i = 0; i < bars; i++){
+        const norm = i / bars;
+        let bh = 6;
+        if(type === 0){ // Warm-up: deep rolling sine swell
+          bh = 4 + Math.sin(norm * 4 - t * speed) * 12 * amp + Math.sin(norm * 8 + t) * 6 * amp;
+        } else if(type === 1){ // Peak: aggressive frequency spikes
+          const f1 = Math.sin(norm * 14 - t * speed * 2.2);
+          const f2 = Math.cos(norm * 28 + t * speed);
+          bh = 4 + Math.abs(f1 * f2) * 28 * amp + 4;
+        } else { // Afterhours: hypnotic ethereal ribbon
+          bh = 6 + Math.sin(norm * 6 - t * speed * 0.8) * 16 * amp * Math.cos(norm * 2 + t * 0.5);
+        }
+        bh = Math.max(Math.min(bh, h - 4), 3);
+        const y = (h - bh) / 2;
+
+        ctx.fillStyle = isCardActive
+          ? (i % 2 === 0 ? '#E8590C' : '#FFB066')
+          : 'rgba(232,89,12,0.35)';
+        ctx.fillRect(i * 6, y, barW, bh);
+      }
+    });
+  }
+
+  let waveLoopActive = true;
+  document.addEventListener('visibilitychange', () => { waveLoopActive = !document.hidden; });
+  (function arcWaveLoop(ts){
+    if(waveLoopActive) drawArcWaves(ts || 0);
+    requestAnimationFrame(arcWaveLoop);
+  })(0);
+})();
 
 /* ============ MARQUEE exact-pixel loop ============ */
 /* JS measures the real half-width once fonts are loaded so the -50% fallback
@@ -1190,14 +1473,9 @@ function fitMarquees(){
 }
 fitMarquees();
 if(document.fonts && document.fonts.ready){
-  document.fonts.ready.then(() => { fitArcWire(); fitMarquees(); });
+  document.fonts.ready.then(() => { fitMarquees(); });
 }
 window.addEventListener('resize', fitMarquees);
-document.querySelectorAll('[data-node]').forEach(n => {
-  new IntersectionObserver((es, io) => es.forEach(e => {
-    if(e.isIntersecting){ n.classList.add('on'); io.disconnect(); }
-  }), {threshold: 0.4}).observe(n);
-});
 
 /* ============ WAVEFORMS ============ */
 function seeded(s){ let x = s; return () => { x = (x * 1664525 + 1013904223) >>> 0; return x / 4294967296; }; }
@@ -1754,7 +2032,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 sizeStorm(); sizeWire(); nightUpdate();
 // fonts.ready: re-run layout-sensitive calculations once web fonts have painted
-if(document.fonts && document.fonts.ready) document.fonts.ready.then(() => { sizeStorm(); sizeWire(); fitArcWire(); fitMarquees(); });
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(() => { sizeStorm(); sizeWire(); fitMarquees(); });
 window.addEventListener('resize', () => { sizeStorm(); sizeWire(); nightUpdate(); });
 let ticking = false;
 window.addEventListener('scroll', () => {
