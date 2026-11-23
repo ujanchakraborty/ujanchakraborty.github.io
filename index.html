@@ -169,11 +169,13 @@ section{padding:140px 0;position:relative}
 
 /* ---------- the arc ---------- */
 .arc-track{position:relative;max-width:860px;margin:90px auto 0;padding-left:70px}
-.arc-svg{position:absolute;left:14px;top:0;bottom:0;width:10px;height:100%;overflow:visible}
-.arc-svg path{stroke:var(--orange);fill:none;stroke-linecap:round}
-#arcwire{stroke-width:3;filter:drop-shadow(0 0 8px rgba(232,89,12,.9))}
-.arcwire-glow{stroke-width:9;opacity:.22}
-.arc-node{position:relative;padding:0 0 90px}
+/* arc-line: plain div replaces SVG — same CSS box model as the dots, no sub-pixel SVG drift.
+   dot center = padding-left(70px) - dot-offset(58px) + dot-outer-radius(9px) = 21px from arc-track left.
+   line is centered at 21px using left:21px and transform:translateX(-50%). */
+.arc-line{position:absolute;left:21px;transform:translateX(-50%);width:2px;background:var(--orange);
+  box-shadow:0 0 8px var(--orange),0 0 24px rgba(232,89,12,.45);
+  border-radius:1px;pointer-events:none;z-index:0}
+.arc-node{position:relative;padding:0 0 90px;z-index:1}
 .arc-node:last-child{padding-bottom:0}
 .arc-node::before{content:'';position:absolute;left:-58px;top:8px;width:14px;height:14px;border-radius:50%;
   background:var(--void);border:2px solid var(--dim);transition:all .4s}
@@ -458,7 +460,8 @@ footer{border-top:1px solid var(--line);padding:100px 0 40px;position:relative;o
   .f-row{grid-template-columns:1fr}
   .arc-track{padding-left:52px}
   .arc-node::before{left:-42px}
-  .arc-svg{left:12px}
+  /* mobile: dot center = 52px - 42px + 9px = 19px */
+  .arc-line{left:19px}
   .setup-grid{grid-template-columns:1fr}
   .mix-body{grid-template-columns:1fr 1fr}
   .level-col{grid-column:1 / -1;order:3}
@@ -603,15 +606,7 @@ footer{border-top:1px solid var(--line);padding:100px 0 40px;position:relative;o
       <p class="client-note"><b>Client note</b> — example text. Replace each movement with the artist's own description: 1–2 lines per phase, in their voice.</p>
     </div>
     <div class="arc-track">
-      <svg class="arc-svg" viewBox="0 0 10 1000" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <filter id="wireGlow" x="-200%" y="-5%" width="500%" height="110%">
-            <feGaussianBlur stdDeviation="4"/>
-          </filter>
-        </defs>
-        <path class="arcwire-glow" d="M5,0 L5,1000" filter="url(#wireGlow)"/>
-        <path id="arcwire" d="M5,0 L5,1000"/>
-      </svg>
+      <div class="arc-line" aria-hidden="true"></div>
       <div class="arc-node rv" data-node>
         <span class="mono">Movement 01</span>
         <h3>Warm-up</h3>
@@ -1164,18 +1159,18 @@ if(fine && !reduced){
   }), {threshold: 0.25}).observe(el);
 })();
 
-/* ============ ARC wire: one straight line, exactly dot to dot ============ */
+/* ============ ARC wire: plain div, pixel-exact alignment ============ */
 function fitArcWire(){
-  const track = document.querySelector('.arc-track');
-  const svg = document.querySelector('.arc-svg');
+  const line  = document.querySelector('.arc-line');
   const nodes = Array.from(document.querySelectorAll('.arc-node'));
-  if(!track || !svg || nodes.length < 2) return;
-  // arc-node.rv has no translateY transform, so offsetTop is reliable
-  const top = nodes[0].offsetTop + 15;                   // centre of first dot (top:8px + 7px radius)
-  const bottom = nodes[nodes.length - 1].offsetTop + 15; // centre of last dot
-  svg.style.top = top + 'px';
-  svg.style.height = Math.max(bottom - top, 0) + 'px';
-  svg.style.bottom = 'auto';
+  if(!line || nodes.length < 2) return;
+  // Content-box dot has 14px content + 4px border = 18px (radius 9px). top: 8px.
+  // Center = offsetTop + 8 + 9 = offsetTop + 17px.
+  const top    = nodes[0].offsetTop + 17;
+  const bottom = nodes[nodes.length - 1].offsetTop + 17;
+  line.style.top    = top + 'px';
+  line.style.height = Math.max(bottom - top, 0) + 'px';
+  line.style.bottom = 'auto';
 }
 window.addEventListener('load', fitArcWire);
 window.addEventListener('resize', fitArcWire);
