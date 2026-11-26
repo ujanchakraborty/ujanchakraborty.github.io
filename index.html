@@ -1,2110 +1,1396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEV — One Night | djdev.in</title>
-<meta name="description" content="DEV — DJ and electronic music artist, Maharashtra India. House, Afro House, Techno, Afterhours. The set follows the room.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-/* ================= DJDEV.IN — ONE NIGHT ================= */
-:root{
-  --void:#0C0B0A;
-  --panel:#131110;
-  --orange:#E8590C;
-  --flame:#F97316;
-  --peach:#E58351;
-  --ember:#C2410C;
-  --hot:#FFB066;
-  --bone:#FCFCF9;
-  --ash:#A8A29A;
-  --dim:#6E6862;
-  --line:rgba(252,252,249,.08);
-  --fd:'Inter',sans-serif;
-  --fm:'JetBrains Mono',monospace;
-  --ease:cubic-bezier(.22,.61,.21,1);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:hidden;width:100%;max-width:100%}
-html.locked{overflow:hidden}
-body{background:
-  radial-gradient(1100px 700px at 50% -8%,rgba(229,131,81,.10),transparent 62%),
-  radial-gradient(900px 600px at 88% 108%,rgba(38,64,66,.16),transparent 60%),
-  var(--void);color:var(--bone);font-family:var(--fd);font-size:16px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%;max-width:100%;cursor:default}
-::selection{background:var(--orange);color:#0C0B0A}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.mono{font-family:var(--fm);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRMX.in — Ujan Chakraborty | Software, Systems & Engineering Lab</title>
+  <meta name="description" content="Personal lab & portfolio of Ujan Chakraborty (PRMX). Systems engineering, media pipelines, automated bots, reverse APIs, and experimental software.">
+  <meta name="keywords" content="Ujan Chakraborty, PRMX, PRMX.in, software engineer, developer portfolio, systems programming, automation, Python, DeskGlide, FlyOverhead">
+  <meta name="author" content="Ujan Chakraborty">
+  <link rel="canonical" href="https://prmx.in/">
 
-/* ---------- fixed layers ---------- */
-#storm{position:fixed;inset:0;z-index:0;pointer-events:none}
-#grain{position:fixed;inset:-50%;z-index:70;pointer-events:none;opacity:.055;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  animation:grain 8s steps(10) infinite}
-@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-2%)}80%{transform:translate(3%,3%)}}
-#flash{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:0;
-  background:radial-gradient(circle at 50% 42%,rgba(255,176,102,.55),rgba(232,89,12,.18) 40%,transparent 70%)}
-main,footer{position:relative;z-index:1}
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prmx.in/">
+  <meta property="og:title" content="PRMX.in — Ujan Chakraborty | Software, Systems & Tools">
+  <meta property="og:description" content="Building high-throughput tools, automation engines, stream pipelines, and experimental software.">
+  <meta property="og:site_name" content="PRMX.in">
 
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PRMX.in — Ujan Chakraborty">
+  <meta name="twitter:description" content="Personal software lab & portfolio of Ujan Chakraborty. Systems, bots, video pipelines, and bespoke tools.">
 
-/* ---------- preloader ---------- */
-#loader{position:fixed;inset:0;z-index:300;background:var(--void);display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:28px;transition:opacity .7s var(--ease),visibility .7s}
-#loader.done{opacity:0;visibility:hidden}
-#loader .mono{color:var(--orange)}
-#loadbar{width:min(420px,70vw);height:2px;background:rgba(255,255,255,.08);position:relative;overflow:hidden;border-radius:2px}
-#loadfill{position:absolute;inset:0;width:0%;background:linear-gradient(90deg,var(--ember),var(--hot));
-  box-shadow:0 0 18px var(--orange)}
-#loadpct{font-family:var(--fm);font-size:13px;letter-spacing:.3em;color:var(--ash)}
+  <!-- Favicon / Fonts -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22monospace%22 font-weight=%22bold%22 fill=%22%2310b981%22>P</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-/* ---------- nav / HUD ---------- */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  background:rgba(5,5,5,.62);border-bottom:1px solid var(--line)}
-.nav-in{max-width:1440px;margin:0 auto;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{font-weight:800;font-size:19px;letter-spacing:.05em;display:flex;align-items:center;gap:10px}
-.brand i{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange);
-  animation:blink 2.2s infinite;font-style:normal}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
-.hud{display:flex;align-items:center;gap:26px;font-family:var(--fm);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
-.hud .phase{color:var(--orange)}
-.hud .night{color:var(--bone)}
-.hud .sep{color:var(--dim)}
-.hud .ist{color:var(--ash)}
-.nav-book{font-family:var(--fm);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);
-  border:1px solid rgba(232,89,12,.45);padding:10px 22px;border-radius:999px;transition:all .3s var(--ease);white-space:nowrap}
-.nav-book:hover{background:var(--orange);color:#0C0B0A;box-shadow:0 0 24px rgba(232,89,12,.55)}
-.burger{display:none;background:none;border:0;color:var(--bone);font-size:22px;cursor:pointer}
+  <style>
+    :root {
+      --bg: #090a0f;
+      --bg-panel: #11131a;
+      --bg-card: #141722;
+      --bg-card-hover: #191e2e;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-bright: rgba(255, 255, 255, 0.16);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      --cyan: #06b6d4;
+      --amber: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-/* ---------- left rail ---------- */
-#rail{position:fixed;left:26px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;
-  align-items:center;gap:18px;pointer-events:none}
-#rail svg{overflow:visible}
-#railwire{stroke:var(--orange);stroke-width:2;fill:none;filter:drop-shadow(0 0 6px rgba(232,89,12,.8))}
-#rail .vtext{writing-mode:vertical-rl;font-family:var(--fm);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--dim)}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* ---------- hero ---------- */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
-  padding:100px 24px 80px;position:relative;overflow:hidden}
-.hero-ghost{position:absolute;top:6%;left:50%;transform:translateX(-50%);font-size:clamp(220px,40vw,600px);
-  font-weight:800;letter-spacing:-.04em;line-height:1;color:transparent;
-  -webkit-text-stroke:1px rgba(252,252,249,.055);pointer-events:none;user-select:none;z-index:0}
-.hero-inner{position:relative;z-index:2;width:100%}
-.hero-stage{position:relative;width:min(780px,94vw);height:300px;margin:6px auto 0;will-change:transform}
-.hero-arch{position:absolute;left:50%;top:0;transform:translateX(-50%);width:240px;height:300px;
-  border-radius:120px 120px 14px 14px;overflow:hidden;border:1px solid rgba(252,252,249,.14);
-  box-shadow:0 34px 90px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.4)}
-.hero-arch img{width:100%;height:100%;object-fit:cover;object-position:center 28%;user-select:none;-webkit-user-drag:none}
-.hero-arch::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,11,10,.55));pointer-events:none}
-.hero-poster{position:absolute;width:112px;height:156px;border-radius:10px;padding:12px 12px 10px;
-  display:flex;flex-direction:column;justify-content:center;text-align:left;
-  border:1px solid rgba(252,252,249,.14);box-shadow:0 22px 50px rgba(0,0,0,.55);overflow:hidden}
-.hero-poster .hp-top{position:absolute;top:12px;left:12px;right:12px;font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(252,252,249,.85)}
-.hero-poster .hp-name{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:.95;text-transform:uppercase}
-.hero-poster.hp1{left:2%;top:48px;transform:rotate(-7deg);background:linear-gradient(160deg,#7C2D12,#0C0B0A 78%)}
-.hero-poster.hp2{left:15%;top:108px;transform:rotate(4deg);background:linear-gradient(160deg,#E8590C,#7C2D12 60%,#0C0B0A)}
-.hero-poster.hp3{right:2%;top:34px;transform:rotate(6deg);background:linear-gradient(160deg,#232326,#0C0B0A 72%)}
-.hero-poster.hp4{right:15%;top:112px;transform:rotate(-4deg);background:linear-gradient(160deg,#E8590C,#3B0A02 65%,#0C0B0A)}
-.hero-eyebrow{color:var(--orange);margin-bottom:26px;display:flex;align-items:center;justify-content:center;gap:12px}
-.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--flame);box-shadow:0 0 10px var(--flame);animation:blink 1.8s infinite}
-.hero h1{font-size:clamp(100px,20vw,300px);font-weight:800;letter-spacing:-.045em;line-height:.82;text-transform:uppercase;
-  margin-top:-60px;position:relative;z-index:3;text-shadow:0 10px 60px rgba(0,0,0,.65)}
-.hero h1 .stroke{color:transparent;-webkit-text-stroke:2px rgba(252,252,249,.85)}
-.hero-sub{margin-top:34px;font-family:var(--fm);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ash)}
-.hero-sub b{color:var(--orange);font-weight:500}
-.wire-zone{margin-top:30px;display:flex;flex-direction:column;align-items:center}
-.wire-wrap{position:relative;display:inline-block;padding:78px 96px;cursor:pointer;transition:transform .3s var(--ease)}
-.wire-wrap::before{content:'';position:absolute;inset:-70px;pointer-events:none;opacity:0;transition:opacity .6s var(--ease);
-  background:radial-gradient(circle at center,rgba(232,89,12,.24) 0%,rgba(232,89,12,.09) 42%,rgba(232,89,12,0) 68%)}
-.wire-wrap:hover::before,.wire-wrap.force-hover::before{opacity:1}
-.wire-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.wire-btn{position:relative;width:300px;height:100px;background:rgba(24,14,7,.72);border:1px solid rgba(232,89,12,.35);
-  border-radius:18px;color:var(--bone);font-family:var(--fm);font-size:15px;font-weight:700;letter-spacing:.34em;
-  text-indent:.34em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(4px);z-index:2;
-  transition:border-color .35s,box-shadow .35s}
-.wire-wrap:hover .wire-btn,.wire-wrap.force-hover .wire-btn{border-color:rgba(232,89,12,.85);box-shadow:inset 0 0 24px rgba(232,89,12,.14)}
-.wire-hint{margin-top:26px;color:var(--dim);font-size:10px}
-.wire-hint b{color:var(--ash);font-weight:500}
-.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;
-  align-items:center;gap:10px;color:var(--dim)}
-.scroll-cue .mono{font-size:10px}
-.scroll-cue .wire-v{width:1px;height:44px;background:linear-gradient(var(--orange),transparent);position:relative;overflow:hidden}
-.scroll-cue .wire-v::after{content:'';position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--hot);
-  animation:drop 1.8s var(--ease) infinite}
-@keyframes drop{to{top:110%}}
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ---------- phase marquee ---------- */
-.pmarquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;overflow:hidden;background:rgba(5,5,5,.6)}
-.pmq-track{display:flex;gap:0;width:max-content;animation:mq 30s linear infinite;will-change:transform}
-.pmq-track span{font-weight:800;font-size:clamp(48px,7vw,110px);letter-spacing:-.02em;text-transform:uppercase;
-  white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.38);padding-right:60px}
-.pmq-track span.solid{color:var(--orange);-webkit-text-stroke:0;text-shadow:0 0 40px rgba(232,89,12,.35)}
-@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(var(--mq-half,-50%))}}
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.12), transparent),
+        radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.06), transparent 50%),
+        radial-gradient(circle at 15% 70%, rgba(245, 158, 11, 0.04), transparent 45%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-/* ---------- sections ---------- */
-.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
-section{padding:140px 0;position:relative}
-.sec-tag{color:var(--orange);margin-bottom:30px;display:flex;align-items:center;gap:14px;justify-content:center}
-.sec-tag::before,.sec-tag::after{content:'';height:1px;width:56px;background:linear-gradient(90deg,transparent,rgba(232,89,12,.6))}
-.sec-tag::after{background:linear-gradient(90deg,rgba(232,89,12,.6),transparent)}
-.sec-title{font-size:clamp(40px,5.4vw,68px);font-weight:600;letter-spacing:-.025em;line-height:1.04;text-align:center}
-.sec-sub{color:var(--ash);text-align:center;max-width:580px;margin:20px auto 0;font-size:17px}
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv.in{opacity:1;transform:none}
-/* ---------- manifesto ---------- */
-.manifesto p{font-size:clamp(26px,3.6vw,46px);font-weight:600;letter-spacing:-.02em;line-height:1.35;
-  max-width:1000px;margin:0 auto;text-align:center}
-.manifesto .w{color:rgba(250,250,250,.14);transition:color .5s,text-shadow .5s}
-.manifesto .w.lit{color:var(--bone);text-shadow:0 0 26px rgba(232,89,12,.35)}
-.manifesto .w.hot.lit{color:var(--hot)}
-.manifesto .sig{margin-top:56px;text-align:center;color:var(--dim)}
-.manifesto .sig b{color:var(--orange);font-weight:500}
+    /* Ambient background grid */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-/* ---------- THE LIVING ARC (Interactive Scroll-Driven Console) ---------- */
-.arc-console{display:grid;grid-template-columns:300px 1fr;gap:44px;margin-top:70px;align-items:start;position:relative}
-.arc-telemetry{position:sticky;top:96px;display:flex;flex-direction:column;gap:20px}
+    /* Common layout */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
 
-/* Left Telemetry HUD box */
-.arc-hud-box{background:linear-gradient(160deg,rgba(25,21,18,.85),rgba(12,11,10,.92));
-  border:1px solid rgba(252,252,249,.1);border-radius:18px;padding:24px 22px;
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  box-shadow:0 18px 48px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.02);
-  display:flex;flex-direction:column;gap:16px}
-.arc-hud-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px}
-.arc-hud-head .phase-tag{display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-weight:600;font-size:10px;letter-spacing:.2em}
-.arc-hud-head .phase-tag i{width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px var(--orange);animation:blink 1.8s infinite;display:inline-block}
-.arc-hud-time{color:var(--dim);font-size:10px;letter-spacing:.18em}
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(9, 10, 15, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
 
-.arc-hud-dial{display:flex;align-items:baseline;justify-content:space-between}
-.arc-hud-bpm{font-size:36px;font-weight:800;letter-spacing:-.03em;color:var(--bone);line-height:1}
-.arc-hud-bpm small{font-size:12px;font-family:var(--fm);letter-spacing:.2em;color:var(--orange);margin-left:6px;font-weight:500}
-.arc-hud-energy{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.arc-hud-energy .label{color:var(--dim);font-size:9px;letter-spacing:.24em}
-.arc-hud-energy .val{font-size:15px;font-weight:700;color:var(--hot);font-family:var(--fm)}
+    .nav-inner {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-/* Dynamic LED VU Spectrum Bars */
-.arc-vu-meter{display:flex;align-items:flex-end;gap:5px;height:38px;padding:6px 0;border-top:1px dashed rgba(255,255,255,.07);border-bottom:1px dashed rgba(255,255,255,.07)}
-.arc-vu-bar{flex:1;background:rgba(255,255,255,.06);border-radius:2px;position:relative;height:100%;overflow:hidden}
-.arc-vu-fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,var(--orange),var(--hot));border-radius:2px;transition:height .35s ease;box-shadow:0 0 10px rgba(232,89,12,.5)}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
 
-/* Interactive Scrubber Rail */
-.arc-rail-nav{display:flex;flex-direction:column;gap:10px;position:relative;padding-left:24px}
-.arc-rail-conduit{position:absolute;left:8px;top:10px;bottom:10px;width:3px;background:rgba(255,255,255,.08);border-radius:999px;overflow:visible}
-.arc-rail-progress{position:absolute;top:0;left:0;width:100%;height:0%;background:linear-gradient(180deg,var(--orange),var(--hot));border-radius:999px;box-shadow:0 0 12px var(--orange);transition:height .15s linear}
-.arc-rail-laser{position:absolute;left:50%;top:0%;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;background:var(--hot);
-  box-shadow:0 0 16px 3px var(--orange),0 0 32px var(--flame);pointer-events:none;z-index:2;transition:top .15s linear}
-.arc-rail-laser::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(255,214,165,.6);animation:blink 1.5s infinite}
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 14px;
+      color: #090a0f;
+      box-shadow: 0 0 16px var(--emerald-glow);
+    }
 
-.arc-tab-btn{display:flex;flex-direction:column;gap:2px;background:none;border:none;text-align:left;padding:8px 12px;border-radius:10px;
-  cursor:pointer;color:var(--dim);transition:all .3s var(--ease);position:relative}
-.arc-tab-btn:hover{color:var(--ash);background:rgba(255,255,255,.03)}
-.arc-tab-btn.on{color:var(--bone);background:rgba(232,89,12,.1)}
-.arc-tab-btn.on .tab-title{color:var(--orange)}
-.arc-tab-btn .tab-top{display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:.22em}
-.arc-tab-btn .tab-title{font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--ash);transition:color .3s}
+    .brand-text {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-/* Right Cards Container */
-.arc-cards{display:flex;flex-direction:column;gap:28px}
-.arc-card{position:relative;border-radius:22px;border:1px solid rgba(252,252,249,.09);
-  background:linear-gradient(155deg,rgba(22,18,15,.7),rgba(12,11,10,.88));
-  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  padding:38px 42px;transition:all .5s cubic-bezier(.22,.61,.21,1);overflow:hidden;cursor:pointer}
-.arc-card:hover{border-color:rgba(232,89,12,.45);transform:translateY(-3px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 30px rgba(232,89,12,.12)}
-.arc-card.on{border-color:rgba(232,89,12,.85);box-shadow:0 28px 70px rgba(0,0,0,.6),0 0 50px rgba(232,89,12,.22),inset 0 0 0 1px rgba(232,89,12,.35)}
+    .brand-tag {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      letter-spacing: 0.05em;
+    }
 
-.arc-card-watermark{position:absolute;right:24px;bottom:10px;font-family:var(--fd);font-weight:900;font-size:150px;line-height:1;
-  color:transparent;-webkit-text-stroke:1px rgba(252,252,249,.04);pointer-events:none;user-select:none;transition:all .5s}
-.arc-card.on .arc-card-watermark{color:transparent;-webkit-text-stroke:1px rgba(232,89,12,.18);transform:scale(1.04)}
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
 
-.arc-card-inner{position:relative;z-index:2;display:flex;flex-direction:column;gap:20px}
-.arc-card-meta-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.arc-card-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;
-  background:rgba(232,89,12,.12);border:1px solid rgba(232,89,12,.3);color:var(--orange);font-size:10px;letter-spacing:.22em}
-.arc-card-pill i{width:6px;height:6px;border-radius:50%;background:var(--orange)}
-.arc-card-status{color:var(--dim);font-size:10px;letter-spacing:.24em}
-.arc-card.on .arc-card-status{color:var(--hot)}
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-.arc-card-title-group h3{font-size:clamp(32px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.04;text-transform:uppercase;margin-bottom:6px}
-.arc-card.on .arc-card-title-group h3{text-shadow:0 0 36px rgba(232,89,12,.45)}
-.arc-card-sub{color:var(--ash);font-size:12px;letter-spacing:.2em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.arc-card-sub .sub-bpm{color:var(--orange);font-weight:700}
-.arc-card-sub .sub-sep{color:var(--dim)}
-.arc-card-sub .sub-genre{color:var(--ash)}
+    nav a:hover {
+      color: var(--text-main);
+    }
 
-.arc-card-p{color:var(--ash);font-size:17px;line-height:1.65;max-width:640px}
-.arc-card.on .arc-card-p{color:var(--bone)}
+    .nav-cta {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-bright);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+    }
 
-/* Interactive Real-Time Waveform Canvas */
-.arc-card-wave-box{height:52px;width:100%;background:rgba(5,5,5,.4);border-radius:12px;border:1px solid rgba(255,255,255,.05);padding:6px 12px;display:flex;align-items:center}
-canvas.arc-live-wave{width:100%;height:40px;display:block}
+    .nav-cta:hover {
+      background: var(--text-main);
+      color: var(--bg);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
 
-/* Micro Telemetry Tags */
-.arc-card-tags{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}
-.arc-tag-chip{font-family:var(--fm);font-size:10px;letter-spacing:.16em;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,.03);color:var(--dim);border:1px solid rgba(255,255,255,.05)}
-.arc-card.on .arc-tag-chip{color:var(--ash);border-color:rgba(232,89,12,.2);background:rgba(232,89,12,.05)}
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+      display: inline-block;
+      animation: pulse 2.5s infinite;
+    }
 
-/* ---------- stills ---------- */
-.stills-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:80px}
-.still{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#000;min-height:280px}
-.still img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .5s;filter:saturate(.9) contrast(1.04)}
-.still:hover img{transform:scale(1.07);filter:saturate(1.12) contrast(1.06)}
-.still::after{content:'';position:absolute;inset:0;border-radius:18px;pointer-events:none;transition:box-shadow .4s;
-  box-shadow:inset 0 0 0 1px rgba(232,89,12,0)}
-.still:hover::after{box-shadow:inset 0 0 0 1px rgba(232,89,12,.6),inset 0 0 70px rgba(232,89,12,.14)}
-.still figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 18px;
-  background:linear-gradient(transparent,rgba(0,0,0,.88));font-family:var(--fm);font-size:10px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--ash);opacity:0;transform:translateY(8px);transition:all .4s var(--ease)}
-.still:hover figcaption{opacity:1;transform:none}
-.still figcaption b{color:var(--orange);font-weight:500}
-.sg-1{grid-column:span 7;height:460px}.sg-2{grid-column:span 5;height:460px}
-.sg-3{grid-column:span 4;height:360px}.sg-4{grid-column:span 4;height:360px}.sg-5{grid-column:span 4;height:360px}
-/* ---------- image placeholders (client drops real photos in) ---------- */
-.ph{position:relative;border-radius:18px;border:1px dashed rgba(232,89,12,.38);
-  background:repeating-linear-gradient(45deg,rgba(255,255,255,.016) 0 14px,transparent 14px 28px),#0A0A0C;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:280px;
-  transition:border-color .3s,box-shadow .3s;text-align:center;padding:24px}
-.ph:hover{border-color:rgba(232,89,12,.75);box-shadow:0 0 34px rgba(232,89,12,.12)}
-.ph svg{opacity:.5}
-.ph .mono{color:var(--orange);font-size:11px}
-.ph small{font-family:var(--fm);font-size:10px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase;line-height:1.9}
-.ph small b{color:var(--ash);font-weight:500}
-/* ---------- set ethos framing ---------- */
-.sample-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10px;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--orange);border:1px solid rgba(232,89,12,.35);background:rgba(232,89,12,.08);border-radius:999px;padding:6px 18px}
-.sample-pill .badge-dot{width:5px;height:5px;border-radius:50%;background:var(--orange);box-shadow:0 0 8px var(--orange);display:inline-block}
-.sample-wrap{text-align:center;margin:22px auto 36px;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:640px}
-.ethos-note{font-family:var(--fm);font-size:11px;letter-spacing:.08em;color:var(--dim);max-width:580px;line-height:1.8}
-.ethos-note b{color:var(--ash);font-weight:600}
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.9); }
+    }
 
-/* ---------- mixes ---------- */
-.mix-row{display:grid;grid-template-columns:64px 1fr auto;gap:28px;align-items:center;padding:26px 30px;
-  border:1px solid var(--line);border-radius:18px;margin-top:14px;background:rgba(255,255,255,.015);
-  transition:border-color .3s,transform .3s var(--ease),box-shadow .3s}
-.mix-row:hover{border-color:rgba(232,89,12,.5);transform:translateX(6px);box-shadow:0 10px 34px rgba(232,89,12,.1)}
-.mix-num{font-family:var(--fm);color:var(--dim);font-size:12px}
-.mix-row h4{font-size:20px;font-weight:600;margin-bottom:10px}
-.mix-row .genre{font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:12px}
-canvas.wave{width:100%;height:44px;display:block}
-.mix-side{display:flex;align-items:center;gap:18px}
-.mix-dur{font-family:var(--fm);font-size:12px;color:var(--dim)}
-.play-btn{width:54px;height:54px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:none;color:var(--bone);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;flex-shrink:0}
-.play-btn:hover{background:var(--orange);border-color:var(--orange);color:#0C0B0A;box-shadow:0 0 22px rgba(232,89,12,.6);transform:scale(1.08)}
-.mix-note{margin-top:28px;color:var(--dim);font-size:14px;text-align:center}
-.mix-note .mono{color:var(--orange);font-size:10px;margin-right:10px}
+    /* Mobile Nav Toggle */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 22px;
+      cursor: pointer;
+    }
 
-/* ---------- booking ---------- */
-.book-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;margin-top:80px;align-items:start}
-.book-info h3{font-size:clamp(28px,3.4vw,40px);font-weight:600;letter-spacing:-.02em;margin:18px 0 16px;line-height:1.15}
-.book-info>p{color:var(--ash);font-size:17px;margin-bottom:32px;max-width:420px}
-.type-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
-.type-chips span{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:10px 20px;color:var(--ash);transition:all .25s}
-.type-chips span:hover{border-color:var(--orange);color:var(--orange);box-shadow:0 0 16px rgba(232,89,12,.25)}
-.req-list{list-style:none;border-top:1px solid var(--line)}
-.req-list li{padding:16px 0;border-bottom:1px solid var(--line);color:var(--ash);font-size:15px;display:flex;gap:14px;align-items:baseline}
-.req-list li::before{content:'→';color:var(--orange);font-family:var(--fm)}
-form{background:rgba(11,11,12,.85);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:22px;
-  padding:46px;position:relative;overflow:hidden}
-form::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(232,89,12,.7),transparent)}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.f-group{margin-bottom:20px;display:flex;flex-direction:column;gap:10px}
-.f-group label{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-.f-group input,.f-group select,.f-group textarea{background:#08080A;border:1px solid var(--line);border-radius:12px;
-  padding:15px 18px;color:var(--bone);font-family:var(--fd);font-size:15px;transition:border-color .25s,box-shadow .25s;width:100%}
-.f-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A3A3A3' fill='none' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center}
-.f-group textarea{min-height:118px;resize:vertical}
-.f-group input:focus,.f-group select:focus,.f-group textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,89,12,.14)}
-.f-submit{width:100%;margin-top:10px;background:var(--orange);border:0;border-radius:12px;color:#0C0B0A;cursor:pointer;
-  font-family:var(--fm);font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;padding:18px;
-  transition:all .3s var(--ease);display:flex;align-items:center;justify-content:center;gap:10px}
-.f-submit:hover{box-shadow:0 0 34px rgba(232,89,12,.55);transform:translateY(-2px)}
-.form-ok{display:none;text-align:center;padding:44px 20px}
-.ok-ring{width:78px;height:78px;border-radius:50%;border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;
-  color:var(--orange);margin:0 auto 24px;box-shadow:0 0 36px rgba(232,89,12,.35)}
-.form-ok h3{font-size:26px;font-weight:600;margin-bottom:10px}
-.form-ok p{color:var(--ash)}
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 60px;
+    }
 
-/* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);padding:100px 0 40px;position:relative;overflow:hidden;background:rgba(5,5,5,.7)}
-.foot-mark{position:relative;max-width:1080px;margin:0 auto 70px;user-select:none}
-.foot-mark svg{display:block;width:100%;height:auto}
-.fm-base{font-family:var(--fd);font-weight:800;font-size:255px;letter-spacing:-6px;fill:none;
-  stroke:rgba(255,255,255,.16);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
-.fm-lamp{font-family:var(--fd);font-weight:800;font-size:255px;letter-spacing:-6px;
-  fill:rgba(232,89,12,.10);stroke:#FF9A4D;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
-#lampGroup{transition:opacity .5s var(--ease)}
-.foot-mark.lit #lampGroup{opacity:1}
-.foot-grid{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;padding-top:32px;border-top:1px solid var(--line)}
-.foot-grid .mono{color:var(--dim);font-size:10px}
-.foot-links{display:flex;gap:26px}
-.foot-links a{font-family:var(--fm);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);transition:color .25s}
-.foot-links a:hover{color:var(--orange)}
-.to-top{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;transition:all .25s}
-.to-top:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-4px);box-shadow:0 0 18px rgba(232,89,12,.35)}
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.22);
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--emerald);
+      margin-bottom: 24px;
+    }
 
-/* ---------- the booth ---------- */
-.booth{background:rgba(5,5,5,.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.booth-sub{margin:64px auto 0;max-width:860px}
-.booth-sub h3{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.02em;text-transform:uppercase}
-.booth-sub h3 .mono{color:var(--orange);display:block;margin-bottom:10px;font-size:11px}
-.booth-sub p{color:var(--ash);font-size:16px;margin-top:10px;max-width:560px}
-.booth-sub.setup-sub{max-width:1480px;padding:0 32px}
-/* deck */
-/* the real CDJ-3000 — photo + live overlays */
-.cdj{position:relative}
-.cdj-top{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}
-.cdj-top .mono{color:var(--dim)}
-.cdj-unit{position:relative;width:100%;aspect-ratio:677/926;user-select:none;-webkit-user-select:none}
-.cdj-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 30px 50px rgba(0,0,0,.6));pointer-events:none;user-select:none;-webkit-user-drag:none}
-.cdj-screen{position:absolute;left:19.8%;top:7.3%;width:60.6%;height:25.4%;background:#050507;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;padding:5px 8px}
-.cdj-screen-info{display:flex;justify-content:space-between;gap:8px;font-family:var(--fm);font-size:10px;letter-spacing:.06em;color:var(--bone);white-space:nowrap;overflow:hidden}
-.cdj-screen-info span:first-child{overflow:hidden;text-overflow:ellipsis}
-.cdj-screen-info b{color:var(--orange);font-weight:500}
-.cdj-screen canvas.deckwave{flex:1;width:100%;height:auto;min-height:0;display:block}
-.deck-playhead{position:absolute;top:20%;bottom:16%;width:2px;background:var(--bone);left:12%;box-shadow:0 0 8px rgba(255,255,255,.6)}
-.cdj-genre{font-family:var(--fm);font-size:8px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cdj-jog{position:absolute;left:16.8%;top:43.2%;width:66.5%;aspect-ratio:1/1;border-radius:50%;cursor:grab;touch-action:none}
-.cdj-jog:active{cursor:grabbing}
-.cdj-jog .jog-ring{position:absolute;inset:4.5%;border-radius:50%;pointer-events:none;
-  background:repeating-conic-gradient(from 0deg, rgba(255,255,255,.55) 0deg .7deg, transparent .7deg 10deg);
-  -webkit-mask:radial-gradient(circle, transparent 68%, #000 69%, #000 96%, transparent 97%);
-  mask:radial-gradient(circle, transparent 68%, #000 69%, #000 96%, transparent 97%)}
-.cdj-jog .jog-mark{position:absolute;left:50%;top:1%;width:3px;height:9%;background:var(--orange);border-radius:2px;transform:translateX(-50%);box-shadow:0 0 10px var(--orange);pointer-events:none}
-.cdj-jog:hover{box-shadow:0 0 34px rgba(232,89,12,.18)}
-.cdj-jog.playing{box-shadow:0 0 44px rgba(232,89,12,.28)}
-.cdj-hit{position:absolute;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.cdj-hit:hover{box-shadow:0 0 0 2px rgba(255,255,255,.28)}
-.tempo-read{color:var(--orange)}
-.cdj-play{left:4.1%;top:89.3%;width:10.2%;aspect-ratio:1/1;border-radius:50%}
-.cdj.playing .cdj-play{box-shadow:0 0 22px rgba(34,197,94,.75), inset 0 0 12px rgba(34,197,94,.35)}
-.cdj-cue{left:4.3%;top:79.2%;width:10.0%;aspect-ratio:1/1;border-radius:50%}
-.cdj-cue.on{box-shadow:0 0 18px rgba(232,89,12,.7), inset 0 0 10px rgba(232,89,12,.3)}
-.cdj-hot{top:35.4%;width:5.9%;height:3.3%;border-radius:3px}
-.cdj-hot.on{box-shadow:inset 0 0 0 2px var(--orange),0 0 12px rgba(232,89,12,.6);background:rgba(232,89,12,.15)}
-.cdj-sync{left:90%;top:46.8%;width:5.1%;height:2.7%;border-radius:2px}
-.cdj-master{left:95.9%;top:46.8%;width:4.4%;height:2.7%;border-radius:2px}
-.cdj-loop{left:20.5%;top:40.8%;width:5.9%;height:3.3%;border-radius:3px}
-.cdj-sync.on,.cdj-master.on,.cdj-loop.on{box-shadow:inset 0 0 0 2px var(--orange),0 0 10px rgba(232,89,12,.5);background:rgba(232,89,12,.15)}
+    .hero-title {
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      margin-bottom: 22px;
+      max-width: 960px;
+    }
 
-.fader{width:44px;height:120px;position:relative;cursor:ns-resize;touch-action:none}
-.fader .ftrack{position:absolute;left:50%;top:0;bottom:0;width:4px;background:#222;border-radius:2px;transform:translateX(-50%)}
-.fader .fhandle{position:absolute;left:50%;width:38px;height:16px;background:linear-gradient(#2E2E33,#17171A);border:1px solid rgba(255,255,255,.2);border-radius:4px;transform:translate(-50%,-50%);top:100%}
-/* mixer */
-.mixer{max-width:none;margin:0;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:22px;
-  background:
-    radial-gradient(circle at 14px 14px, #3A3A3E 0 2px, #141416 2px 3px, transparent 4px),
-    radial-gradient(circle at calc(100% - 14px) 14px, #3A3A3E 0 2px, #141416 2px 3px, transparent 4px),
-    radial-gradient(circle at 14px calc(100% - 14px), #3A3A3E 0 2px, #141416 2px 3px, transparent 4px),
-    radial-gradient(circle at calc(100% - 14px) calc(100% - 14px), #3A3A3E 0 2px, #141416 2px 3px, transparent 4px),
-    repeating-linear-gradient(90deg, rgba(255,255,255,.014) 0 2px, transparent 2px 4px),
-    linear-gradient(180deg,#19191C,#0C0C0E 55%,#111113);
-  box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07)}
-.mix-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.mix-head .mono{color:var(--dim)}
-.fx-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0;padding:14px;background:#0A0A0C;border:1px solid var(--line);border-radius:12px}
-.fx-label{font-family:var(--fm);font-size:11px;letter-spacing:.18em;color:var(--hot)}
-.fx-btn{font-family:var(--fm);font-size:11px;letter-spacing:.14em;padding:10px 18px;border-radius:8px;border:1px solid rgba(255,255,255,.16);background:#121214;color:var(--ash);cursor:pointer;transition:all .2s}
-.fx-btn.on{background:#D9F99D;color:#111;border-color:#D9F99D}
-.fx-time{margin-left:auto;font-family:var(--fm);font-size:12px;color:var(--dim);letter-spacing:.14em}
-.mix-body{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:start}
-.ch{background:#0C0C0E;border:1px solid var(--line);border-radius:14px;padding:18px 12px;text-align:center}
-.ch h5{font-family:var(--fm);font-size:11px;letter-spacing:.2em;color:var(--ash);margin-bottom:16px}
-.knob{width:54px;height:54px;border-radius:50%;margin:0 auto;position:relative;cursor:ns-resize;touch-action:none;
-  background:radial-gradient(circle at 35% 30%,#2A2A2E,#101012 70%);border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 4px 10px rgba(0,0,0,.5)}
-.knob .kp{position:absolute;left:50%;top:50%;width:3px;height:22px;background:var(--bone);border-radius:2px;
-  transform-origin:50% 100%;transform:translate(-50%,-100%) rotate(0deg);pointer-events:none}
-.knob-lab{font-family:var(--fm);font-size:9px;letter-spacing:.18em;color:var(--dim);margin:6px 0 16px}
-.knob-lab:last-child{margin-bottom:0}
-.level-col{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:4px}
-.level-meter{width:26px;height:230px;background:#0A0A0C;border:1px solid var(--line);border-radius:6px;display:flex;flex-direction:column-reverse;gap:2px;padding:3px}
-.level-meter i{flex:1;background:#1E1E22;border-radius:1px}
-.level-meter i.lit{background:#22C55E}
-.level-meter i.lit.hot{background:var(--orange)}
-.level-lab{font-family:var(--fm);font-size:9px;letter-spacing:.18em;color:var(--dim)}
-.ch-fader{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:18px}
-.ch-fader .fader{height:130px}
-.ch-fader .mono{font-size:9px;color:var(--dim)}
-/* decks grid + crate + crossfader */
-.setup-grid{display:grid;grid-template-columns:1fr 340px 1fr;gap:20px;max-width:1480px;margin:34px auto 0;padding:0 32px;align-items:stretch}
-.setup-grid .cdj{margin:0}
-.crate{max-width:860px;margin:34px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 32px}
-.crate-track{border:1px solid var(--line);background:#0D0D0F;border-radius:12px;padding:16px;text-align:left;cursor:pointer;transition:all .2s;color:var(--bone);font-family:var(--fd)}
-.crate-track b{display:block;font-size:16px;font-weight:600;margin-bottom:4px}
-.crate-track span{font-family:var(--fm);font-size:10px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
-.crate-track.on{border-color:var(--orange);box-shadow:0 0 18px rgba(232,89,12,.2)}
-.crate-track.on span{color:var(--orange)}
-.deck-load{font-family:var(--fm);font-size:10px;letter-spacing:.14em;color:var(--orange);border:1px solid rgba(232,89,12,.5);border-radius:6px;padding:7px 12px;background:none;cursor:pointer;white-space:nowrap;transition:all .2s}
-.deck-load:hover{background:var(--orange);color:#0C0B0A}
-.xfade{margin-top:22px;padding:16px 20px;background:#0A0A0C;border:1px solid var(--line);border-radius:12px}
-.xfade .xf-labels{display:flex;justify-content:space-between;font-family:var(--fm);font-size:10px;letter-spacing:.2em;color:var(--dim);margin-bottom:12px}
-.xfade .xf-labels b{color:var(--orange);font-weight:500}
-.xf-track{position:relative;height:8px;background:#1E1E22;border-radius:4px;cursor:pointer;touch-action:none}
-.xf-handle{position:absolute;top:50%;left:50%;width:44px;height:22px;background:linear-gradient(#2E2E33,#17171A);border:1px solid rgba(255,255,255,.25);border-radius:5px;transform:translate(-50%,-50%);box-shadow:0 2px 8px rgba(0,0,0,.5)}
-.booth-note{max-width:860px;margin:18px auto 0;text-align:center;color:var(--dim);font-size:12px;padding:0 32px}
-.booth-note .mono{color:var(--orange);font-size:10px;margin-right:8px}
-/* keys + notes */
-.keys-wrap{max-width:860px;margin:70px auto 0}
-.keys-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.keys-head .mono{color:var(--dim)}
-.piano{background:#101012;border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:20px;margin-top:20px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.piano-keys{position:relative;display:flex;height:170px;user-select:none;-webkit-user-select:none}
-.pkey{flex:1;background:linear-gradient(#FAFAFA,#E8E8E8);border:1px solid #999;border-radius:0 0 6px 6px;cursor:pointer;position:relative;transition:background .05s;touch-action:none}
-.pkey:active,.pkey.on{background:var(--hot)}
-.pkey .klab{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-family:var(--fm);font-size:10px;color:#888;pointer-events:none}
-.pkey.black{position:absolute;top:0;width:36px;height:104px;background:linear-gradient(#26262A,#000);border:1px solid #000;border-radius:0 0 5px 5px;z-index:2;cursor:pointer;flex:none}
-.pkey.black:active,.pkey.black.on{background:var(--orange)}
-.keys-hint{margin-top:14px;color:var(--dim);font-size:11px;text-align:center}
-.notes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:860px;margin:26px auto 0}
-.note{border-radius:4px;padding:22px 22px 26px;font-family:var(--fm);font-size:14px;line-height:1.8;min-height:150px;box-shadow:0 14px 30px rgba(0,0,0,.45);color:#1A1A1A}
-.note:nth-child(1){transform:rotate(-1.2deg)}
-.note:nth-child(2){transform:rotate(1deg)}
-.note.y{background:#D9F99D}
-.note.w{background:#F5F0E6}
-.note .n-tag{font-size:10px;letter-spacing:.2em;opacity:.55;display:block;margin-bottom:8px}
-/* the wall */
-.wall{margin-top:70px}
-.wall-row{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 32px 26px;scrollbar-width:none}
-.wall-row::-webkit-scrollbar{display:none}
-.poster{flex:0 0 300px;scroll-snap-align:center;border-radius:16px;overflow:hidden;position:relative;height:420px;border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:transform .35s var(--ease)}
-.poster:hover{transform:translateY(-6px)}
-.poster .p-in{position:absolute;inset:0;padding:22px 22px 66px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.6))}
-.poster .p-top{font-family:var(--fm);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.8)}
-.poster h4{font-size:46px;font-weight:800;letter-spacing:-.02em;line-height:.95;text-transform:uppercase}
-.poster .p-meta{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);line-height:2}
-.poster .p-zoom{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-family:var(--fm);font-size:10px;letter-spacing:.24em;background:rgba(0,0,0,.55);padding:8px 16px;border-radius:999px;white-space:nowrap}
-.poster.p1{background:linear-gradient(160deg,#7C2D12,#0C0B0A 75%)}
-.poster.p2{background:linear-gradient(160deg,#E8590C,#7C2D12 60%,#0C0B0A)}
-.poster.p3{background:linear-gradient(160deg,#1C1C1F,#0C0B0A 70%)}
-.poster.p4{background:linear-gradient(160deg,#EA580C,#3B0A02 65%,#0C0B0A)}
-.poster.cta{background:#E8590C;cursor:pointer}
-.poster.cta .p-in{background:none}
-.poster.cta h4{color:#0C0B0A}
-.poster.cta .p-top,.poster.cta .p-meta{color:rgba(5,5,5,.75)}
-.poster.cta .p-zoom{background:#0C0B0A;color:var(--bone)}
-#lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:24px;cursor:pointer}
-#lightbox.open{display:flex}
-#lightbox .poster{flex:none;width:min(420px,90vw);height:min(590px,86vh);transform:none;cursor:pointer}
-#lightbox .poster:hover{transform:none}
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-/* ---------- responsive ---------- */
-@media(max-width:1100px){#rail{display:none}}
-/* compact mixer in the wide setup so its height matches the CDJs */
-@media(min-width:961px){
-  .setup-grid .mixer{padding:14px}
-  .setup-grid .mixer .fx-row{margin:10px 0;padding:8px 12px}
-  .setup-grid .mixer .ch{padding:12px 10px}
-  .setup-grid .mixer .ch h5{margin-bottom:8px}
-  .setup-grid .mixer .knob{width:42px;height:42px}
-  .setup-grid .mixer .knob-lab{margin:4px 0 7px}
-  .setup-grid .mixer .level-meter{height:140px}
-  .setup-grid .mixer .ch-fader{margin-top:12px}
-  .setup-grid .mixer .ch-fader .fader{height:68px}
-  .setup-grid .mixer .xfade{margin-top:10px;padding:10px 14px}
-}
-@media(max-width:960px){
-  .hud .ist,.hud .sep.ist-sep{display:none}
-  .hud{gap:16px}
-  .book-grid{grid-template-columns:1fr;gap:52px}
-  .sg-1,.sg-2{grid-column:span 12;height:340px}
-  .sg-3,.sg-4,.sg-5{grid-column:span 12;height:300px}
-  .mix-row{grid-template-columns:1fr auto;gap:14px}
-  .mix-num,.mix-dur{display:none}
-  .wire-btn{width:240px;height:88px}
-  .wire-wrap{padding:56px 40px}
-  section{padding:96px 0}
-  form{padding:32px 22px}
-  .f-row{grid-template-columns:1fr}
+    .hero-title .accent-text {
+      background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  /* Arc console on tablet & mobile */
-  .arc-console{grid-template-columns:1fr;gap:20px;margin-top:36px}
-  .arc-telemetry{position:sticky;top:68px;z-index:35;background:rgba(12,11,10,.95);
-    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-    border-radius:18px;margin-bottom:6px}
-  .arc-hud-box{padding:12px 16px;gap:10px;box-shadow:0 12px 30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.05);border-radius:16px}
-  .arc-hud-head{padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06)}
-  .arc-hud-head .phase-tag{font-size:9px}
-  .arc-hud-head .arc-hud-time{display:none}
-  .arc-hud-dial{align-items:center}
-  .arc-hud-bpm{font-size:22px}
-  .arc-hud-bpm small{font-size:9px}
-  .arc-hud-energy .label{font-size:8px}
-  .arc-hud-energy .val{font-size:12px}
-  .arc-vu-meter{display:none}
+    .hero-sub {
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--text-muted);
+      max-width: 780px;
+      margin-bottom: 36px;
+      font-weight: 400;
+      line-height: 1.65;
+    }
 
-  /* Horizontal touch-friendly segmented switcher */
-  .arc-rail-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding-left:0}
-  .arc-rail-conduit{display:none}
-  .arc-tab-btn{padding:8px 4px;text-align:center;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);border-radius:8px}
-  .arc-tab-btn .tab-top{justify-content:center;font-size:9px;color:var(--dim)}
-  .arc-tab-btn .tab-top span:last-child{display:none}
-  .arc-tab-btn .tab-title{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
-  .arc-tab-btn.on{border-color:rgba(232,89,12,.55);background:rgba(232,89,12,.15)}
-  .arc-tab-btn.on .tab-title{color:var(--orange)}
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
 
-  /* Movement cards */
-  .arc-cards{gap:20px}
-  .arc-card{padding:26px 20px;border-radius:18px}
-  .arc-card-watermark{display:none}
-  .arc-card-title-group h3{font-size:28px}
-  .arc-card-sub{font-size:10px;gap:6px 8px;flex-wrap:wrap}
-  .arc-card-p{font-size:15px;line-height:1.6}
-  .arc-card-tags{gap:6px}
-  .arc-tag-chip{font-size:9px;padding:4px 8px;letter-spacing:.08em}
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
 
-  .setup-grid{grid-template-columns:1fr}
-  .mix-body{grid-template-columns:1fr 1fr}
-  .level-col{grid-column:1 / -1;order:3}
-  .level-meter{width:100%;height:22px;flex-direction:row}
-  .notes{grid-template-columns:1fr}
-}
-@media(max-width:640px){
-  .hud .night,.hud .sep{display:none}
-  .nav-in{padding:0 18px}
-  .wrap{padding:0 18px}
-  .sec-tag{flex-wrap:wrap;row-gap:8px}
-  .sec-tag::before,.sec-tag::after{width:28px}
-  .sample-wrap{margin:18px auto 28px}
-  .ethos-note{font-size:10px;line-height:1.65;max-width:320px}
-  .arc-card{padding:20px 16px}
-  .arc-card-inner{gap:14px}
-  .arc-card-title-group h3{font-size:25px}
-  .arc-card-p{font-size:14px;line-height:1.55}
-  .arc-card-wave-box{height:44px;padding:4px 8px}
-  canvas.arc-live-wave{height:34px}
-  .arc-tag-chip{font-size:8px;padding:4px 7px}
-  /* mobile: one CDJ only */
-  [data-deck="2"]{display:none}
-  .mixer{display:none}
-  .setup-grid{padding:0 10px}
-  .crate{grid-template-columns:1fr}
-  .mixer{padding:18px}
-  .cdj-screen-info{font-size:8px}
-  .cdj-genre{font-size:7px}
-  .cdj-top{gap:8px;flex-wrap:nowrap}
-  .cdj-top .mono{font-size:10px}
-  .piano-keys{height:140px}
-  .pkey.black{width:28px;height:88px}
-  /* mobile hero: arch only, no poster fan */
-  .hero{padding-top:104px}
-  .hero-stage{height:250px}
-  .hero-arch{width:188px;height:250px;border-radius:94px 94px 12px 12px}
-  .hero-poster{display:none}
-  .hero h1{margin-top:-48px}
-  .hero-sub{font-size:10px;letter-spacing:.18em}
-  .hero-ghost{top:10%;font-size:clamp(160px,52vw,300px);max-width:100vw;overflow:hidden}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  html{scroll-behavior:auto}
-  #grain{animation:none}
-}
-</style>
+    .btn-primary {
+      background: var(--text-main);
+      color: var(--bg);
+      border: 1px solid var(--text-main);
+    }
+
+    .btn-primary:hover {
+      background: #e2e8f0;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-bright);
+    }
+
+    .btn-mono {
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    /* Telemetry Bar */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 60px;
+    }
+
+    .telemetry-card {
+      background: rgba(17, 19, 26, 0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      backdrop-filter: blur(8px);
+      transition: var(--transition);
+    }
+
+    .telemetry-card:hover {
+      border-color: var(--border-bright);
+      background: rgba(20, 23, 34, 0.8);
+    }
+
+    .telemetry-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .telemetry-val {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .telemetry-val.highlight {
+      color: var(--emerald);
+    }
+
+    /* Interactive Terminal Widget */
+    .terminal-section {
+      margin-bottom: 80px;
+    }
+
+    .terminal-box {
+      background: #0d0f17;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .terminal-header {
+      background: #141724;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terminal-dots {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-tabs {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-tab {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .terminal-tab.active {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--emerald);
+    }
+
+    .terminal-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .terminal-body {
+      padding: 22px 24px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      overflow-x: auto;
+      max-height: 380px;
+    }
+
+    .term-code {
+      display: none;
+    }
+
+    .term-code.active {
+      display: block;
+    }
+
+    .t-comm { color: #64748b; }
+    .t-kw { color: #f43f5e; font-weight: 600; }
+    .t-fn { color: #38bdf8; }
+    .t-str { color: #34d399; }
+    .t-num { color: #fbbf24; }
+    .t-dim { color: #94a3b8; }
+
+    /* Section Headings */
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--emerald);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-main);
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 650px;
+      margin-top: 8px;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 22px;
+      margin-bottom: 80px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      border-color: rgba(16, 185, 129, 0.35);
+      background: var(--bg-card-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .project-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--cyan);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .project-icon {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .project-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      flex-grow: 1;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stack-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* Stack / Capabilities */
+    .capabilities-section {
+      margin-bottom: 80px;
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .capability-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+
+    .capability-title {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--emerald);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .capability-list {
+      list-style: none;
+    }
+
+    .capability-list li {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .capability-list li::before {
+      content: '›';
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-weight: bold;
+    }
+
+    /* Writing / Field Notes */
+    .notes-section {
+      margin-bottom: 80px;
+    }
+
+    .note-row {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .note-row:hover {
+      border-color: var(--border-bright);
+      background: var(--bg-card);
+      transform: translateX(4px);
+    }
+
+    .note-info {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .note-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--emerald);
+      width: 28px;
+    }
+
+    .note-title {
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .note-date {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+
+    /* Contact Banner */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(17, 19, 26, 0.95), rgba(20, 23, 34, 0.95));
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      text-align: center;
+      margin-bottom: 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-title {
+      font-size: clamp(26px, 3.5vw, 36px);
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-desc {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 580px;
+      margin: 0 auto 30px;
+    }
+
+    .contact-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .copy-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-bright);
+      color: var(--text-main);
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+    }
+
+    .copy-pill:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--emerald);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      background: rgba(9, 10, 15, 0.9);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--emerald);
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #141724;
+      border: 1px solid var(--emerald);
+      color: var(--text-main);
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 100;
+    }
+
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      nav {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: #0d0f17;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 24px;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+      }
+
+      .hero {
+        padding: 60px 0 40px;
+      }
+
+      .contact-card {
+        padding: 32px 20px;
+      }
+    }
+  </style>
 </head>
-<body class="locked">
-<!-- preloader -->
-<div id="loader" role="status" aria-label="Loading">
-  <p class="mono">Charging the wire</p>
-  <div id="loadbar"><div id="loadfill"></div></div>
-  <p id="loadpct">000</p>
-</div>
+<body>
 
-<canvas id="storm" aria-hidden="true"></canvas>
-<div id="grain" aria-hidden="true"></div>
-<div id="flash"></div>
+  <div class="grid-bg"></div>
 
-<!-- nav / night HUD -->
-<nav>
-  <div class="nav-in">
-    <a class="brand" href="#top" data-hover><i></i>DEV</a>
-    <div class="hud" aria-live="off">
-      <span class="phase" id="hudPhase">DOORS</span>
-      <span class="sep">/</span>
-      <span class="night" id="hudNight">22:00</span>
-      <span class="sep">/</span>
-      <span class="night" id="hudBpm" style="color:var(--ash)">118 BPM</span>
-      <span class="sep ist-sep">/</span>
-      <span class="ist" id="hudIst">--:-- IST</span>
-    </div>
-    <a href="#booking" class="nav-book" data-hover>Book</a>
-  </div>
-</nav>
-
-<!-- left rail -->
-<div id="rail" aria-hidden="true">
-  <svg width="4" height="300" viewBox="0 0 4 300" preserveAspectRatio="none">
-    <path id="railwire" d="M2,0 C2,60 2,90 2,150 C2,210 2,240 2,300" />
-  </svg>
-  <span class="vtext">Afterhours transmission — djdev.in</span>
-</div>
-
-<main>
-<!-- ============ DOORS / HERO ============ -->
-<header class="hero" id="top">
-  <div class="hero-ghost" aria-hidden="true">DEV</div>
-  <div class="hero-inner">
-    <p class="mono hero-eyebrow"><span class="dot"></span>DJDEV.IN&nbsp;&nbsp;/&nbsp;&nbsp;DOORS 22:00</p>
-    <div class="hero-stage" id="heroStage">
-      <div class="hero-poster hp1" data-depth="44"><span class="hp-top">Movement 01 · 22:00</span><span class="hp-name">Warm-up</span></div>
-      <div class="hero-poster hp2" data-depth="56"><span class="hp-top">Movement 02 · 01:00</span><span class="hp-name">Peak</span></div>
-      <div class="hero-arch"><img src="assets/dev-01.jpg" alt="DEV at the decks" draggable="false"></div>
-      <div class="hero-poster hp3" data-depth="48"><span class="hp-top">Movement 03 · 03:00</span><span class="hp-name">After-hours</span></div>
-      <div class="hero-poster hp4" data-depth="60"><span class="hp-top">Movement 04 · 05:00</span><span class="hp-name">Sunrise</span></div>
-    </div>
-    <h1>DEV</h1>
-    <p class="hero-sub">House <b>·</b> Afro House <b>·</b> Techno <b>·</b> Afterhours</p>
-    <div class="wire-zone">
-      <div class="wire-wrap" id="wireWrap" data-hover>
-        <canvas class="wire-fx" id="wireFx" aria-hidden="true"></canvas>
-        <button class="wire-btn" id="wireBtn" type="button" aria-label="Enter the room">Enter the room</button>
-      </div>
-      <p class="mono wire-hint">Scroll — <b>the night moves with you.</b></p>
-    </div>
-  </div>
-  <div class="scroll-cue" aria-hidden="true">
-    <span class="wire-v"></span>
-  </div>
-</header>
-
-<!-- phase marquee -->
-<div class="pmarquee" aria-hidden="true">
-  <div class="pmq-track">
-    <span>The set follows the room</span><span class="solid">·</span><span>The set follows the room</span><span class="solid">·</span>
-    <span>The set follows the room</span><span class="solid">·</span><span>The set follows the room</span><span class="solid">·</span>
-  </div>
-</div>
-
-<!-- ============ WARM-UP / MANIFESTO ============ -->
-<section class="manifesto" id="manifesto">
-  <div class="wrap">
-    <p class="mono sec-tag rv">Phase 01&nbsp;&nbsp;/&nbsp;&nbsp;Warm-up · 23:00</p>
-    <div class="sample-wrap rv">
-      <span class="sample-pill mono"><span class="badge-dot"></span>THE SET ARCHITECTURE</span>
-      <p class="ethos-note"><b>Live set philosophy</b> — No pre-recorded sequences, no fixed setlists. Every frequency is shaped live in the booth, reading the pulse of the room from cold doors to full sunrise.</p>
-    </div>
-    <p id="maniText">Every night is a circuit. The doors open. The room is cold. I warm the wire, 118, 120, 122, until the floor starts moving on its own. Then we climb. 124. 126. 128. Peak isn't a moment. It's a decision the whole room makes at once. After 3AM the rules dissolve. Hypnotic. Open-ended. No plan survives the sunrise. The set follows the room. The room follows the current. I just hold the wire.</p>
-    <p class="sig mono rv">— DEV, <b>Maharashtra, India</b></p>
-  </div>
-</section>
-
-<!-- phase marquee -->
-<div class="pmarquee" aria-hidden="true">
-  <div class="pmq-track">
-    <span>118 — 122 — 128</span><span class="solid">·</span><span>118 — 122 — 128</span><span class="solid">·</span>
-    <span>118 — 122 — 128</span><span class="solid">·</span><span>118 — 122 — 128</span><span class="solid">·</span>
-  </div>
-</div>
-<!-- ============ PEAK / THE LIVING ARC ============ -->
-<section id="arc" class="arc-section">
-  <div class="wrap">
-    <p class="mono sec-tag rv">Phase 02&nbsp;&nbsp;/&nbsp;&nbsp;The Sonic Arc</p>
-    <h2 class="sec-title rv">One night,<br>three movements.</h2>
-    <p class="sec-sub rv">The living trajectory of the room. Scroll to track the night's frequency in real time.</p>
-
-    <div class="arc-console" id="arcConsole">
-      <!-- Left side: dynamic scroll-reactive Telemetry Rail -->
-      <aside class="arc-telemetry">
-        <div class="arc-hud-box">
-          <div class="arc-hud-head">
-            <span class="mono phase-tag"><i></i><span id="arcHudPhaseText">PHASE 01 // 23:00</span></span>
-            <span class="mono arc-hud-time">CURRENT</span>
-          </div>
-
-          <div class="arc-hud-dial">
-            <div class="arc-hud-bpm" id="arcHudBpm">118<small>BPM</small></div>
-            <div class="arc-hud-energy">
-              <span class="mono label">CIRCUIT LOAD</span>
-              <span class="val" id="arcHudEnergyVal">35%</span>
-            </div>
-          </div>
-
-          <!-- Dynamic LED VU Spectrum Bars -->
-          <div class="arc-vu-meter" aria-hidden="true">
-            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:35%"></div></div>
-            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:55%"></div></div>
-            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:80%"></div></div>
-            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:45%"></div></div>
-            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:90%"></div></div>
-            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:60%"></div></div>
-            <div class="arc-vu-bar"><div class="arc-vu-fill" style="height:40%"></div></div>
-          </div>
-
-          <!-- Interactive Scrubber Rail -->
-          <nav class="arc-rail-nav" aria-label="Movement timeline">
-            <div class="arc-rail-conduit" aria-hidden="true">
-              <div class="arc-rail-progress" id="arcRailProgress"></div>
-              <div class="arc-rail-laser" id="arcRailLaser"></div>
-            </div>
-
-            <button class="arc-tab-btn on" data-idx="0" type="button">
-              <span class="tab-top mono"><span>01</span><span>23:00</span></span>
-              <span class="tab-title">Warm-up</span>
-            </button>
-            <button class="arc-tab-btn" data-idx="1" type="button">
-              <span class="tab-top mono"><span>02</span><span>01:00</span></span>
-              <span class="tab-title">Peak</span>
-            </button>
-            <button class="arc-tab-btn" data-idx="2" type="button">
-              <span class="tab-top mono"><span>03</span><span>03:00</span></span>
-              <span class="tab-title">Afterhours</span>
-            </button>
-          </nav>
+  <!-- Header -->
+  <header>
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <div class="brand-logo">P</div>
+        <div class="brand-text">
+          PRMX.IN
+          <span class="brand-tag">SYS.LAB</span>
         </div>
-      </aside>
+      </a>
 
-      <!-- Right side: 3 Luxury Movement Glass Cards -->
-      <div class="arc-cards" id="arcCards">
-        <!-- Movement 01 -->
-        <article class="arc-card on rv" data-m="0">
-          <span class="arc-card-watermark mono" aria-hidden="true">01</span>
-          <div class="arc-card-inner">
-            <div class="arc-card-meta-top">
-              <span class="arc-card-pill mono"><i></i>MOVEMENT 01 &nbsp;·&nbsp; 23:00</span>
-              <span class="arc-card-status mono">WARMING THE WIRE</span>
-            </div>
-            <div class="arc-card-title-group">
-              <h3>Warm-up</h3>
-              <p class="arc-card-sub mono"><span class="sub-bpm">118 — 122 BPM</span><span class="sub-sep">/</span><span class="sub-genre">Deep House · Afro Roots</span></p>
-            </div>
-            <p class="arc-card-p">Deep. Rolling. Patient. I read the room before the room knows it's being read. Groove first, pressure later.</p>
-            <div class="arc-card-wave-box" aria-hidden="true">
-              <canvas class="arc-live-wave" data-wave="0"></canvas>
-            </div>
-            <div class="arc-card-tags">
-              <span class="arc-tag-chip">SUB-BASS: 42 Hz ROLLING</span>
-              <span class="arc-tag-chip">CROWD: GATHERING</span>
-              <span class="arc-tag-chip">PRESSURE: PATIENT</span>
-            </div>
-          </div>
-        </article>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#terminal">Terminal</a>
+        <a href="#capabilities">Stack</a>
+        <a href="#notes">Field Notes</a>
+        <a href="#contact" class="nav-cta">
+          <span class="status-dot"></span>
+          Connect
+        </a>
+      </nav>
 
-        <!-- Movement 02 -->
-        <article class="arc-card rv" data-m="1">
-          <span class="arc-card-watermark mono" aria-hidden="true">02</span>
-          <div class="arc-card-inner">
-            <div class="arc-card-meta-top">
-              <span class="arc-card-pill mono"><i></i>MOVEMENT 02 &nbsp;·&nbsp; 01:00</span>
-              <span class="arc-card-status mono">PEAK CURRENT</span>
-            </div>
-            <div class="arc-card-title-group">
-              <h3>Peak</h3>
-              <p class="arc-card-sub mono"><span class="sub-bpm">124 — 128 BPM</span><span class="sub-sep">/</span><span class="sub-genre">Melodic · Driving Techno</span></p>
-            </div>
-            <p class="arc-card-p">Driving. Committed. No holding back. The whole room makes the decision at once, and the wire carries it.</p>
-            <div class="arc-card-wave-box" aria-hidden="true">
-              <canvas class="arc-live-wave" data-wave="1"></canvas>
-            </div>
-            <div class="arc-card-tags">
-              <span class="arc-tag-chip">VELOCITY: MAXIMUM</span>
-              <span class="arc-tag-chip">ENERGY: 100% DISCHARGE</span>
-              <span class="arc-tag-chip">WIRE: REDLINE</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Movement 03 -->
-        <article class="arc-card rv" data-m="2">
-          <span class="arc-card-watermark mono" aria-hidden="true">03</span>
-          <div class="arc-card-inner">
-            <div class="arc-card-meta-top">
-              <span class="arc-card-pill mono"><i></i>MOVEMENT 03 &nbsp;·&nbsp; 03:00</span>
-              <span class="arc-card-status mono">AFTERHOURS</span>
-            </div>
-            <div class="arc-card-title-group">
-              <h3>Afterhours</h3>
-              <p class="arc-card-sub mono"><span class="sub-bpm">OPEN-ENDED</span><span class="sub-sep">/</span><span class="sub-genre">Hypnotic · Minimal · Sunrise</span></p>
-            </div>
-            <p class="arc-card-p">Hypnotic. Stripped. The rules dissolve after 3AM — this is where nights become stories. No plan survives the sunrise.</p>
-            <div class="arc-card-wave-box" aria-hidden="true">
-              <canvas class="arc-live-wave" data-wave="2"></canvas>
-            </div>
-            <div class="arc-card-tags">
-              <span class="arc-tag-chip">FREQUENCY: 3AM HYPNOSIS</span>
-              <span class="arc-tag-chip">DURATION: UNTIL SUNRISE</span>
-              <span class="arc-tag-chip">CIRCUIT: UNBOUND</span>
-            </div>
-          </div>
-        </article>
-      </div>
+      <button class="menu-btn" id="menuToggle" aria-label="Toggle Menu">☰</button>
     </div>
-  </div>
-</section>
 
-<!-- ============ THE BOOTH ============ -->
-<section class="booth" id="booth">
-  <div class="wrap">
-    <p class="mono sec-tag rv">The booth</p>
-    <h2 class="sec-title rv">Step behind<br>the decks.</h2>
-    <p class="sec-sub rv">Not a gallery. The actual tools. Touch them — the deck spins, the mixer moves, the keys play.</p>
-  </div>
+    <!-- Mobile Nav -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#terminal" class="nav-link">Terminal</a>
+      <a href="#capabilities" class="nav-link">Stack</a>
+      <a href="#notes" class="nav-link">Field Notes</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </header>
 
-  <!-- setup -->
-  <div class="booth-sub rv setup-sub">
-    <h3><span class="mono">CDJ-3000 × 2 + Mixer</span>The setup</h3>
-    <p>Two CDJ-3000s and the mixer between them. Press play and the beat is built live in your browser — drag a jog to scratch it back.</p>
-  </div>
-  <div class="setup-grid">
-    <div class="cdj rv" data-deck="1">
-      <div class="cdj-top">
-        <span class="mono">DEV · CDJ-3000 · 01</span>
-        <span class="mono" data-key>KEY 8A</span>
-        <span class="mono tempo-read" data-tempoval>+0.0%</span>
-        <button class="deck-load" data-load>LOAD ↓</button>
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+      <div class="hero-badge">
+        <span class="status-dot"></span>
+        <span>PRMX.IN // SYSTEMS & TOOLS LAB</span>
       </div>
-      <div class="cdj-unit">
-        <img class="cdj-photo" src="assets/cdj-3000.png" alt="Pioneer DJ CDJ-3000" draggable="false">
-        <div class="cdj-screen">
-          <div class="cdj-screen-info"><span data-title>After 3AM</span><span><b data-bpm>128.0</b> BPM</span></div>
-          <canvas class="deckwave"></canvas>
-          <div class="deck-playhead"></div>
-          <span class="cdj-genre" data-genre>DEV · Afterhours · Hypnotic</span>
+
+      <h1 class="hero-title">
+        <span class="gradient-text">Ujan Chakraborty.</span><br>
+        <span class="accent-text">Software builder, systems hacker,</span>
+        <span class="gradient-text"> and toolmaker.</span>
+      </h1>
+
+      <p class="hero-sub">
+        I spend my time deep in code—building high-throughput media pipelines, reverse-engineering real-time APIs, automating news intelligence, and building lightweight software that solves tangible friction.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          Explore Systems & Projects ↓
+        </a>
+        <a href="https://github.com/ujanchakraborty" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-mono">
+          <span>GitHub: @ujanchakraborty</span> ↗
+        </a>
+        <button class="btn btn-secondary btn-mono" onclick="copyContact()">
+          <span>Copy Email</span>
+        </button>
+      </div>
+
+      <!-- Live Telemetry Grid -->
+      <div class="telemetry-grid">
+        <div class="telemetry-card">
+          <div class="telemetry-label">Status Node</div>
+          <div class="telemetry-val highlight">● Active • Deployed</div>
         </div>
-        <div class="cdj-jog" data-jog><div class="jog-ring"></div><div class="jog-mark"></div></div>
-        <button class="cdj-hit cdj-play" data-play aria-label="Play or pause deck 1"></button>
-        <button class="cdj-hit cdj-cue" data-toggle aria-label="Cue"></button>
-        <button class="cdj-hit cdj-hot" data-hot style="left:19.8%" aria-label="Hot cue A"></button>
-        <button class="cdj-hit cdj-hot" data-hot style="left:27.9%" aria-label="Hot cue B"></button>
-        <button class="cdj-hit cdj-hot" data-hot style="left:35.3%" aria-label="Hot cue C"></button>
-        <button class="cdj-hit cdj-hot" data-hot style="left:43.4%" aria-label="Hot cue D"></button>
-        <button class="cdj-hit cdj-sync" data-sync aria-label="Beat sync"></button>
-        <button class="cdj-hit cdj-master" data-toggle aria-label="Master"></button>
-        <button class="cdj-hit cdj-loop" data-toggle aria-label="Loop"></button>
-      </div>
-    </div>
-  <div class="mixer rv">
-    <div class="mix-head">
-      <span class="mono">DEV · MIXER</span>
-      <span class="mono">2 CH · BEAT FX</span>
-    </div>
-    <div class="fx-row">
-      <span class="fx-label">BEAT FX · <span id="fxName">ECHO</span></span>
-      <button class="fx-btn on" data-fx="ECHO">ECHO</button>
-      <button class="fx-btn" data-fx="REVERB">REVERB</button>
-      <button class="fx-btn" data-fx="ON">FX ON</button>
-      <span class="fx-time" id="fxTime">3/4</span>
-    </div>
-    <div class="mix-body">
-      <div class="ch">
-        <h5>CH 1</h5>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">TRIM</div>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">HI</div>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">MID</div>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">LOW</div>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">COLOR</div>
-        <div class="ch-fader">
-          <div class="fader" data-fader="ch1" data-val="0.8"><div class="ftrack"></div><div class="fhandle"></div></div>
-          <span class="mono">CH 1</span>
+        <div class="telemetry-card">
+          <div class="telemetry-label">Core Specialization</div>
+          <div class="telemetry-val">Automation & Telemetry</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-label">Primary Languages</div>
+          <div class="telemetry-val">Python / Go / C++ / TS</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-label">Cloudflare Edge</div>
+          <div class="telemetry-val highlight">PRMX.in (Live)</div>
         </div>
       </div>
-      <div class="level-col">
-        <span class="level-lab">LEVEL</span>
-        <div class="level-meter" id="levelMeter"></div>
-        <div class="knob" data-knob style="width:46px;height:46px"><div class="kp"></div></div><div class="knob-lab">MASTER</div>
-        <div class="knob" data-knob style="width:46px;height:46px"><div class="kp"></div></div><div class="knob-lab">BOOTH</div>
-      </div>
-      <div class="ch">
-        <h5>CH 2</h5>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">TRIM</div>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">HI</div>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">MID</div>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">LOW</div>
-        <div class="knob" data-knob><div class="kp"></div></div><div class="knob-lab">COLOR</div>
-        <div class="ch-fader">
-          <div class="fader" data-fader="ch2" data-val="0.6"><div class="ftrack"></div><div class="fhandle"></div></div>
-          <span class="mono">CH 2</span>
-        </div>
-      </div>
-    </div>
-    <div class="xfade">
-      <div class="xf-labels"><span><b>A</b> · DECK 1</span><span>CROSSFADER</span><span>DECK 2 · <b>B</b></span></div>
-      <div class="xf-track" id="xfTrack"><div class="xf-handle" id="xfHandle"></div></div>
-    </div>
-  </div>
-    <div class="cdj rv" data-deck="2">
-      <div class="cdj-top">
-        <span class="mono">DEV · CDJ-3000 · 02</span>
-        <span class="mono" data-key>KEY 5A</span>
-        <span class="mono tempo-read" data-tempoval>+0.0%</span>
-        <button class="deck-load" data-load>LOAD ↓</button>
-      </div>
-      <div class="cdj-unit">
-        <img class="cdj-photo" src="assets/cdj-3000.png" alt="Pioneer DJ CDJ-3000" draggable="false">
-        <div class="cdj-screen">
-          <div class="cdj-screen-info"><span data-title>Warm-up</span><span><b data-bpm>118.0</b> BPM</span></div>
-          <canvas class="deckwave"></canvas>
-          <div class="deck-playhead"></div>
-          <span class="cdj-genre" data-genre>DEV · Deep House · Rolling</span>
-        </div>
-        <div class="cdj-jog" data-jog><div class="jog-ring"></div><div class="jog-mark"></div></div>
-        <button class="cdj-hit cdj-play" data-play aria-label="Play or pause deck 2"></button>
-        <button class="cdj-hit cdj-cue" data-toggle aria-label="Cue"></button>
-        <button class="cdj-hit cdj-hot" data-hot style="left:19.8%" aria-label="Hot cue A"></button>
-        <button class="cdj-hit cdj-hot" data-hot style="left:27.9%" aria-label="Hot cue B"></button>
-        <button class="cdj-hit cdj-hot" data-hot style="left:35.3%" aria-label="Hot cue C"></button>
-        <button class="cdj-hit cdj-hot" data-hot style="left:43.4%" aria-label="Hot cue D"></button>
-        <button class="cdj-hit cdj-sync" data-sync aria-label="Beat sync"></button>
-        <button class="cdj-hit cdj-master" data-toggle aria-label="Master"></button>
-        <button class="cdj-hit cdj-loop" data-toggle aria-label="Loop"></button>
-      </div>
-    </div>
-  </div>
-  </div>
-  <p class="booth-note rv"><span class="mono">Demo groove</span>Built-in beat so the decks actually play. Real mix audio wires in when links arrive.</p>
+    </section>
 
-  <!-- crate -->
-  <div class="booth-sub rv">
-    <h3><span class="mono">Crate — Load a track</span>The crate</h3>
-    <p>Three sketches from the night. Pick one, hit LOAD on a deck.</p>
-  </div>
-  <div class="crate rv">
-    <button class="crate-track on" data-track="after3am"><b>After 3AM</b><span>Afterhours · 128 BPM · Key 8A</span></button>
-    <button class="crate-track" data-track="warmup"><b>Warm-up</b><span>Deep House · 118 BPM · Key 5A</span></button>
-    <button class="crate-track" data-track="peak"><b>Peak</b><span>Techno · 126 BPM · Key 2A</span></button>
-  </div>
-
-  <!-- keys + notes -->
-  <div class="keys-wrap rv">
-    <div class="keys-head">
-      <h3 style="font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.02em;text-transform:uppercase"><span class="mono" style="color:var(--orange);display:block;margin-bottom:10px;font-size:11px">Keys 25 — Play me</span>The keys</h3>
-      <span class="mono">DEV · KEYS 25 &nbsp;·&nbsp; C4 — C6</span>
-    </div>
-    <div class="piano">
-      <div class="piano-keys" id="pianoKeys"></div>
-    </div>
-    <p class="keys-hint mono">Tap the keys — or play with your keyboard: A W S E D F T G Y H U J K</p>
-  </div>
-  <div class="notes rv">
-    <div class="note y"><span class="n-tag">TO-DO</span>Read the room first.<br>Groove before pressure.<br>The set follows the room.</div>
-    <div class="note w"><span class="n-tag">GOAL</span>One night, one wire.<br>No plan survives<br>the sunrise.</div>
-  </div>
-
-  <!-- the wall -->
-  <div class="wall rv">
-    <div class="wrap" style="text-align:center">
-      <h3 style="font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.02em;text-transform:uppercase"><span class="mono" style="color:var(--orange);display:block;margin-bottom:10px;font-size:11px">The wall — Nights</span>Swipe the wall.</h3>
-      <p style="color:var(--ash);font-size:16px;margin-top:10px">Four movements, one night. Tap a poster to zoom.</p>
-    </div>
-    <div class="wall-row" style="margin-top:34px">
-      <div class="poster p1" data-poster><div class="p-in"><span class="p-top">Movement 01 · 22:00</span><h4>Warm-<br>up</h4><span class="p-meta">118 – 122 BPM<br>Deep · Rolling · Patient</span></div><span class="p-zoom">TAP TO ZOOM</span></div>
-      <div class="poster p2" data-poster><div class="p-in"><span class="p-top">Movement 02 · 01:00</span><h4>Peak</h4><span class="p-meta">124 – 128 BPM<br>Driving · Committed</span></div><span class="p-zoom">TAP TO ZOOM</span></div>
-      <div class="poster p3" data-poster><div class="p-in"><span class="p-top">Movement 03 · 03:00</span><h4>After-<br>hours</h4><span class="p-meta">Open-ended<br>Hypnotic · Stripped</span></div><span class="p-zoom">TAP TO ZOOM</span></div>
-      <div class="poster p4" data-poster><div class="p-in"><span class="p-top">Movement 04 · 05:00</span><h4>Sun-<br>rise</h4><span class="p-meta">06:00 · The wire cools<br>One take · No edits</span></div><span class="p-zoom">TAP TO ZOOM</span></div>
-      <a class="poster cta" href="#booking"><div class="p-in"><span class="p-top">Your night</span><h4>Book<br>the room</h4><span class="p-meta">Clubs · Festivals · Private<br>Weddings · Afterhours</span></div><span class="p-zoom">BOOK →</span></a>
-    </div>
-  </div>
-</section>
-<div id="lightbox" aria-hidden="true"></div>
-
-<!-- ============ AFTERHOURS / STILLS ============ -->
-<section id="stills" style="background:rgba(5,5,5,.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="wrap">
-    <p class="mono sec-tag rv">Phase 03&nbsp;&nbsp;/&nbsp;&nbsp;Afterhours · 03:00</p>
-    <h2 class="sec-title rv">Booth and room.</h2>
-    <p class="sec-sub rv">Selected stills from the booth, the floor and the hours after peak.</p>
-    <div class="stills-grid">
-      <div class="ph sg-1 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E8590C" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 01</span><small><b>assets/dev-02.jpg</b><br>1600 × 900 — drop the artist image here</small></div>
-      <div class="ph sg-2 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E8590C" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 02</span><small><b>assets/dev-03.jpg</b><br>1200 × 900 — drop the artist image here</small></div>
-      <div class="ph sg-3 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E8590C" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 03</span><small><b>assets/dev-04.jpg</b><br>900 × 900 — drop the artist image here</small></div>
-      <div class="ph sg-4 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E8590C" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 04</span><small><b>assets/dev-05.jpg</b><br>900 × 900 — drop the artist image here</small></div>
-      <div class="ph sg-5 rv"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#E8590C" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-9 9"/></svg><span class="mono">Photo 05</span><small><b>assets/dev-06.jpg</b><br>900 × 900 — drop the artist image here</small></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SUNRISE / MIXES ============ -->
-<section id="mixes">
-  <div class="wrap">
-    <p class="mono sec-tag rv">Phase 04&nbsp;&nbsp;/&nbsp;&nbsp;Sunrise · 05:00</p>
-    <h2 class="sec-title rv">Selected mixes.</h2>
-    <p class="sec-sub rv">A path into the sound. Recorded live, one take, no edits.</p>
-    <div style="margin-top:64px">
-      <div class="mix-row rv" data-hover>
-        <span class="mix-num">003</span>
-        <div><h4>House / Afro House / Techno / Afterhours</h4><span class="genre">Featured — the statement</span><canvas class="wave" data-seed="7" aria-hidden="true"></canvas></div>
-        <div class="mix-side"><span class="mix-dur">—:—</span><button class="play-btn" aria-label="Play featured mix"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg></button></div>
-      </div>
-      <div class="mix-row rv" data-hover>
-        <span class="mix-num">002</span>
-        <div><h4>After 3AM</h4><span class="genre">Afterhours · Hypnotic</span><canvas class="wave" data-seed="21" aria-hidden="true"></canvas></div>
-        <div class="mix-side"><span class="mix-dur">—:—</span><button class="play-btn" aria-label="Play After 3AM"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg></button></div>
-      </div>
-      <div class="mix-row rv" data-hover>
-        <span class="mix-num">001</span>
-        <div><h4>Warm-up</h4><span class="genre">Deep House · Rolling</span><canvas class="wave" data-seed="42" aria-hidden="true"></canvas></div>
-        <div class="mix-side"><span class="mix-dur">—:—</span><button class="play-btn" aria-label="Play Warm-up"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg></button></div>
-      </div>
-    </div>
-    <p class="mix-note rv"><span class="mono">Note</span>Mix links are being uploaded. This page updates the moment they drop.</p>
-  </div>
-</section>
-
-<!-- ============ CLOSE THE CIRCUIT / BOOKING ============ -->
-<section id="booking" style="background:rgba(5,5,5,.55);border-top:1px solid var(--line)">
-  <div class="wrap">
-    <p class="mono sec-tag rv">Phase 05&nbsp;&nbsp;/&nbsp;&nbsp;06:00</p>
-    <h2 class="sec-title rv">Close the circuit.</h2>
-    <p class="sec-sub rv">Clubs, festivals, private events, weddings. One wire between you and the night.</p>
-    <div class="book-grid">
-      <div class="book-info rv">
-        <h3>The night ends.<br>Yours starts here.</h3>
-        <p>Tell us about the event: date, type, venue. Then the current starts moving.</p>
-        <div class="type-chips">
-          <span>Clubs</span><span>Festivals</span><span>Private events</span><span>Weddings</span><span>Afterhours</span>
-        </div>
-        <ul class="req-list">
-          <li>Include the date, event type and venue / location.</li>
-          <li>Mention set length and expected crowd size.</li>
-          <li>Tech rider shared on confirmation. Standard club setup.</li>
-        </ul>
-      </div>
-      <form id="bookForm" class="rv" novalidate>
-        <div id="formFields">
-          <div class="f-row">
-            <div class="f-group"><label for="fName">Your name</label><input id="fName" name="name" type="text" placeholder="Your name" required></div>
-            <div class="f-group"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" placeholder="you@venue.com" required></div>
+    <!-- Interactive Code / System Terminal -->
+    <section class="terminal-section" id="terminal">
+      <div class="terminal-box">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
           </div>
-          <div class="f-row">
-            <div class="f-group"><label for="fDate">Event date</label><input id="fDate" name="date" type="date" required></div>
-            <div class="f-group"><label for="fType">Event type</label><select id="fType" name="type" required>
-              <option value="" disabled selected>Select…</option><option>Club night</option><option>Festival</option>
-              <option>Private event</option><option>Wedding</option><option>Afterhours</option>
-            </select></div>
+
+          <div class="terminal-tabs">
+            <button class="terminal-tab active" onclick="switchTab(0)">flyoverhead.py</button>
+            <button class="terminal-tab" onclick="switchTab(1)">stream_dvr.sh</button>
+            <button class="terminal-tab" onclick="switchTab(2)">minutes_agent.ts</button>
           </div>
-          <div class="f-group"><label for="fVenue">Venue / location</label><input id="fVenue" name="venue" type="text" placeholder="Venue name, city" required></div>
-          <div class="f-group"><label for="fMsg">Anything we should know</label><textarea id="fMsg" name="message" placeholder="Set length, crowd size, lineup…"></textarea></div>
-          <button type="submit" class="f-submit" data-hover>Send booking inquiry <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="vertical-align:-1px"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button>
+
+          <div class="terminal-meta">PRMX // RUNTIME PREVIEW</div>
         </div>
-        <div class="form-ok" id="formOk">
-          <div class="ok-ring"><svg width="30" height="30" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></div>
-          <h3>Discharge received.</h3>
-          <p>Your inquiry is on the wire. We'll answer before the next doors open.</p>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-</main>
 
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="wrap">
-    <div class="foot-mark" id="footMark">
-      <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="DEV">
-        <defs>
-          <radialGradient id="lampGrad" gradientUnits="userSpaceOnUse" cx="500" cy="150" r="200">
-            <stop offset="0" stop-color="#ffffff"/>
-            <stop offset="0.65" stop-color="#ffffff" stop-opacity="0"/>
-          </radialGradient>
-          <mask id="lampMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="300">
-            <rect width="1000" height="300" fill="url(#lampGrad)"/>
-          </mask>
-          <filter id="lampGlow" x="-30%" y="-30%" width="160%" height="160%">
-            <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#E8590C" flood-opacity="0.55"/>
-            <feDropShadow dx="0" dy="0" stdDeviation="28" flood-color="#E8590C" flood-opacity="0.22"/>
-          </filter>
-        </defs>
-        <text x="500" y="238" text-anchor="middle" class="fm-base">DEV</text>
-        <g id="lampGroup" mask="url(#lampMask)" opacity="0">
-          <text x="500" y="238" text-anchor="middle" class="fm-lamp" filter="url(#lampGlow)">DEV</text>
-        </g>
-      </svg>
-    </div>
-    <div class="foot-grid">
-      <span class="mono">© <span id="year">2026</span> DJDEV.IN — Maharashtra, India · v32</span>
-      <div class="foot-links">
-        <a href="#manifesto" data-hover>Manifesto</a>
-        <a href="#booth" data-hover>Booth</a>
-        <a href="#stills" data-hover>Stills</a>
-        <a href="#mixes" data-hover>Mixes</a>
-        <a href="#booking" data-hover>Booking</a>
-      </div>
-      <a href="#top" class="to-top" aria-label="Back to top" data-hover><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 14V2M3 7l5-5 5 5"/></svg></a>
-    </div>
-  </div>
-</footer>
-<div id="flash"></div>
+        <div class="terminal-body">
+          <!-- Tab 0: FlyOverhead -->
+          <pre class="term-code active" id="code-0"><code><span class="t-comm"># FlyOverhead — High-precision ADS-B flight overhead tracking with predictive acoustics</span>
+<span class="t-kw">import</span> math, time
+<span class="t-kw">from</span> telemetry <span class="t-kw">import</span> ADSBReceiver, TelegramNotifier
 
-<script>
-(function(){
-"use strict";
-const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
-const SDPR = Math.min(window.devicePixelRatio || 1, 1.25);
-const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const ORANGE = '#E8590C';
-const fine = window.matchMedia('(pointer:fine)').matches;
+<span class="t-kw">class</span> <span class="t-fn">OverheadVectorEngine</span>:
+    <span class="t-kw">def</span> <span class="t-fn">__init__</span>(self, observer_lat=<span class="t-num">22.5726</span>, observer_lon=<span class="t-num">88.3639</span>, observer_alt=<span class="t-num">9.0</span>):
+        self.coords = (observer_lat, observer_lon, observer_alt)
+        self.speed_of_sound = <span class="t-num">343.0</span>  <span class="t-comm"># m/s at 20°C sea level</span>
 
-/* ============ PRELOADER ============ */
-const loader = document.getElementById('loader');
-const loadfill = document.getElementById('loadfill');
-const loadpct = document.getElementById('loadpct');
-(function charge(){
-  const t0 = performance.now(), DUR = reduced ? 1 : 1300;
-  (function step(t){
-    const p = Math.min((t - t0) / DUR, 1);
-    const e = 1 - Math.pow(1 - p, 3);
-    loadfill.style.width = (e * 100).toFixed(1) + '%';
-    loadpct.textContent = String(Math.round(e * 100)).padStart(3, '0');
-    if(p < 1) requestAnimationFrame(step);
-    else { loader.classList.add('done'); document.body.classList.remove('locked'); }
-  })(t0);
-})();
-
-/* ============ STORM — fish gradient, zero gray (no fade) ============ */
-const storm = document.getElementById('storm');
-const sx = storm.getContext('2d');
-let SW = 0, SH = 0, parts = [];
-let intensity = 0.25, targetIntensity = 0.25;
-let smx = -9999, smy = -9999;
-const PALETTE = ['232,89,12', '229,131,81', '214,164,110', '168,162,154', '249,115,22'];
-const TRAIL = 14;
-function spawn(p, anywhere){
-  p.x = Math.random() * SW;
-  p.y = anywhere ? Math.random() * SH : (Math.random() < 0.5 ? -12 : SH + 12);
-  p.hist = [];
-  for(let k = 0; k < TRAIL; k++) p.hist.push([p.x, p.y]);
-  p.life = 0.6 + Math.random() * 0.4;
-  p.c = PALETTE[(Math.random() * PALETTE.length) | 0];
-}
-function sizeStorm(){
-  SW = window.innerWidth; SH = window.innerHeight;
-  storm.width = SW * SDPR; storm.height = SH * SDPR;
-  storm.style.width = SW + 'px'; storm.style.height = SH + 'px';
-  const n = Math.min(500, Math.floor(SW * SH / 4500));
-  parts = [];
-  for(let i = 0; i < n; i++){ const p = {}; spawn(p, true); parts.push(p); }
-  sx.setTransform(SDPR, 0, 0, SDPR, 0, 0);
-}
-window.addEventListener('mousemove', e => { smx = e.clientX; smy = e.clientY; }, {passive: true});
-
-/* ============ HERO PARALLAX — layers drift opposite the cursor ============ */
-const heroEl = document.getElementById('top');
-const pxLayers = Array.from(document.querySelectorAll('[data-depth]'));
-let ptx = 0, pty = 0, pcx = 0, pcy = 0;
-if(heroEl && !reduced){
-  heroEl.addEventListener('mousemove', e => {
-    const r = heroEl.getBoundingClientRect();
-    ptx = (e.clientX - r.left) / r.width - 0.5;
-    pty = (e.clientY - r.top) / r.height - 0.5;
-  }, {passive: true});
-  heroEl.addEventListener('mouseleave', () => { ptx = 0; pty = 0; }, {passive: true});
-  (function heroPar(){
-    pcx += (ptx - pcx) * 0.055;
-    pcy += (pty - pcy) * 0.055;
-    for(const el of pxLayers){
-      const d = parseFloat(el.dataset.depth) || 10;
-      el.style.translate = (-pcx * d).toFixed(2) + 'px ' + (-pcy * d * 0.7).toFixed(2) + 'px';
-    }
-    requestAnimationFrame(heroPar);
-  })();
-}
-function drawStorm(t){
-  intensity += (targetIntensity - intensity) * 0.035;
-  sx.clearRect(0, 0, SW, SH);
-  const sp = 0.5 + intensity * 2.9;
-  const baseA = 0.12 + intensity * 0.3;
-  sx.lineWidth = 1;
-  sx.lineCap = 'round';
-  for(let i = 0; i < parts.length; i++){
-    const p = parts[i];
-    const a = (Math.sin(p.x * 0.0022 + t * 0.00042) + Math.cos(p.y * 0.0026 - t * 0.00031)) * Math.PI;
-    p.x += Math.cos(a) * sp;
-    p.y += Math.sin(a) * sp;
-    const dx = p.x - smx, dy = p.y - smy, d2 = dx * dx + dy * dy;
-    if(d2 < 22500){
-      const d = Math.sqrt(d2) || 1, f = (150 - d) / 150;
-      p.x += (dx / d) * f * 3.2; p.y += (dy / d) * f * 3.2;
-    }
-    p.life -= 0.004 + intensity * 0.006;
-    if(p.life <= 0 || p.x < -20 || p.x > SW + 20 || p.y < -20 || p.y > SH + 20){ spawn(p, false); continue; }
-    p.hist.pop();
-    p.hist.unshift([p.x, p.y]);
-    // draw gradient trail: bright head → transparent tail, no fade buildup
-    for(let k = 0; k < TRAIL - 1; k++){
-      const fa = baseA * (1 - k / TRAIL);
-      if(fa < 0.02) continue;
-      sx.strokeStyle = 'rgba(' + p.c + ',' + fa.toFixed(3) + ')';
-      sx.beginPath();
-      sx.moveTo(p.hist[k][0], p.hist[k][1]);
-      sx.lineTo(p.hist[k+1][0], p.hist[k+1][1]);
-      sx.stroke();
-    }
-  }
-}
-
-/* ============ NIGHT HUD — scroll is time ============ */
-const hudPhase = document.getElementById('hudPhase');
-const hudNight = document.getElementById('hudNight');
-const hudBpm = document.getElementById('hudBpm');
-const railwire = document.getElementById('railwire');
-let railLen = 0;
-try { railLen = railwire.getTotalLength(); railwire.style.strokeDasharray = railLen; } catch(e){}
-function fmtClock(mins){
-  const h = Math.floor(mins / 60) % 24, m = Math.floor(mins % 60);
-  return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
-}
-function nightUpdate(){
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  const p = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
-  let phase, stormT, bpm;
-  if(p < 0.18){ phase = 'DOORS'; stormT = 0.25; bpm = '118'; }
-  else if(p < 0.38){ phase = 'WARM-UP'; stormT = 0.45; bpm = String(Math.round(118 + (p - 0.18) / 0.2 * 4)); }
-  else if(p < 0.62){ phase = 'PEAK'; stormT = 1.0; bpm = String(Math.round(124 + (p - 0.38) / 0.24 * 4)); }
-  else if(p < 0.85){ phase = 'AFTERHOURS'; stormT = 0.6; bpm = '128'; }
-  else { phase = 'SUNRISE'; stormT = 0.25; bpm = 'OPEN'; }
-  targetIntensity = stormT;
-  if(hudPhase.textContent !== phase) hudPhase.textContent = phase;
-  hudNight.textContent = fmtClock(22 * 60 + p * 8 * 60);
-  if(hudBpm) hudBpm.textContent = bpm + (bpm === 'OPEN' ? '' : ' BPM');
-  if(railLen) railwire.style.strokeDashoffset = railLen * (1 - p);
-}
-
-/* ============ PLASMA TUBE CTA + magnetic ============ */
-const wrap = document.getElementById('wireWrap');
-const fx = document.getElementById('wireFx');
-const fctx = fx.getContext('2d');
-let hovering = false, dischargeUntil = 0;
-function sizeWire(){
-  const r = wrap.getBoundingClientRect();
-  fx.width = Math.max(r.width * DPR, 1);
-  fx.height = Math.max(r.height * DPR, 1);
-}
-function btnRect(){
-  const b = document.getElementById('wireBtn');
-  return {x: b.offsetLeft, y: b.offsetTop, w: b.offsetWidth, h: b.offsetHeight, r: 18};
-}
-function tubePath(R, expand){
-  const rr = Math.max(R.r + expand * 0.55, 1);
-  fctx.beginPath();
-  if(fctx.roundRect) fctx.roundRect(R.x - expand, R.y - expand, R.w + expand * 2, R.h + expand * 2, rr);
-  else fctx.rect(R.x - expand, R.y - expand, R.w + expand * 2, R.h + expand * 2);
-}
-function tubePerimeter(R, expand){
-  const w = R.w + expand * 2, h = R.h + expand * 2, r = Math.max(R.r + expand * 0.55, 1);
-  return 2 * (w - 2 * r) + 2 * (h - 2 * r) + 2 * Math.PI * r;
-}
-function drawWire(){
-  const W = fx.width / DPR, H = fx.height / DPR;
-  fctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-  fctx.clearRect(0, 0, W, H);
-  const R = btnRect();
-  const now = performance.now();
-  const discharging = now < dischargeUntil;
-  const t = now / 1000;
-  const boost = discharging ? 2.8 : (hovering ? 1.55 : 1);
-  const breathe = 0.82 + 0.18 * Math.sin(t * 2.1);
-  const flick = 0.93 + 0.07 * Math.sin(t * 31.0) * Math.sin(t * 11.7);
-  const k = Math.min(boost * breathe * flick, 3.2);
-  fctx.save();
-  fctx.lineJoin = 'round'; fctx.lineCap = 'round';
-  fctx.shadowColor = ORANGE;
-  const blooms = [[30, 0.10], [14, 0.20], [6, 0.38]];
-  for(const [w, a] of blooms){
-    fctx.strokeStyle = 'rgba(232,89,12,' + Math.min(a * k, 0.85).toFixed(3) + ')';
-    fctx.lineWidth = w * (discharging ? 1.5 : 1);
-    fctx.shadowBlur = 34 * boost;
-    tubePath(R, 10); fctx.stroke();
-  }
-  fctx.strokeStyle = 'rgba(255,214,165,' + Math.min(0.95 * flick * (hovering || discharging ? 1 : 0.85), 1).toFixed(3) + ')';
-  fctx.lineWidth = discharging ? 3 : 2;
-  fctx.shadowBlur = 14 * boost;
-  tubePath(R, 10); fctx.stroke();
-  const perim = tubePerimeter(R, 10);
-  const n = discharging ? 5 : (hovering ? 2 : 1);
-  const speed = perim * (discharging ? 1.6 : 0.28);
-  fctx.strokeStyle = 'rgba(255,244,230,0.95)';
-  fctx.lineWidth = discharging ? 4 : 3;
-  fctx.shadowBlur = 22 * boost;
-  for(let i = 0; i < n; i++){
-    const off = (t * speed + (i * perim) / n) % perim;
-    fctx.setLineDash([perim * 0.09, perim * 0.91]);
-    fctx.lineDashOffset = -off;
-    tubePath(R, 10); fctx.stroke();
-  }
-  fctx.setLineDash([]);
-  fctx.restore();
-}
-wrap.addEventListener('mouseenter', () => hovering = true);
-wrap.addEventListener('mouseleave', () => { hovering = false; wrap.style.transform = ''; });
-const flash = document.getElementById('flash');
-function fireWire(scrollTarget){
-  dischargeUntil = performance.now() + 650;
-  drawWire();
-  flash.style.transition = 'none'; flash.style.opacity = '1';
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    flash.style.transition = 'opacity .7s ease'; flash.style.opacity = '0';
-  }));
-  setTimeout(() => document.querySelector(scrollTarget).scrollIntoView({behavior: reduced ? 'auto' : 'smooth'}), 320);
-}
-document.getElementById('wireBtn').addEventListener('click', () => fireWire('#manifesto'));
-// magnetic pull (desktop)
-if(fine && !reduced){
-  wrap.addEventListener('mousemove', e => {
-    const r = wrap.getBoundingClientRect();
-    const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
-    const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
-    wrap.style.transform = 'translate(' + (dx * 14).toFixed(1) + 'px,' + (dy * 10).toFixed(1) + 'px)';
-  });
-}
-
-/* ============ KINETIC MANIFESTO ============ */
-(function(){
-  const el = document.getElementById('maniText');
-  const words = el.textContent.trim().split(/\s+/);
-  el.innerHTML = words.map((w, i) => {
-    const hot = /\d/.test(w) || /wire|current|sunrise|circuit/i.test(w);
-    return '<span class="w' + (hot ? ' hot' : '') + '" style="transition-delay:' + (i * 26) + 'ms">' + w + '</span>';
-  }).join(' ');
-  if(reduced){ el.querySelectorAll('.w').forEach(s => s.classList.add('lit')); return; }
-  new IntersectionObserver((es, io) => es.forEach(e => {
-    if(e.isIntersecting){ el.querySelectorAll('.w').forEach(s => s.classList.add('lit')); io.disconnect(); }
-  }), {threshold: 0.25}).observe(el);
-})();
-
-/* ============ THE LIVING ARC: SCROLL-DRIVEN CONSOLE & WAVEFORMS ============ */
-(function(){
-  const consoleEl = document.getElementById('arcConsole');
-  if(!consoleEl) return;
-  const cards = Array.from(document.querySelectorAll('.arc-card'));
-  const tabs = Array.from(document.querySelectorAll('.arc-tab-btn'));
-  const railProgress = document.getElementById('arcRailProgress');
-  const railLaser = document.getElementById('arcRailLaser');
-  const bpmEl = document.getElementById('arcHudBpm');
-  const energyEl = document.getElementById('arcHudEnergyVal');
-  const phaseEl = document.getElementById('arcHudPhaseText');
-  const vuFills = Array.from(document.querySelectorAll('.arc-vu-fill'));
-
-  const movementData = [
-    { num: '01', title: 'Warm-up', bpm: '118 BPM', energy: '35%', phase: 'PHASE 01 // 23:00' },
-    { num: '02', title: 'Peak', bpm: '126 BPM', energy: '98%', phase: 'PHASE 02 // 01:00' },
-    { num: '03', title: 'Afterhours', bpm: 'Open', energy: '70%', phase: 'PHASE 03 // 03:00' }
-  ];
-
-  let activeIdx = 0;
-
-  function setActive(idx, userScroll = false){
-    if(idx < 0 || idx >= cards.length) return;
-    activeIdx = idx;
-    cards.forEach((c, i) => c.classList.toggle('on', i === idx));
-    tabs.forEach((t, i) => t.classList.toggle('on', i === idx));
-    const d = movementData[idx];
-    if(bpmEl) bpmEl.innerHTML = d.bpm.replace(' BPM', '<small>BPM</small>');
-    if(energyEl) energyEl.textContent = d.energy;
-    if(phaseEl) phaseEl.textContent = d.phase;
-
-    // Adjust VU meter animation intensity
-    vuFills.forEach((f, i) => {
-      const base = idx === 1 ? 0.88 : (idx === 2 ? 0.62 : 0.42);
-      const h = Math.round((base * 0.4 + Math.sin(i * 1.3 + idx) * 0.25 + 0.35) * 100);
-      f.style.height = Math.min(Math.max(h, 15), 100) + '%';
-    });
-
-    if(userScroll && cards[idx]){
-      cards[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
-
-  // Waypoint button click
-  tabs.forEach((t, i) => t.addEventListener('click', () => setActive(i, true)));
-  cards.forEach((c, i) => c.addEventListener('click', () => setActive(i)));
-
-  // Scroll tracking: laser playhead smoothly glides along rail
-  function updateArcScroll(){
-    const rect = consoleEl.getBoundingClientRect();
-    const h = rect.height;
-    const vh = window.innerHeight;
-    // Normalized scroll progress through the console section (0 to 1)
-    const start = vh * 0.7;
-    const end = -h + vh * 0.3;
-    const p = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
-
-    if(railProgress) railProgress.style.height = (p * 100).toFixed(1) + '%';
-    if(railLaser) railLaser.style.top = (p * 100).toFixed(1) + '%';
-
-    // Find which card is closest to viewport center
-    let closestIdx = 0, closestDist = Infinity;
-    const targetY = vh * 0.48;
-    cards.forEach((card, i) => {
-      const cr = card.getBoundingClientRect();
-      const cardCenter = cr.top + cr.height / 2;
-      const dist = Math.abs(cardCenter - targetY);
-      if(dist < closestDist){
-        closestDist = dist;
-        closestIdx = i;
-      }
-    });
-
-    if(closestIdx !== activeIdx){
-      setActive(closestIdx);
-    }
-  }
-
-  window.addEventListener('scroll', () => requestAnimationFrame(updateArcScroll), { passive: true });
-  window.addEventListener('resize', updateArcScroll);
-  updateArcScroll();
-
-  /* --- Interactive Waveform Synthesis on each card --- */
-  const waveCanvases = Array.from(document.querySelectorAll('canvas.arc-live-wave'));
-  const waveContexts = waveCanvases.map(c => ({
-    c,
-    ctx: c.getContext('2d'),
-    w: 300,
-    h: 40,
-    type: parseInt(c.dataset.wave || '0', 10)
-  }));
-
-  function resizeWaveCanvases(){
-    const d = Math.min(window.devicePixelRatio || 1, 2);
-    waveContexts.forEach(item => {
-      const box = item.c.parentElement;
-      const w = Math.max(box ? box.clientWidth - 24 : (item.c.clientWidth || 300), 200);
-      const h = 40;
-      item.c.width = w * d;
-      item.c.height = h * d;
-      item.w = w;
-      item.h = h;
-      item.ctx.setTransform(d, 0, 0, d, 0, 0);
-    });
-  }
-  window.addEventListener('resize', resizeWaveCanvases);
-  resizeWaveCanvases();
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(resizeWaveCanvases);
-
-  function drawArcWaves(now){
-    const t = now * 0.003;
-    waveContexts.forEach(({ c, ctx, w, h, type }) => {
-      ctx.clearRect(0, 0, w, h);
-      const isCardActive = (type === activeIdx);
-      const bars = Math.floor(w / 6);
-      const barW = 3;
-      const speed = isCardActive ? 1.8 : 0.8;
-      const amp = isCardActive ? 1.0 : 0.45;
-
-      for(let i = 0; i < bars; i++){
-        const norm = i / bars;
-        let bh = 6;
-        if(type === 0){ // Warm-up: deep rolling sine swell
-          bh = 4 + Math.sin(norm * 4 - t * speed) * 12 * amp + Math.sin(norm * 8 + t) * 6 * amp;
-        } else if(type === 1){ // Peak: aggressive frequency spikes
-          const f1 = Math.sin(norm * 14 - t * speed * 2.2);
-          const f2 = Math.cos(norm * 28 + t * speed);
-          bh = 4 + Math.abs(f1 * f2) * 28 * amp + 4;
-        } else { // Afterhours: hypnotic ethereal ribbon
-          bh = 6 + Math.sin(norm * 6 - t * speed * 0.8) * 16 * amp * Math.cos(norm * 2 + t * 0.5);
+    <span class="t-kw">def</span> <span class="t-fn">compute_slant_and_lag</span>(self, target_lat, target_lon, alt_baro, ground_speed_kts):
+        <span class="t-comm"># 3D spherical trigonometry + altitude vector</span>
+        d_ground = self.haversine(self.coords[<span class="t-num">0</span>], self.coords[<span class="t-num">1</span>], target_lat, target_lon)
+        alt_meters = alt_baro * <span class="t-num">0.3048</span>
+        slant_range = math.sqrt(d_ground**<span class="t-num">2</span> + alt_meters**<span class="t-num">2</span>)
+        
+        <span class="t-comm"># Acoustic delay: time for sound to reach ground observer</span>
+        acoustic_lag_sec = slant_range / self.speed_of_sound
+        return {
+            <span class="t-str">"slant_range_km"</span>: round(slant_range / <span class="t-num">1000</span>, <span class="t-num">2</span>),
+            <span class="t-str">"acoustic_delay"</span>: f<span class="t-str">"{acoustic_lag_sec:.1f}s"</span>,
+            <span class="t-str">"alert_window"</span>: <span class="t-str">"T-60s PREDICTIVE DISPATCH"</span>
         }
-        bh = Math.max(Math.min(bh, h - 4), 3);
-        const y = (h - bh) / 2;
+</code></pre>
 
-        ctx.fillStyle = isCardActive
-          ? (i % 2 === 0 ? '#E8590C' : '#FFB066')
-          : 'rgba(232,89,12,0.35)';
-        ctx.fillRect(i * 6, y, barW, bh);
-      }
-    });
-  }
+          <!-- Tab 1: StreamDVR -->
+          <pre class="term-code" id="code-1"><code><span class="t-comm">#!/usr/bin/env bash</span>
+<span class="t-comm"># StreamDVR & ClipDeck: Zero-copy ring-buffer stream segmenter</span>
+STREAM_URL=<span class="t-str">"$1"</span>
+BUFFER_DIR=<span class="t-str">"/var/run/prmx/ring_buffer"</span>
+CLIP_WINDOW=<span class="t-num">60</span>
 
-  let waveLoopActive = true;
-  document.addEventListener('visibilitychange', () => { waveLoopActive = !document.hidden; });
-  (function arcWaveLoop(ts){
-    if(waveLoopActive) drawArcWaves(ts || 0);
-    requestAnimationFrame(arcWaveLoop);
-  })(0);
-})();
+<span class="t-kw">echo</span> <span class="t-str">"[PRMX-DVR] Initializing circular segmenter for $STREAM_URL..."</span>
 
-/* ============ MARQUEE exact-pixel loop ============ */
-/* JS measures the real half-width once fonts are loaded so the -50% fallback
-   is replaced with a pixel-perfect value → no sub-pixel gap at the loop point */
-function fitMarquees(){
-  document.querySelectorAll('.pmarquee').forEach(el => {
-    const tr = el.querySelector('.pmq-track');
-    if(!tr) return;
-    // scrollWidth is the full 4-copy track; half = one complete seamless period
-    const half = Math.round(tr.scrollWidth / 2);
-    tr.style.setProperty('--mq-half', '-' + half + 'px');
-  });
+ffmpeg -hide_banner -loglevel error \
+  -i <span class="t-str">"$STREAM_URL"</span> \
+  -c copy \
+  -f segment \
+  -segment_time <span class="t-num">5</span> \
+  -segment_wrap <span class="t-num">12</span> \
+  -reset_timestamps <span class="t-num">1</span> \
+  <span class="t-str">"$BUFFER_DIR/seg_%02d.ts"</span> &
+
+<span class="t-comm"># Instant trigger hook on keypress</span>
+<span class="t-fn">capture_clip</span>() {
+    <span class="t-kw">local</span> OUT_FILE=<span class="t-str">"clips/clip_$(date +%s).mp4"</span>
+    ffmpeg -y -f concat -safe <span class="t-num">0</span> -i <span class="t-str">"$BUFFER_DIR/manifest.txt"</span> -c copy <span class="t-str">"$OUT_FILE"</span>
+    <span class="t-kw">echo</span> <span class="t-str">"[OK] Exported 60s instantaneous clip: $OUT_FILE"</span>
 }
-fitMarquees();
-if(document.fonts && document.fonts.ready){
-  document.fonts.ready.then(() => { fitMarquees(); });
-}
-window.addEventListener('resize', fitMarquees);
+</code></pre>
 
-/* ============ WAVEFORMS ============ */
-function seeded(s){ let x = s; return () => { x = (x * 1664525 + 1013904223) >>> 0; return x / 4294967296; }; }
-document.querySelectorAll('canvas.wave').forEach(c => {
-  const d = Math.min(window.devicePixelRatio || 1, 2);
-  const w = c.clientWidth || 300, h = 44;
-  c.width = w * d; c.height = h * d;
-  const g = c.getContext('2d'); g.setTransform(d, 0, 0, d, 0, 0);
-  const rnd = seeded(parseInt(c.dataset.seed || '1', 10));
-  const bars = Math.floor(w / 5);
-  for(let i = 0; i < bars; i++){
-    const env = Math.sin(i / bars * Math.PI);
-    const bh = 4 + rnd() * 34 * env;
-    g.fillStyle = 'rgba(232,89,12,' + (0.18 + rnd() * 0.42).toFixed(2) + ')';
-    g.fillRect(i * 5, (h - bh) / 2, 2.5, bh);
-  }
-});
+          <!-- Tab 2: MINUTES Agent -->
+          <pre class="term-code" id="code-2"><code><span class="t-comm">// MINUTES — Automated Multi-City News Pipeline</span>
+<span class="t-kw">import</span> { LLMFilter, CardRenderer, TelegramChannel } <span class="t-kw">from</span> <span class="t-str">'@prmx/engine'</span>;
 
-/* ============ BOOKING ============ */
-document.getElementById('bookForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  if(!this.checkValidity()){ this.reportValidity(); return; }
-  fireWire('#booking');
-  setTimeout(() => {
-    document.getElementById('formFields').style.display = 'none';
-    document.getElementById('formOk').style.display = 'block';
-  }, 500);
-});
+<span class="t-kw">const</span> CITIES = [<span class="t-str">'Kolkata'</span>, <span class="t-str">'Mumbai'</span>, <span class="t-str">'Delhi'</span>, <span class="t-str">'Varanasi'</span>, <span class="t-str">'Amravati'</span>];
 
-/* ============ FOOTER LAMP ============ */
-(function(){
-  const mark = document.getElementById('footMark');
-  const svg = mark.querySelector('svg');
-  const grad = document.getElementById('lampGrad');
-  if(!mark || !svg || !grad || reduced) return;
-  let tx = 500, ty = 150, cx = 500, cy = 150, raf = null;
-  function toSVG(e){
-    try{
-      const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
-      const m = svg.getScreenCTM();
-      if(m) return pt.matrixTransform(m.inverse());
-    }catch(err){}
-    const r = svg.getBoundingClientRect();
-    return {x: (e.clientX - r.left) / r.width * 1000, y: (e.clientY - r.top) / r.height * 300};
-  }
-  function tick(){
-    cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
-    grad.setAttribute('cx', cx.toFixed(1)); grad.setAttribute('cy', cy.toFixed(1));
-    raf = (Math.abs(tx - cx) > 0.6 || Math.abs(ty - cy) > 0.6) ? requestAnimationFrame(tick) : null;
-  }
-  mark.addEventListener('mousemove', e => {
-    mark.classList.add('lit');
-    const p = toSVG(e); tx = p.x; ty = p.y;
-    if(!raf) raf = requestAnimationFrame(tick);
+<span class="t-kw">export async function</span> <span class="t-fn">runNewsTriage</span>(rawArticle: <span class="t-dim">RawFeedItem</span>) {
+  <span class="t-kw">const</span> verdict = <span class="t-kw">await</span> LLMFilter.evaluate({
+    content: rawArticle.body,
+    criteria: [<span class="t-str">'high_civic_impact'</span>, <span class="t-str">'non_clickbait'</span>, <span class="t-str">'verified_source'</span>]
   });
-  mark.addEventListener('mouseleave', () => mark.classList.remove('lit'));
-})();
 
-/* ============ THE BOOTH ============ */
-(function(){
-  const $ = (s, c) => (c || document).querySelector(s);
-  const $$ = (s, c) => Array.from((c || document).querySelectorAll(s));
+  <span class="t-kw">if</span> (verdict.publish) {
+    <span class="t-kw">const</span> graphicCard = <span class="t-kw">await</span> CardRenderer.buildBadgeCard({
+      title: verdict.cleanHeadline,
+      city: rawArticle.city,
+      theme: <span class="t-str">'prmx-dark-modern'</span>
+    });
 
-  /* ---------- audio engine: built-in demo groove ---------- */
-  let AC = null, masterGain = null, analyser = null, noiseBuf = null;
-  let deckBus = [null, null];
-  let xfade = 0.5;
-  const faderVal = {ch1: 0.8, ch2: 0.6};
-  const MINOR = [0, 2, 3, 5, 7, 8, 10];
-  const TRACKS = {
-    after3am: {title: 'After 3AM', genre: 'DEV · Afterhours · Hypnotic', bpm: 128, key: 'KEY 8A', root: 45,
-      bass: [0, null, 3, null, 0, null, 5, null, 0, null, 3, null, 5, null, 7, 10],
-      hat: [1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 2],
-      clap: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]},
-    warmup: {title: 'Warm-up', genre: 'DEV · Deep House · Rolling', bpm: 118, key: 'KEY 5A', root: 41,
-      bass: [0, null, null, null, 3, null, null, null, 0, null, null, null, 5, null, 3, null],
-      hat: [1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0, 1, 0, 2, 0],
-      clap: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]},
-    peak: {title: 'Peak', genre: 'DEV · Techno · Driving', bpm: 126, key: 'KEY 2A', root: 43,
-      bass: [0, 0, null, 0, 0, null, 0, null, 0, 0, null, 0, 7, null, 5, 3],
-      hat: [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 2, 1],
-      clap: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]}
-  };
-  function midiFreq(m){ return 440 * Math.pow(2, (m - 69) / 12); }
-  function ensureAudio(){
-    if(AC) { if(AC.state === 'suspended') AC.resume(); return; }
-    try{
-      AC = new (window.AudioContext || window.webkitAudioContext)();
-      masterGain = AC.createGain(); masterGain.gain.value = 0.9;
-      analyser = AC.createAnalyser(); analyser.fftSize = 256;
-      masterGain.connect(analyser); analyser.connect(AC.destination);
-      deckBus = [AC.createGain(), AC.createGain()];
-      deckBus.forEach(g => g.connect(masterGain));
-      noiseBuf = AC.createBuffer(1, AC.sampleRate * 0.5, AC.sampleRate);
-      const d = noiseBuf.getChannelData(0);
-      for(let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
-      updateGains();
-      setInterval(scheduler, 25);
-    }catch(e){ AC = null; }
-  }
-  function updateGains(){
-    if(!AC) return;
-    const g1 = Math.cos(xfade * Math.PI / 2) * faderVal.ch1;
-    const g2 = Math.sin(xfade * Math.PI / 2) * faderVal.ch2;
-    deckBus[0].gain.setTargetAtTime(g1, AC.currentTime, 0.02);
-    deckBus[1].gain.setTargetAtTime(g2, AC.currentTime, 0.02);
-  }
-  function playKick(t, g){
-    const o = AC.createOscillator(), gn = AC.createGain();
-    o.type = 'sine';
-    o.frequency.setValueAtTime(150, t);
-    o.frequency.exponentialRampToValueAtTime(42, t + 0.12);
-    gn.gain.setValueAtTime(0.9, t);
-    gn.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
-    o.connect(gn); gn.connect(g);
-    o.start(t); o.stop(t + 0.3);
-  }
-  function playHat(t, g, open){
-    const s = AC.createBufferSource(); s.buffer = noiseBuf;
-    const f = AC.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 7500;
-    const gn = AC.createGain();
-    const dur = open ? 0.16 : 0.045;
-    gn.gain.setValueAtTime(open ? 0.2 : 0.14, t);
-    gn.gain.exponentialRampToValueAtTime(0.001, t + dur);
-    s.connect(f); f.connect(gn); gn.connect(g);
-    s.start(t); s.stop(t + dur + 0.02);
-  }
-  function playClap(t, g){
-    const s = AC.createBufferSource(); s.buffer = noiseBuf;
-    const f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 1600; f.Q.value = 1.2;
-    const gn = AC.createGain();
-    gn.gain.setValueAtTime(0.3, t);
-    gn.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
-    s.connect(f); f.connect(gn); gn.connect(g);
-    s.start(t); s.stop(t + 0.14);
-  }
-  function playBass(t, g, midi){
-    const o = AC.createOscillator(), f = AC.createBiquadFilter(), gn = AC.createGain();
-    o.type = 'sawtooth'; o.frequency.value = midiFreq(midi);
-    f.type = 'lowpass';
-    f.frequency.setValueAtTime(900, t);
-    f.frequency.exponentialRampToValueAtTime(220, t + 0.18);
-    gn.gain.setValueAtTime(0.28, t);
-    gn.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
-    o.connect(f); f.connect(gn); gn.connect(g);
-    o.start(t); o.stop(t + 0.24);
-  }
-  function scheduleStep(deck, step, t){
-    const tr = deck.track, g = deckBus[deck.idx];
-    if(!g) return;
-    playKick(t, g);
-    if(tr.hat[step] === 1) playHat(t, g, false);
-    else if(tr.hat[step] === 2) playHat(t, g, true);
-    if(tr.clap[step]) playClap(t, g);
-    const b = tr.bass[step];
-    if(b !== null && b !== undefined) playBass(t, g, tr.root + MINOR[b % 7] + 12 * Math.floor(b / 7));
-  }
-  function scheduler(){
-    if(!AC) return;
-    DECKS.forEach(deck => {
-      if(!deck.playing) return;
-      const stepDur = 60 / deck.effBpm() / 4;
-      while(deck.nextTime < AC.currentTime + 0.12){
-        scheduleStep(deck, deck.step, deck.nextTime);
-        deck.step = (deck.step + 1) % 16;
-        deck.nextTime += stepDur;
-      }
+    <span class="t-kw">await</span> TelegramChannel.dispatch(rawArticle.city, {
+      photo: graphicCard.buffer,
+      caption: verdict.telegramFormattedMarkdown
     });
   }
+}
+</code></pre>
+        </div>
+      </div>
+    </section>
 
-  /* ---------- decks ---------- */
-  const DECKS = [];
+    <!-- Selected Projects -->
+    <section class="projects-section" id="projects">
+      <div class="section-header">
+        <span class="section-tag">// Systems & Software</span>
+        <h2 class="section-title">Selected Projects & Tools</h2>
+        <p class="section-desc">
+          A selection of tools, automation backends, and standalone projects built to solve specific challenges with speed and precision.
+        </p>
+      </div>
 
-  let selectedTrack = 'after3am';
-  $$('.crate-track').forEach(b => b.addEventListener('click', () => {
-    selectedTrack = b.dataset.track;
-    $$('.crate-track').forEach(x => x.classList.toggle('on', x === b));
-  }));
-  function drawWave(deck){
-    const c = deck.el.querySelector('.deckwave');
-    if(!c) return;
-    const d = Math.min(window.devicePixelRatio || 1, 2);
-    const w = c.clientWidth || 600, h = 84;
-    c.width = w * d; c.height = h * d;
-    const g = c.getContext('2d'); g.setTransform(d, 0, 0, d, 0, 0);
-    const rnd = seeded(deck.idx === 0 ? 7 : 21);
-    const bars = Math.floor(w / 5);
-    for(let i = 0; i < bars; i++){
-      const env = 0.55 + 0.45 * Math.sin(i / bars * Math.PI * 2 + 0.6);
-      const bh = 6 + rnd() * 62 * env;
-      g.fillStyle = 'rgba(232,89,12,' + (0.18 + rnd() * 0.42).toFixed(2) + ')';
-      g.fillRect(i * 5, (h - bh) / 2, 2.5, bh);
-    }
-  }
-  function loadTrack(deck, key){
-    deck.track = TRACKS[key];
-    const el = deck.el;
-    el.querySelector('[data-title]').textContent = deck.track.title;
-    el.querySelector('[data-genre]').textContent = deck.track.genre;
-    el.querySelector('[data-key]').textContent = deck.track.key;
-    deck.step = 0;
-    deck.playPos = 0;
-    deck.barStart = AC ? AC.currentTime : 0;
-    if(AC && deck.playing) deck.nextTime = AC.currentTime + 0.06;
-    setTempo(deck, deck.tempo, true);
-    drawWave(deck);
-  }
-  function setTempo(deck, pct, silent){
-    deck.tempo = Math.min(Math.max(pct, -8), 8);
-    const el = deck.el;
-    const tv = el.querySelector('[data-tempoval]');
-    if(tv) tv.textContent = (deck.tempo >= 0 ? '+' : '') + deck.tempo.toFixed(1) + '%';
-    const bpm = el.querySelector('[data-bpm]');
-    if(bpm) bpm.textContent = deck.effBpm().toFixed(1);
-  }
-  $$('[data-deck]').forEach((el, i) => {
-    const deck = {
-      el, idx: i,
-      track: TRACKS[i === 0 ? 'after3am' : 'warmup'],
-      playing: false, step: 0, nextTime: 0, barStart: 0, playPos: 0,
-      tempo: 0, jogAngle: 0, dragging: false,
-      effBpm(){ return this.track.bpm * (1 + this.tempo / 100); }
-    };
-    DECKS.push(deck);
-    const jog = el.querySelector('[data-jog]');
-    const playBtn = el.querySelector('[data-play]');
-    const head = el.querySelector('.deck-playhead');
-    deck.head = head; deck.jog = jog; deck.playBtn = playBtn;
-    if(playBtn) playBtn.addEventListener('click', () => {
-      ensureAudio();
-      deck.playing = !deck.playing;
-      el.classList.toggle('playing', deck.playing);
-      if(deck.playing){
-        deck.nextTime = AC.currentTime + 0.06;
-        deck.barStart = AC.currentTime - (deck.step / 16) * (60 / deck.effBpm() * 4);
-        if(jog) jog.classList.add('playing');
-      } else if(jog) jog.classList.remove('playing');
-    });
-    el.querySelector('[data-load]').addEventListener('click', () => loadTrack(deck, selectedTrack));
-    el.querySelector('[data-sync]').addEventListener('click', () => {
-      const other = DECKS[1 - deck.idx];
-      if(!other) return;
-      const target = (other.effBpm() / deck.track.bpm - 1) * 100;
-      setTempo(deck, target);
-    });
-    $$('[data-hot]', el).forEach(b => b.addEventListener('click', () => b.classList.toggle('on')));
-    $$('[data-toggle]', el).forEach(b => b.addEventListener('click', () => b.classList.toggle('on')));
-    // jog: drag to scratch
-    if(jog){
-      jog.addEventListener('pointerdown', e => {
-        e.preventDefault();
-        jog.setPointerCapture(e.pointerId);
-        deck.dragging = true;
-        deck.wasPlaying = deck.playing;
-        deck.playing = false;
-        const r = jog.getBoundingClientRect();
-        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        let last = Math.atan2(e.clientY - cy, e.clientX - cx) * 180 / Math.PI;
-        let acc = 0;
-        const move = ev => {
-          const a = Math.atan2(ev.clientY - cy, ev.clientX - cx) * 180 / Math.PI;
-          let d = a - last;
-          if(d > 180) d -= 360;
-          if(d < -180) d += 360;
-          last = a;
-          deck.jogAngle += d;
-          jog.style.transform = 'rotate(' + deck.jogAngle + 'deg)';
-          acc += d / 360 * 16;
-          if(Math.abs(acc) >= 1){
-            const s = Math.trunc(acc);
-            deck.step = (deck.step + s % 16 + 16) % 16;
-            acc -= s;
-            deck.playPos = deck.step / 16;
-            if(AC) deck.barStart = AC.currentTime - (deck.step / 16) * (60 / deck.effBpm() * 4);
-          }
-        };
-        const up = () => {
-          deck.dragging = false;
-          if(deck.wasPlaying && AC){
-            deck.playing = true;
-            deck.nextTime = AC.currentTime + 0.06;
-            deck.barStart = AC.currentTime - (deck.step / 16) * (60 / deck.effBpm() * 4);
-          }
-          jog.removeEventListener('pointermove', move);
-          jog.removeEventListener('pointerup', up);
-        };
-        jog.addEventListener('pointermove', move);
-        jog.addEventListener('pointerup', up);
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge">Aviation / Math</span>
+              <span class="project-icon">#01</span>
+            </div>
+            <h3 class="project-title">
+              <a href="https://github.com/ujanchakraborty/flyoverhead" target="_blank" rel="noopener noreferrer">FlyOverhead</a>
+            </h3>
+            <p class="project-desc">
+              High-precision ADS-B flight overhead tracking with a 1-minute predictive Telegram alert. Calculates 3D slant range, elevation angles, and acoustic lag so you hear the aircraft right as the notification arrives.
+            </p>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">ADS-B Protocol</span>
+            <span class="stack-tag">Acoustics Math</span>
+            <span class="stack-tag">Telegram Bot</span>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge">Systems / Networking</span>
+              <span class="project-icon">#02</span>
+            </div>
+            <h3 class="project-title">
+              <a href="https://github.com/ujanchakraborty/DeskGlide" target="_blank" rel="noopener noreferrer">DeskGlide</a>
+            </h3>
+            <p class="project-desc">
+              Cross-machine input and clipboard multiplexer. Extended 2MB buffer, custom screenshot snipping pipeline, and zero-latency Wi-Fi / Ethernet dual-homed sync across workstations.
+            </p>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">C++</span>
+            <span class="stack-tag">WinAPI Hooks</span>
+            <span class="stack-tag">Sockets</span>
+            <span class="stack-tag">Cross-Platform</span>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge">AI / Publishing</span>
+              <span class="project-icon">#03</span>
+            </div>
+            <h3 class="project-title">
+              <a href="https://github.com/ujanchakraborty/minutes" target="_blank" rel="noopener noreferrer">MINUTES News Engine</a>
+            </h3>
+            <p class="project-desc">
+              Automated multi-city news intelligence engine covering 5 Indian cities. Scrapes verified local feeds, performs LLM deduplication and classification, renders branded visual cards, and pushes updates via Telegram.
+            </p>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Node.js</span>
+            <span class="stack-tag">Gemini API</span>
+            <span class="stack-tag">Canvas / Graphics</span>
+            <span class="stack-tag">Automated Dispatch</span>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge">Media Engineering</span>
+              <span class="project-icon">#04</span>
+            </div>
+            <h3 class="project-title">StreamDVR & ClipDeck</h3>
+            <p class="project-desc">
+              Continuous 24-hour stream recording daemon with circular memory ring buffers. Allows retroactive 60-second clip extraction on hotkeys without re-encoding overhead or dropped frames.
+            </p>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">FFmpeg</span>
+            <span class="stack-tag">Bash / Daemon</span>
+            <span class="stack-tag">Ring Buffers</span>
+            <span class="stack-tag">HLS / RTMP</span>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge">Edge / Infrastructure</span>
+              <span class="project-icon">#05</span>
+            </div>
+            <h3 class="project-title">PRMX API Gateways</h3>
+            <p class="project-desc">
+              Low-latency unified API router and caching proxy aggregating Gemini, DeepSeek, and open models. Features automated rate-limit smoothing, error failover, and request instrumentation.
+            </p>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Cloudflare Workers</span>
+            <span class="stack-tag">TypeScript</span>
+            <span class="stack-tag">Edge Caching</span>
+            <span class="stack-tag">REST Proxies</span>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card">
+          <div>
+            <div class="project-meta">
+              <span class="project-badge">Video Pipeline</span>
+              <span class="project-icon">#06</span>
+            </div>
+            <h3 class="project-title">PRMX Clipping Engine</h3>
+            <p class="project-desc">
+              Automated media processing pipeline for rapid video slicing, speech transcription synchronization, aspect ratio transformation, and high-throughput content export.
+            </p>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">Whisper AI</span>
+            <span class="stack-tag">Video Pipelines</span>
+            <span class="stack-tag">Automation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities / Tech Stack -->
+    <section class="capabilities-section" id="capabilities">
+      <div class="section-header">
+        <span class="section-tag">// Architecture & Tooling</span>
+        <h2 class="section-title">Core Stack & Focus Areas</h2>
+        <p class="section-desc">
+          Technological domains and tools I work with daily to engineer resilient, self-contained systems.
+        </p>
+      </div>
+
+      <div class="capabilities-grid">
+        <div class="capability-card">
+          <div class="capability-title">01. Systems & Languages</div>
+          <ul class="capability-list">
+            <li><strong>Python</strong> — Daemons, scrapers, data pipelines</li>
+            <li><strong>Go & C++</strong> — High-speed networking, hooks</li>
+            <li><strong>TypeScript / JS</strong> — Node backends & web apps</li>
+            <li><strong>Bash & PowerShell</strong> — OS orchestration</li>
+            <li><strong>SQL & SQLite</strong> — Local transactional stores</li>
+          </ul>
+        </div>
+
+        <div class="capability-card">
+          <div class="capability-title">02. Media & Protocols</div>
+          <ul class="capability-list">
+            <li><strong>FFmpeg</strong> — Hardware acceleration, transcoding</li>
+            <li><strong>ADS-B / Telemetry</strong> — Radio telemetry tracking</li>
+            <li><strong>WebSockets & Sockets</strong> — Real-time event streams</li>
+            <li><strong>HLS, RTSP & RTMP</strong> — Live stream ingestion</li>
+            <li><strong>Zero-copy Buffering</strong> — Ring storage loops</li>
+          </ul>
+        </div>
+
+        <div class="capability-card">
+          <div class="capability-title">03. Edge & Cloud Infra</div>
+          <ul class="capability-list">
+            <li><strong>Cloudflare</strong> — Pages, Workers, DNS, Edge KV</li>
+            <li><strong>Docker & Daemons</strong> — Containerized background tasks</li>
+            <li><strong>Telegram Bot API</strong> — Webhook & polling architectures</li>
+            <li><strong>Reverse Proxies</strong> — Load balancing & routing</li>
+            <li><strong>Local-first Architecture</strong> — Zero SaaS bloat</li>
+          </ul>
+        </div>
+
+        <div class="capability-card">
+          <div class="capability-title">04. Engineering Ethos</div>
+          <ul class="capability-list">
+            <li><strong>Speed over bloat</strong> — Minimal runtime dependencies</li>
+            <li><strong>Resilience</strong> — Programs that heal from restarts</li>
+            <li><strong>Functional simplicity</strong> — Direct solutions to problems</li>
+            <li><strong>Fast feedback loops</strong> — Build, test, deploy immediately</li>
+            <li><strong>Radical autonomy</strong> — Own the entire pipeline</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Field Notes / Mini-Articles -->
+    <section class="notes-section" id="notes">
+      <div class="section-header">
+        <span class="section-tag">// Field Notes</span>
+        <h2 class="section-title">Thoughts & Engineering Logs</h2>
+        <p class="section-desc">
+          Short logs and takeaways from building tools in the wild.
+        </p>
+      </div>
+
+      <div class="notes-list">
+        <div class="note-row">
+          <div class="note-info">
+            <span class="note-num">01</span>
+            <div>
+              <div class="note-title">Calculating acoustic lag: alerting an observer before overhead jet roar arrives</div>
+              <div style="font-size: 13px; color: var(--text-dim); margin-top: 3px;">
+                Combining barometric altitude, 3D slant vectors, and temperature-adjusted sound speed for precise notification timing.
+              </div>
+            </div>
+          </div>
+          <span class="note-date">Telemetry Log</span>
+        </div>
+
+        <div class="note-row">
+          <div class="note-info">
+            <span class="note-num">02</span>
+            <div>
+              <div class="note-title">Why local-first automation beats multi-tier cloud clusters for solo tools</div>
+              <div style="font-size: 13px; color: var(--text-dim); margin-top: 3px;">
+                How a simple loop on a mini-PC outperforms complex cloud queues in cost, latency, and operational peace of mind.
+              </div>
+            </div>
+          </div>
+          <span class="note-date">Systems Architecture</span>
+        </div>
+
+        <div class="note-row">
+          <div class="note-info">
+            <span class="note-num">03</span>
+            <div>
+              <div class="note-title">Zero-copy segment wrapping with FFmpeg for instant retrospective stream clipping</div>
+              <div style="font-size: 13px; color: var(--text-dim); margin-top: 3px;">
+                Leveraging keyframe-aligned ring buffers to export clips in under 200 milliseconds.
+              </div>
+            </div>
+          </div>
+          <span class="note-date">Media Engineering</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Connect -->
+    <section class="contact-section" id="contact">
+      <div class="contact-card">
+        <h2 class="contact-title">Let's build something sharp.</h2>
+        <p class="contact-desc">
+          Whether you want to discuss a custom automation, stream pipeline, software project, or collaborate on experimental tooling—get in touch.
+        </p>
+
+        <div class="contact-btns">
+          <button class="copy-pill" onclick="copyContact()">
+            <span class="status-dot"></span>
+            <span>ujanchakrabortyyy@gmail.com</span>
+            <span style="color: var(--emerald); font-size: 11px;">[Click to Copy]</span>
+          </button>
+          <a href="https://github.com/ujanchakraborty" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-mono">
+            GitHub: ujanchakraborty ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span>© 2026 PRMX.in • Engineered by Ujan Chakraborty</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/ujanchakraborty" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:ujanchakrabortyyy@gmail.com">Email</a>
+        <a href="#about">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Element -->
+  <div id="toast">✓ Email copied to clipboard</div>
+
+  <script>
+    // Tab switching for terminal
+    function switchTab(index) {
+      const tabs = document.querySelectorAll('.terminal-tab');
+      const codes = document.querySelectorAll('.term-code');
+      
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+      });
+      
+      codes.forEach((code, i) => {
+        code.classList.toggle('active', i === index);
       });
     }
-    setTempo(deck, 0, true);
-    drawWave(deck);
-  });
-  window.addEventListener('resize', () => DECKS.forEach(drawWave));
 
-  /* ---------- generic vertical drag (channel faders) ---------- */
-  function dragEl(el, onVal){
-    el.addEventListener('pointerdown', e => {
-      e.preventDefault();
-      el.setPointerCapture(e.pointerId);
-      const r = el.getBoundingClientRect();
-      const move = ev => {
-        const v = Math.min(Math.max(1 - (ev.clientY - r.top) / r.height, 0), 1);
-        onVal(v);
-      };
-      const up = () => {
-        el.removeEventListener('pointermove', move);
-        el.removeEventListener('pointerup', up);
-      };
-      el.addEventListener('pointermove', move);
-      el.addEventListener('pointerup', up);
-      move(e);
-    });
-  }
-
-  /* ---------- knobs ---------- */
-  const knobState = new Map();
-  $$('[data-knob]').forEach((k, i) => {
-    const init = [-30, 12, 0, 8, 22, -14, 6, 0, 18, -8, 10, 0][i % 12] || 0;
-    knobState.set(k, init);
-    const kp = k.querySelector('.kp');
-    if(kp) kp.style.transform = 'translate(-50%,-100%) rotate(' + init + 'deg)';
-    k.addEventListener('pointerdown', e => {
-      e.preventDefault();
-      k.setPointerCapture(e.pointerId);
-      const startY = e.clientY, startA = knobState.get(k);
-      const move = ev => {
-        const a = Math.min(Math.max(startA + (startY - ev.clientY) * 0.9, -135), 135);
-        knobState.set(k, a);
-        if(kp) kp.style.transform = 'translate(-50%,-100%) rotate(' + a + 'deg)';
-      };
-      const up = () => {
-        k.removeEventListener('pointermove', move);
-        k.removeEventListener('pointerup', up);
-      };
-      k.addEventListener('pointermove', move);
-      k.addEventListener('pointerup', up);
-    });
-  });
-
-  /* ---------- channel faders + crossfader ---------- */
-  $$('[data-fader]').forEach(f => {
-    const key = f.dataset.fader;
-    const h = f.querySelector('.fhandle');
-    const apply = v => { faderVal[key] = v; if(h) h.style.top = ((1 - v) * 100) + '%'; updateGains(); };
-    dragEl(f, apply);
-    apply(parseFloat(f.dataset.val || '0.7'));
-  });
-  const xfTrack = $('#xfTrack'), xfHandle = $('#xfHandle');
-  function setXfade(v){
-    xfade = Math.min(Math.max(v, 0), 1);
-    if(xfHandle) xfHandle.style.left = (xfade * 100) + '%';
-    updateGains();
-  }
-  if(xfTrack){
-    xfTrack.addEventListener('pointerdown', e => {
-      e.preventDefault();
-      xfTrack.setPointerCapture(e.pointerId);
-      const r = xfTrack.getBoundingClientRect();
-      const move = ev => setXfade((ev.clientX - r.left) / r.width);
-      const up = () => {
-        xfTrack.removeEventListener('pointermove', move);
-        xfTrack.removeEventListener('pointerup', up);
-      };
-      xfTrack.addEventListener('pointermove', move);
-      xfTrack.addEventListener('pointerup', up);
-      move(e);
-    });
-    setXfade(0.5);
-  }
-
-  /* ---------- FX buttons ---------- */
-  const fxName = $('#fxName'), fxTime = $('#fxTime');
-  const divisions = ['1/4', '1/2', '3/4', '1/1'];
-  let divI = 2;
-  $$('[data-fx]').forEach(b => b.addEventListener('click', () => {
-    const v = b.dataset.fx;
-    if(v === 'ON'){ b.classList.toggle('on'); return; }
-    $$('[data-fx]').forEach(x => { if(x.dataset.fx !== 'ON') x.classList.remove('on'); });
-    b.classList.add('on');
-    if(fxName) fxName.textContent = v;
-  }));
-  if(fxTime) fxTime.addEventListener('click', () => {
-    divI = (divI + 1) % divisions.length;
-    fxTime.textContent = divisions[divI];
-  });
-
-  /* ---------- level meter (real audio via analyser) ---------- */
-  const meter = $('#levelMeter');
-  let segs = [];
-  if(meter){
-    for(let i = 0; i < 16; i++){
-      const s = document.createElement('i');
-      if(i >= 13) s.dataset.hot = '1';
-      meter.appendChild(s); segs.push(s);
+    // Copy Email to clipboard with toast
+    function copyContact() {
+      const email = 'ujanchakrabortyyy@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2600);
+      }).catch(err => {
+        window.location.href = 'mailto:' + email;
+      });
     }
-  }
-  let meterLevel = 0;
-  const meterData = new Uint8Array(128);
-  function meterTick(){
-    if(!segs.length) return;
-    let target = 0;
-    if(analyser && AC && AC.state === 'running' && (DECKS[0].playing || DECKS[1].playing)){
-      analyser.getByteTimeDomainData(meterData);
-      let sum = 0;
-      for(let i = 0; i < meterData.length; i++){
-        const v = (meterData[i] - 128) / 128;
-        sum += v * v;
-      }
-      target = Math.min(Math.sqrt(sum / meterData.length) * 3.2, 1);
-    } else if(DECKS[0].playing || DECKS[1].playing){
-      // no live audio signal (e.g. audio still waking up) — pulse with the beat
-      target = 0.45 + 0.3 * Math.sin(performance.now() / 130);
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+        });
+      });
     }
-    meterLevel += (target - meterLevel) * (target > meterLevel ? 0.5 : 0.12);
-    const lit = Math.round(meterLevel * 16);
-    segs.forEach((s, i) => {
-      const on = i < lit;
-      s.classList.toggle('lit', on);
-      s.classList.toggle('hot', on && s.dataset.hot === '1');
-    });
-  }
-
-  /* ---------- booth rAF: jog spin, playheads, meter ---------- */
-  let lastT = 0;
-  function boothLoop(t){
-    const dt = lastT ? Math.min((t - lastT) / 1000, 0.1) : 0;
-    lastT = t;
-    DECKS.forEach(deck => {
-      if(deck.playing && !deck.dragging && deck.jog){
-        const barDur = 60 / deck.effBpm() * 4;
-        deck.jogAngle += (360 / barDur) * dt;
-        deck.jog.style.transform = 'rotate(' + deck.jogAngle + 'deg)';
-      }
-      if(deck.playing && deck.head){
-        const barDur = 60 / deck.effBpm() * 4;
-        let pos;
-        if(AC && AC.state === 'running'){
-          pos = ((AC.currentTime - deck.barStart) / barDur) % 1;
-          deck.playPos = pos;
-        } else {
-          deck.playPos = (deck.playPos + dt / barDur) % 1;
-          pos = deck.playPos;
-        }
-        deck.head.style.left = (6 + Math.max(pos, 0) * 88).toFixed(2) + '%';
-      }
-    });
-    meterTick();
-    requestAnimationFrame(boothLoop);
-  }
-  requestAnimationFrame(boothLoop);
-
-  /* --- piano: 25 keys C4–C6, Web Audio --- */
-  const piano = $('#pianoKeys');
-  let actx = null;
-  function noteOn(midi){
-    try{
-      if(!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
-      if(actx.state === 'suspended') actx.resume();
-      const f = 440 * Math.pow(2, (midi - 69) / 12);
-      const o = actx.createOscillator(), g = actx.createGain();
-      o.type = 'triangle'; o.frequency.value = f;
-      const t = actx.currentTime;
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(0.32, t + 0.008);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + 1.1);
-      o.connect(g); g.connect(actx.destination);
-      o.start(t); o.stop(t + 1.2);
-    }catch(e){}
-  }
-  if(piano){
-    const whites = [], blacks = [];
-    let whiteIdx = 0;
-    for(let m = 60; m <= 84; m++){
-      const pc = m % 12;
-      const isBlack = [1, 3, 6, 8, 10].indexOf(pc) !== -1;
-      const k = document.createElement('div');
-      k.className = 'pkey' + (isBlack ? ' black' : '');
-      k.dataset.midi = m;
-      if(!isBlack){
-        const names = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-        if(pc === 0 || pc === 5){
-          const lab = document.createElement('span');
-          lab.className = 'klab';
-          lab.textContent = names[[0, 2, 4, 5, 7, 9, 11].indexOf(pc)] + (Math.floor(m / 12) - 1);
-          k.appendChild(lab);
-        }
-        whites.push(k); whiteIdx++;
-      } else {
-        blacks.push({el: k, whitesBefore: whiteIdx});
-      }
-      piano.appendChild(k);
-    }
-    const totalW = whites.length;
-    blacks.forEach(b => {
-      b.el.style.left = 'calc(' + (b.whitesBefore / totalW * 100).toFixed(2) + '% - 18px)';
-    });
-    const playKey = (el) => {
-      noteOn(parseInt(el.dataset.midi, 10));
-      el.classList.add('on');
-      setTimeout(() => el.classList.remove('on'), 220);
-    };
-    $$('.pkey', piano).forEach(k => {
-      k.addEventListener('pointerdown', e => { e.preventDefault(); playKey(k); });
-    });
-    const keyMap = {a:60, w:61, s:62, e:63, d:64, f:65, t:66, g:67, y:68, h:69, u:70, j:71, k:72};
-    const held = {};
-    window.addEventListener('keydown', e => {
-      if(e.repeat || e.metaKey || e.ctrlKey || e.altKey) return;
-      const m = keyMap[e.key.toLowerCase()];
-      if(m === undefined) return;
-      const el = piano.querySelector('[data-midi="' + m + '"]');
-      if(el){ held[e.key.toLowerCase()] = el; noteOn(m); el.classList.add('on'); }
-    });
-    window.addEventListener('keyup', e => {
-      const el = held[e.key.toLowerCase()];
-      if(el){ el.classList.remove('on'); delete held[e.key.toLowerCase()]; }
-    });
-  }
-
-  /* --- wall lightbox --- */
-  const lb = $('#lightbox');
-  $$('[data-poster]').forEach(p => p.addEventListener('click', () => {
-    if(!lb) return;
-    lb.innerHTML = '';
-    const clone = p.cloneNode(true);
-    clone.removeAttribute('data-poster');
-    lb.appendChild(clone);
-    lb.classList.add('open');
-    lb.setAttribute('aria-hidden', 'false');
-  }));
-  if(lb) lb.addEventListener('click', () => {
-    lb.classList.remove('open');
-    lb.setAttribute('aria-hidden', 'true');
-    lb.innerHTML = '';
-  });
-})();
-
-
-/* ============ REVEALS + CLOCK + LOOPS ============ */
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-}), {threshold: 0.12});
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
-
-function tickIst(){
-  try{
-    document.getElementById('hudIst').textContent =
-      new Date().toLocaleTimeString('en-IN', {timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false}) + ' IST';
-  }catch(e){}
-}
-tickIst(); setInterval(tickIst, 15000);
-document.getElementById('year').textContent = new Date().getFullYear();
-
-sizeStorm(); sizeWire(); nightUpdate();
-// fonts.ready: re-run layout-sensitive calculations once web fonts have painted
-if(document.fonts && document.fonts.ready) document.fonts.ready.then(() => { sizeStorm(); sizeWire(); fitMarquees(); });
-window.addEventListener('resize', () => { sizeStorm(); sizeWire(); nightUpdate(); });
-let ticking = false;
-window.addEventListener('scroll', () => {
-  if(!ticking){ requestAnimationFrame(() => { nightUpdate(); ticking = false; }); ticking = true; }
-}, {passive: true});
-let pageVisible = !document.hidden;
-document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; });
-if(reduced){
-  drawWire();
-} else {
-  (function loop(t){
-    if(pageVisible){ drawStorm(t || 0); drawWire(); }
-    requestAnimationFrame(loop);
-  })();
-}
-})();
-</script>
+  </script>
 </body>
 </html>
