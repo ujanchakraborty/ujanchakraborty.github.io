@@ -56,6 +56,11 @@
       box-sizing: border-box;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     html {
       scroll-behavior: smooth;
       background-color: var(--bg);
@@ -829,6 +834,25 @@
     #toast.show {
       transform: translateY(0);
       opacity: 1;
+    }
+
+    /* Mobile Menu (Hidden on desktop) */
+    .mobile-menu {
+      display: none;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 8px 0;
+      transition: var(--transition);
+      display: block;
+    }
+
+    .nav-link:hover {
+      color: var(--emerald);
     }
 
     /* Responsive */
